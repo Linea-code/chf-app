@@ -39,13 +39,11 @@ class Symptoms extends StatelessWidget {
                     title: Text("Täglicher Fragebogen: Symptome",
                       style: TextStyle(
                         fontWeight: FontWeight.w800,
-                        fontFamily: "Arial",
                         fontSize: 22.0,
                       ),),
                     subtitle: Text("Bitte machen Sie in deisem Fragebogen einmal täglich Angaben zu Ihren Symptomen!",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontFamily: "Arial",
                         fontSize: 16.0,
                         color: Colors.black,
                       ),),
