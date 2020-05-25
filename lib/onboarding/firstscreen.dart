@@ -1,0 +1,89 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:herzinsuffizienz/onboarding/accessrights.dart';
+
+class Start extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Herzinsuffizienz-App",
+            style: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w800,
+              fontFamily: "Arial",
+            ),
+          ),
+          backgroundColor: Colors.lightGreen[500],
+        ),
+        body: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(15.0),
+              child: Text(
+                "Herzlich Willkommen in Ihrer Herzinsuffizienz-App! \nDiese App wird Sie im Alltag unterstützen mit Ihrer chronischen Herzinsuffizienz umzugehen! Diese Dinge können in Zukunft für Sie übernehmen werden: ",
+                style: TextStyle(
+                  fontFamily: "Arial",
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            Column(
+              children: <Widget>[
+                new ListTile(
+                  leading: Icon(Icons.check),
+                  title: new Text("Speicherung von Gesundheitsdaten",
+                    style: TextStyle(
+                      fontFamily: "Arial",
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),),
+                ),
+                new ListTile(
+                  leading: Icon(Icons.check),
+                  title: new Text("Auswertung von Gesundheitsdaten gemeinsam mit deinem Arzt",
+                    style: TextStyle(
+                      fontFamily: "Arial",
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),),
+                ),
+                new ListTile(
+                  leading: Icon(Icons.check),
+                  title: new Text("Erinnerungen an die Medikationseinnahme",
+                    style: TextStyle(
+                      fontFamily: "Arial",
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),),
+                ),
+                new ListTile(
+                  leading: Icon(Icons.check),
+                  title: new Text("Übermittlung medizinischer Daten an den behandelnden Arzt",
+                    style: TextStyle(
+                      fontFamily: "Arial",
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w400,
+                    ),),
+                )
+              ],
+            ),
+            Container(
+              child: RaisedButton(
+                child: Text('Alles klar!'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Access()),
+                  );
+                },
+              ),
+            )
+          ],
+        ));
+
+
+  }
+}
