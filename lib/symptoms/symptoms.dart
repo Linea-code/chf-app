@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:herzinsuffizienz/symptoms/dailyquest.dart';
 
 class Symptoms extends StatelessWidget {
   final String _title = "Symptome";
@@ -33,7 +34,12 @@ class Symptoms extends StatelessWidget {
                 ),
                 child: InkWell(
                   splashColor: Colors.lightGreen[200],
-                  onTap: (){},
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=> DailyQuest())
+                    );
+                  },
                   child:
                   ListTile(
                     title: Text("Täglicher Fragebogen: Symptome",
@@ -64,7 +70,9 @@ class Symptoms extends StatelessWidget {
               ),
             child: InkWell(
               splashColor: Colors.lightGreen[200],
-              onTap: (){},
+              onTap: (){
+
+              },
               child:
               ListTile(
               title: Text("Wöchentlicher Fragebogen: Symptome",
