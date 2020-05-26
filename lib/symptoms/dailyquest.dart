@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:herzinsuffizienz/symptoms/wassereinlagerung.dart';
 
 class DailyQuest extends StatefulWidget {
   @override
@@ -8,9 +9,6 @@ class DailyQuest extends StatefulWidget {
 }
 
 class _DailyQuestState extends State<DailyQuest> {
-  static int _wassereinlagerungen;
-  static bool isButtonPressed = false;
-
   List<Step> steps = [
     Step(
     title: Text("Wassereinlagerungen"),
@@ -21,7 +19,9 @@ class _DailyQuestState extends State<DailyQuest> {
         Container(
           child: Text("Hatten Sie am heutigen Tag Wassereinlagerung?"),
         ),
-
+        Wassereinlagerung0(),
+        Wassereinlagerung1(),
+        Wassereinlagerung2(),
       ],
 
     ),
@@ -98,22 +98,5 @@ class _DailyQuestState extends State<DailyQuest> {
     });
   }
 
-}
-
-class Knopf extends StatefulWidget {
-  @override
-  _KnopfState createState() => _KnopfState();
-}
-
-class _KnopfState extends State<Knopf> {
-  bool _pressed = false;
-  @override
-  Widget build(BuildContext context) {
-    return RaisedButton(
-      child: Text('hallo'),
-      color: _pressed ? Colors.lightGreen : Colors.grey,
-      onPressed: () => setState(()=> _pressed = !_pressed),
-    );
-  }
 }
 
