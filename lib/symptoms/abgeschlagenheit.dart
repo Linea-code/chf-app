@@ -1,30 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Wassereinlagerung0 extends StatefulWidget {
+class Abgeschlagenheit0 extends StatefulWidget {
   @override
-  _Wassereinlagerung0State createState() => _Wassereinlagerung0State();
+  _Abgeschlagenheit0State createState() => _Abgeschlagenheit0State();
 }
 
-class _Wassereinlagerung0State extends State<Wassereinlagerung0> {
+class _Abgeschlagenheit0State extends State<Abgeschlagenheit0> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      child: Text('gar nicht'),
-      color: _pressed ? Colors.lightGreen[400] : Colors.grey[300],
-      onPressed: () {
-        setState(() => _pressed = !_pressed);
-      }
+        child: Text('gar nicht'),
+        color: _pressed ? Colors.lightGreen[400] : Colors.grey[300],
+        onPressed: () {
+          setState(() => _pressed = !_pressed);
+        }
     );
   }
 }
-class Wassereinlagerung1 extends StatefulWidget {
+class Abgeschlagenheit1 extends StatefulWidget {
   @override
-  _Wassereinlagerung1State createState() => _Wassereinlagerung1State();
+  _Abgeschlagenheit1State createState() => _Abgeschlagenheit1State();
 }
 
-class _Wassereinlagerung1State extends State<Wassereinlagerung1> {
+class _Abgeschlagenheit1State extends State<Abgeschlagenheit1> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {
@@ -37,12 +37,12 @@ class _Wassereinlagerung1State extends State<Wassereinlagerung1> {
     );
   }
 }
-class Wassereinlagerung2 extends StatefulWidget {
+class Abgeschlagenheit2 extends StatefulWidget {
   @override
-  _Wassereinlagerung2State createState() => _Wassereinlagerung2State();
+  _Abgeschlagenheit2State createState() => _Abgeschlagenheit2State();
 }
 
-class _Wassereinlagerung2State extends State<Wassereinlagerung2> {
+class _Abgeschlagenheit2State extends State<Abgeschlagenheit2> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {

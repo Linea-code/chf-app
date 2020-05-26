@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:herzinsuffizienz/symptoms/abgeschlagenheit.dart';
+import 'package:herzinsuffizienz/symptoms/kurzatmigkeit.dart';
 import 'package:herzinsuffizienz/symptoms/wassereinlagerung.dart';
 
 class DailyQuest extends StatefulWidget {
@@ -17,8 +19,9 @@ class _DailyQuestState extends State<DailyQuest> {
     content: Column(
       children: <Widget>[
         Container(
-          child: Text("Hatten Sie am heutigen Tag Wassereinlagerung?"),
+          child: Text("Hatten Sie am heutigen Tag Wassereinlagerung (beispielsweise in den Beinen/Füßen)?"),
         ),
+        SizedBox(height: 20),
         Wassereinlagerung0(),
         Wassereinlagerung1(),
         Wassereinlagerung2(),
@@ -30,7 +33,33 @@ class _DailyQuestState extends State<DailyQuest> {
       isActive: false,
       state: StepState.editing,
       title: Text('Kurzatmigkeit'),
-      content: Row(
+      content: Column(
+        children: <Widget>[
+          Container(
+            child: Text("Hatten Sie am heutigen Tag Probleme mit Kurzatmigkeit?"),
+          ),
+          SizedBox(height: 20),
+          Kurzatmigkeit0(),
+          Kurzatmigkeit1(),
+          Kurzatmigkeit2(),
+        ],
+
+      ),
+    ),
+    Step(
+      isActive: false,
+      state: StepState.editing,
+      title: Text('Abgeschlagenheit'),
+      content: Column(
+        children: <Widget>[
+          Container(
+            child: Text("Fühlten Sie sich am heutigen Tag abgeschlagen?"),
+          ),
+          SizedBox(height: 20),
+          Abgeschlagenheit0(),
+          Abgeschlagenheit1(),
+          Abgeschlagenheit2(),
+        ],
 
       ),
     ),];
@@ -83,7 +112,8 @@ class _DailyQuestState extends State<DailyQuest> {
     }
   next() {
     currentStep + 1 != steps.length ? goTo(currentStep + 1) : setState(() =>
-    complete = true);
+    complete = true,
+    );
   }
 
   cancel() {
