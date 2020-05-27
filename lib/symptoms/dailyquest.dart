@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:herzinsuffizienz/symptoms/abgeschlagenheit.dart';
 import 'package:herzinsuffizienz/symptoms/kurzatmigkeit.dart';
 import 'package:herzinsuffizienz/symptoms/wassereinlagerung.dart';
@@ -11,59 +10,6 @@ class DailyQuest extends StatefulWidget {
 }
 
 class _DailyQuestState extends State<DailyQuest> {
-  List<Step> steps = [
-    Step(
-    title: Text("Wassereinlagerungen"),
-    isActive: true,
-    state: StepState.complete,
-    content: Column(
-      children: <Widget>[
-        Container(
-          child: Text("Hatten Sie am heutigen Tag Wassereinlagerung (beispielsweise in den Beinen/Füßen)?"),
-        ),
-        SizedBox(height: 20),
-        Wassereinlagerung0(),
-        Wassereinlagerung1(),
-        Wassereinlagerung2(),
-      ],
-
-    ),
-  ),
-    Step(
-      isActive: false,
-      state: StepState.editing,
-      title: Text('Kurzatmigkeit'),
-      content: Column(
-        children: <Widget>[
-          Container(
-            child: Text("Hatten Sie am heutigen Tag Probleme mit Kurzatmigkeit?"),
-          ),
-          SizedBox(height: 20),
-          Kurzatmigkeit0(),
-          Kurzatmigkeit1(),
-          Kurzatmigkeit2(),
-        ],
-
-      ),
-    ),
-    Step(
-      isActive: false,
-      state: StepState.editing,
-      title: Text('Abgeschlagenheit'),
-      content: Column(
-        children: <Widget>[
-          Container(
-            child: Text("Fühlten Sie sich am heutigen Tag abgeschlagen?"),
-          ),
-          SizedBox(height: 20),
-          Abgeschlagenheit0(),
-          Abgeschlagenheit1(),
-          Abgeschlagenheit2(),
-        ],
-
-      ),
-    ),];
-
   int currentStep = 0;
   bool complete = false;
 
@@ -96,11 +42,31 @@ class _DailyQuestState extends State<DailyQuest> {
             :Expanded(
               child: Stepper(
                 type: StepperType.vertical,
-                steps: steps,
-                currentStep: currentStep,
-                onStepContinue: next,
-                onStepCancel: cancel,
-                onStepTapped: (step)=> goTo(step),
+                steps: _mySteps(),
+                currentStep: this.currentStep,
+                onStepContinue: (){
+                  setState(() {
+                    if(this.currentStep < this._mySteps().length -1){
+                      this.currentStep = this.currentStep +1;
+                    } else{
+                      print('Completed');
+                    }
+                  });
+                },
+                onStepCancel: (){
+                  setState(() {
+                    if(this.currentStep > 0){
+                      this.currentStep = this.currentStep -1;
+                    } else{
+                      this.currentStep = 0;
+                    }
+                  });
+                },
+                onStepTapped: (step){
+                  setState(() {
+                    this.currentStep = step;
+                  });
+                },
 
               ),
 
@@ -110,23 +76,63 @@ class _DailyQuestState extends State<DailyQuest> {
     );
 
     }
-  next() {
-    currentStep + 1 != steps.length ? goTo(currentStep + 1) : setState(() =>
-    complete = true,
-    );
+List<Step> _mySteps(){
+  List<Step> steps = [
+    Step(
+      title: Text("Wassereinlagerungen"),
+      isActive: true,
+      state: StepState.complete,
+      content: Column(
+        children: <Widget>[
+          Container(
+            child: Text("Hatten Sie am heutigen Tag Wassereinlagerung (beispielsweise in den Beinen/Füßen)?"),
+          ),
+          SizedBox(height: 20),
+          Wassereinlagerung0(),
+          Wassereinlagerung1(),
+          Wassereinlagerung2(),
+        ],
+
+      ),
+    ),
+    Step(
+      isActive: currentStep > 0,
+      state: (currentStep > 0) ? StepState.complete : StepState.editing,
+      title: Text('Kurzatmigkeit'),
+      content: Column(
+        children: <Widget>[
+          Container(
+            child: Text("Hatten Sie am heutigen Tag Probleme mit Kurzatmigkeit?"),
+          ),
+          SizedBox(height: 20),
+          Kurzatmigkeit0(),
+          Kurzatmigkeit1(),
+          Kurzatmigkeit2(),
+        ],
+
+      ),
+    ),
+    Step(
+      isActive: currentStep > 1,
+      state: (currentStep > 1) ? StepState.complete : StepState.editing,
+      title: Text('Abgeschlagenheit'),
+      content: Column(
+        children: <Widget>[
+          Container(
+            child: Text("Fühlten Sie sich am heutigen Tag abgeschlagen?"),
+          ),
+          SizedBox(height: 20),
+          Abgeschlagenheit0(),
+          Abgeschlagenheit1(),
+          Abgeschlagenheit2(),
+        ],
+
+      ),
+    ),];
+  return steps;
   }
 
-  cancel() {
-    if (currentStep > 0) {
-      goTo(currentStep - 1);
-    }
   }
 
-  goTo(int step){
-    setState(() {
-      currentStep = step;
-    });
-  }
 
-}
 
