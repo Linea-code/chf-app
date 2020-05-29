@@ -47,7 +47,7 @@ class Symptoms extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                         fontSize: 22.0,
                       ),),
-                    subtitle: Text("Bitte machen Sie in deisem Fragebogen einmal täglich Angaben zu Ihren Symptomen!",
+                    subtitle: Text("Bitte machen Sie in diesem Fragebogen einmal täglich Angaben zu Ihren Symptomen!",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 16.0,
