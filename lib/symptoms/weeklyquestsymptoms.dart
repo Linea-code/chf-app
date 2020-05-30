@@ -12,12 +12,12 @@ import 'package:herzinsuffizienz/symptoms/eingeschraenkt.dart';
 import 'package:herzinsuffizienz/symptoms/versorgt.dart';
 import 'package:herzinsuffizienz/symptoms/verstehen.dart';
 
-class DailyQuest extends StatefulWidget {
+class WeeklyQuestSymptoms extends StatefulWidget {
   @override
-  _DailyQuestState createState() => _DailyQuestState();
+  _WeeklyQuestSymptomsState createState() => _WeeklyQuestSymptomsState();
 }
 
-class _DailyQuestState extends State<DailyQuest> {
+class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
   int currentStep = 0;
   bool complete = false;
 

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:herzinsuffizienz/symptoms/dailyquest.dart';
+import 'package:herzinsuffizienz/symptoms/weeklyquestsymptoms.dart';
 
 class Symptoms extends StatelessWidget {
   final String _title = "Symptome";
@@ -37,17 +37,17 @@ class Symptoms extends StatelessWidget {
                   onTap: (){
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context)=> DailyQuest())
+                        MaterialPageRoute(builder: (context)=> WeeklyQuestSymptoms())
                     );
                   },
                   child:
                   ListTile(
-                    title: Text("Täglicher Fragebogen: Symptome",
+                    title: Text("Fragebogen: Symptome",
                       style: TextStyle(
                         fontWeight: FontWeight.w800,
                         fontSize: 22.0,
                       ),),
-                    subtitle: Text("Bitte machen Sie in diesem Fragebogen einmal täglich Angaben zu Ihren Symptomen!",
+                    subtitle: Text("Bitte machen Sie in diesem Fragebogen einmal alle 2 Wochen Angaben zu Ihren Symptomen!",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 16.0,
@@ -75,13 +75,13 @@ class Symptoms extends StatelessWidget {
               },
               child:
               ListTile(
-              title: Text("Wöchentlicher Fragebogen: Symptome",
+              title: Text("Fragebogen: Gesundheit",
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
                   fontFamily: "Roboto",
                   fontSize: 22.0,
                 ),),
-              subtitle: Text("Bitte machen Sie in deisem Fragebogen einmal wöchentlich genauere Angaben zu Ihren Symptomen und deren zeitliche Veränderung!",
+              subtitle: Text("Bitte machen Sie in deisem Fragebogen einmal alle 2 Wochen Angaben zu psychischen Gesundheit!",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: "Roboto",
