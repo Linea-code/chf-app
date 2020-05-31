@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 import 'UmfrageKnopf.dart';
+import 'package:herzinsuffizienz/symptoms/AppBuilder.dart';
+
 
 class WeeklyQuestSymptoms extends StatefulWidget {
   @override
@@ -17,21 +19,22 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
 
   callback(String text,int currentStep) {
     values[currentStep] = text;//Antwort auf Frage speichern
-  print(values);
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: AppBar(
-        title: Text("Symptomfragebogen",
-        style: TextStyle(
-        fontSize: 22.0,
-        fontWeight: FontWeight.w800,),
-      ),
-      backgroundColor:  Colors.lightGreen[500],
-      ),
-      body:Column(
+    return AppBuilder(builder: (context)
+    {
+      return new Scaffold(
+        appBar: AppBar(
+          title: Text("Symptomfragebogen",
+            style: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w800,),
+          ),
+          backgroundColor: Colors.lightGreen[500],
+        ),
+        body: Column(
           children: <Widget>[
             complete ? Expanded(
               child: Center(
@@ -41,42 +44,45 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
                   actions: <Widget>[
                     new FlatButton(
                         child: new Text('Schließen'),
-                      onPressed: (){
-                      setState(() {
-                        complete = false;
-                      });
-                      Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=> Symptoms()));
-                    }
-                    )  ,
+                        onPressed: () {
+                          setState(() {
+                            complete = false;
+                          });
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) =>
+                                  Symptoms()));
+                        }
+                    ),
                   ],
                 ),
               ),
             )
-            :Expanded(
+                : Expanded(
               child: Stepper(
                 type: StepperType.vertical,
                 steps: _mySteps(),
                 currentStep: this.currentStep,
-                onStepContinue: (){
+                onStepContinue: () {
                   setState(() {
-                    if(this.currentStep < this._mySteps().length -1){
-                      this.currentStep = this.currentStep +1;
-                    } else{
+                    if (this.currentStep < this
+                        ._mySteps()
+                        .length - 1) {
+                      this.currentStep = this.currentStep + 1;
+                    } else {
                       complete = true;
                     }
                   });
                 },
-                onStepCancel: (){
+                onStepCancel: () {
                   setState(() {
-                    if(this.currentStep > 0){
-                      this.currentStep = this.currentStep -1;
-                    } else{
+                    if (this.currentStep > 0) {
+                      this.currentStep = this.currentStep - 1;
+                    } else {
                       this.currentStep = 0;
                     }
                   });
                 },
-                onStepTapped: (step){
+                onStepTapped: (step) {
                   setState(() {
                     this.currentStep = step;
                   });
@@ -86,8 +92,9 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
 
             )
           ],
-      ),
-    );
+        ),
+      );
+    });
 
     }
 List<Step> _mySteps(){

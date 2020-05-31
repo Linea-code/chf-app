@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:herzinsuffizienz/symptoms/AppBuilder.dart';
 
 class UmfrageButton extends StatefulWidget {
   final String text;
@@ -23,6 +24,7 @@ class _UmfrageButtonState extends State<UmfrageButton> {
         onPressed: () {
           setState(() {
             widget.callback(widget.text, widget.currentStep);
+            AppBuilder.of(context).rebuild();
           });
 
         }
