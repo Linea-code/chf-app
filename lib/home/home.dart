@@ -7,7 +7,9 @@ import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 import 'package:herzinsuffizienz/profile/profile.dart';
 import 'package:herzinsuffizienz/settings/Settings.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
+import 'package:herzinsuffizienz/vitalparameters/bpm.dart';
 import 'package:herzinsuffizienz/vitalparameters/vitalparameters.dart';
+import 'package:flutter_sparkline/flutter_sparkline.dart';
 
 class Home extends StatelessWidget {
   final NewProfile newprofile;
@@ -30,8 +32,7 @@ class Home extends StatelessWidget {
           child: ListTile(
             leading: Icon(Icons.local_hospital),
             title: Text('Medikationseinnahme'),
-            subtitle: Text(
-                'Sie müssen heute noch Ihre Mediakmente einnehmen!'),
+            subtitle: Text('Sie müssen heute noch Ihre Mediakmente einnehmen!'),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Medication()));
@@ -43,25 +44,28 @@ class Home extends StatelessWidget {
             leading: Icon(Icons.question_answer),
             title: Text('Symptome'),
             subtitle: Text(
-              'Bitte beantworten Sie heute noch Ihren Symptom-Fragebogen!'
-            ),
-            onTap: (){
-              Navigator.push(context,
-              MaterialPageRoute(builder: (context)=> Symptoms()));
+                'Bitte beantworten Sie heute noch Ihren Symptom-Fragebogen!'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Symptoms()));
             },
           ),
         ),
         Card(
-          child: ListTile(
-            leading: Icon(Icons.trending_up),
-            title: Text('Vitalparameter'),
-            subtitle: Text('Bitte messen Sie Ihre Vitalparameter!'),
-            onTap: (){
-              Navigator.push(context,
-              MaterialPageRoute(builder: (context)=> VitalParameters()));
-            },
-          ),
-        )
+          shadowColor: Colors.grey,
+          child: Column(children: <Widget>[
+            ListTile(
+              //leading: Icon(Icons.trending_up),
+              title: Text('Vitalparameter'),
+              subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => VitalParameters()));
+              },
+            ),
+            BPM(),
+          ]),
+        ),
       ]),
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
@@ -130,7 +134,9 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Profile(newprofile: newprofile)));
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Profile(newprofile: newprofile)));
             },
           ),
           ListTile(

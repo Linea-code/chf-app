@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:herzinsuffizienz/symptoms/weeklyquesthealth.dart';
 import 'package:herzinsuffizienz/symptoms/weeklyquestsymptoms.dart';
 
 class Symptoms extends StatelessWidget {
@@ -13,7 +14,6 @@ class Symptoms extends StatelessWidget {
           style: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w800,
-            fontFamily: "Arial",
           ),
         ),
         backgroundColor: Colors.lightGreen[500],
@@ -71,7 +71,8 @@ class Symptoms extends StatelessWidget {
             child: InkWell(
               splashColor: Colors.lightGreen[200],
               onTap: (){
-
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context)=> WeeklyQuestHealth(),));
               },
               child:
               ListTile(
@@ -81,7 +82,7 @@ class Symptoms extends StatelessWidget {
                   fontFamily: "Roboto",
                   fontSize: 22.0,
                 ),),
-              subtitle: Text("Bitte machen Sie in deisem Fragebogen einmal alle 2 Wochen Angaben zu psychischen Gesundheit!",
+              subtitle: Text("Bitte machen Sie in diesem Fragebogen einmal alle 2 Wochen Angaben zu Ihrer psychischen Gesundheit!",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontFamily: "Roboto",

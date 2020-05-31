@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:herzinsuffizienz/symptoms/erschweren.dart';
 import 'package:herzinsuffizienz/symptoms/healthaswers.dart';
+import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 
 
 class WeeklyQuestHealth extends StatefulWidget {
@@ -92,7 +93,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch wenig Interesse oder Freude an Ihren Tätigkeiten beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch wenig Interesse oder Freude an Ihren Tätigkeiten beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(
@@ -121,7 +122,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Niedergeschlagenheit, Schwermut oder Hoffnungslosigkeit beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Niedergeschlagenheit, Schwermut oder Hoffnungslosigkeit beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(
@@ -150,7 +151,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Schwierigkeiten beim ein- oder durschschlafen oder verminderten Schlaf beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Schwierigkeiten beim ein- oder durschschlafen oder verminderten Schlaf beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(
@@ -179,7 +180,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Müdigkeit oder das Gefühl, keine Energie zuhaben, beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Müdigkeit oder das Gefühl, keine Energie zuhaben, beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(
@@ -208,7 +209,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch verminderten Appetit oder das übermäßige Bedürfnis zu essen beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch verminderten Appetit oder das übermäßige Bedürfnis zu essen beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(
@@ -237,7 +238,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch eine schlechte Meinung von sich selbst/ das Gefühl ein Versager zu ein oder die Familie enttäuscht zu haben beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch eine schlechte Meinung von sich selbst/ das Gefühl ein Versager zu ein oder die Familie enttäuscht zu haben beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(
@@ -266,7 +267,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Schwierigkeiten sich auf etwas zu konzentrieren (z.B. Zeitung lesen/ Fernsehen) beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Schwierigkeiten sich auf etwas zu konzentrieren (z.B. Zeitung lesen/ Fernsehen) beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(
@@ -324,7 +325,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         content: Column(
           children: <Widget>[
             Container(
-              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Gedanken, dass Sie lieber tot wären oder sich Leid zufügen möchten beeintächtigt??"),
+              child: Text("In wie weit fühlten Sie sich in den letzten 2 Wochen durch Gedanken, dass Sie lieber tot wären oder sich Leid zufügen möchten beeintächtigt?"),
             ),
             SizedBox(height: 20),
             Container(

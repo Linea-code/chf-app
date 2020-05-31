@@ -7,6 +7,7 @@ class Anzahlen0 extends StatefulWidget {
 }
 
 class _Anzahlen0State extends State<Anzahlen0> {
+  bool tap = false;
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,10 @@ class _Anzahlen0State extends State<Anzahlen0> {
         child: Text('nie in der Woche'),
         color: _pressed ? Colors.lightGreen[400] : Colors.grey[300],
         onPressed: () {
-          setState(() => _pressed = !_pressed);
+          if(tap == false) {
+            setState(() => _pressed = !_pressed);
+            tap = !tap;
+          }
         }
     );
   }
@@ -27,6 +31,7 @@ class Anzahlen1 extends StatefulWidget {
 
 class _Anzahlen1State extends State<Anzahlen1> {
   bool _pressed = false;
+
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
