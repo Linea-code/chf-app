@@ -1,7 +1,8 @@
+import 'dart:collection';
+import 'package:herzinsuffizienz/symptoms/AppBuilder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:herzinsuffizienz/symptoms/erschweren.dart';
-import 'package:herzinsuffizienz/symptoms/healthaswers.dart';
+import 'package:herzinsuffizienz/symptoms/UmfrageKnopf.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 
 
@@ -13,75 +14,88 @@ class WeeklyQuestHealth extends StatefulWidget {
 class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
   int currentStep = 0;
   bool complete = false;
+  String text;
+
+  HashMap healthvalues = new HashMap<int,String>(); // HashMap zum Speichern der Werte
+
+  callback(String text,int currentStep) {
+    healthvalues[currentStep] = text;//Antwort auf Frage speichern
+  }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: AppBar(
-        title: Text("Gesundheitsfragebogen",
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,),
+    return AppBuilder(builder: (context) //verwenden des AppBuilders damit ein koninuierliches Updaten möglich ist
+    {
+      return new Scaffold(
+        appBar: AppBar(
+          title: Text("Gesundheitsfragebogen",
+            style: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w800,),
+          ),
+          backgroundColor: Colors.lightGreen[500],
         ),
-        backgroundColor:  Colors.lightGreen[500],
-      ),
-      body:Column(
-        children: <Widget>[
-          complete ? Expanded(
-            child: Center(
-              child: AlertDialog(
-                title: new Text('Vielen Dank!'),
-                content: new Text("Sie haben den Fragebogen abgeschlossen!"),
-                actions: <Widget>[
-                  new FlatButton(
-                      child: new Text('Schließen'),
-                      onPressed: (){
-                        setState(() {
-                          complete = false;
-                        });
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=> Symptoms()));
-                      }
-                  )  ,
-                ],
+        body: Column(
+          children: <Widget>[
+            complete ? Expanded(
+              child: Center(
+                child: AlertDialog(
+                  title: new Text('Vielen Dank!'),
+                  content: new Text("Sie haben den Fragebogen abgeschlossen!"),
+                  actions: <Widget>[
+                    new FlatButton(
+                        child: new Text('Schließen'),
+                        onPressed: () {
+                          setState(() {
+                            complete = false;
+                          });
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) =>
+                                  Symptoms()));
+                        }
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-              :Expanded(
-            child: Stepper(
-              type: StepperType.vertical,
-              steps: _mySteps(),
-              currentStep: this.currentStep,
-              onStepContinue: (){
-                setState(() {
-                  if(this.currentStep < this._mySteps().length -1){
-                    this.currentStep = this.currentStep +1;
-                  } else{
-                    complete = true;
-                  }
-                });
-              },
-              onStepCancel: (){
-                setState(() {
-                  if(this.currentStep > 0){
-                    this.currentStep = this.currentStep -1;
-                  } else{
-                    this.currentStep = 0;
-                  }
-                });
-              },
-              onStepTapped: (step){
-                setState(() {
-                  this.currentStep = step;
-                });
-              },
+            )
+                : Expanded(
+              child: Stepper(
+                type: StepperType.vertical,
+                steps: _mySteps(),
+                currentStep: this.currentStep,
+                onStepContinue: () {
+                  setState(() {
+                    if (this.currentStep < this
+                        ._mySteps()
+                        .length - 1) {
+                      this.currentStep = this.currentStep + 1;
+                    } else {
+                      complete = true;
+                    }
+                  });
+                },
+                onStepCancel: () {
+                  setState(() {
+                    if (this.currentStep > 0) {
+                      this.currentStep = this.currentStep - 1;
+                    } else {
+                      this.currentStep = 0;
+                    }
+                  });
+                },
+                onStepTapped: (step) {
+                  setState(() {
+                    this.currentStep = step;
+                  });
+                },
 
-            ),
+              ),
 
-          )
-        ],
-      ),
-    );
+            )
+          ],
+        ),
+      );
+    });
 
   }
   List<Step> _mySteps(){
@@ -99,19 +113,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep,)),
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health1(),),
+              UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health2(),),
+              UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health3(),),
+              UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -128,19 +142,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -157,19 +171,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -186,19 +200,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -215,19 +229,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -244,19 +258,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -273,19 +287,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -302,19 +316,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -331,19 +345,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Health0(),),
+              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Health3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -360,23 +374,23 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              Erschweren0(),),
+              UmfrageButton(text: "ich hatte keines der angegebenen Probleme",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Erschweren1(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "überhaupt nicht erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Erschweren2(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "etwas erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Erschweren3(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "relativ stark erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
-              width: MediaQuery.of(context).size.width,
-              child:
-              Erschweren4(),),
+                width: MediaQuery.of(context).size.width,
+                child:
+                UmfrageButton(text: "sehr stark erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
