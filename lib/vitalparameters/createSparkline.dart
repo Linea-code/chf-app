@@ -2,19 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 
-class BPM extends StatefulWidget {
+class CreateSparkline extends StatefulWidget {
+  var data;
+
+  CreateSparkline({this.data});
   @override
-  _BPMState createState() => _BPMState();
+  _CreateSparklineState createState() => _CreateSparklineState();
 }
 
-class _BPMState extends State<BPM> {
-  var data = [71.0, 57.0, 59.0, 60.0, 62.0, 100.0, 77.0, 60.0, 55.0, 100.0,88.0,55.0,64.0];// beispielhaft manuell Daten eingegeben
+class _CreateSparklineState extends State<CreateSparkline> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 1.0, bottom: 3.0, left: 3.0,right: 3.0),
       child: Sparkline(
-        data: data,
+        data: widget.data,
         fillMode: FillMode.below,
         lineColor: Colors.lightGreen[800],
         fillGradient: new LinearGradient(

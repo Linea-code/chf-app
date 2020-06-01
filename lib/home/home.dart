@@ -7,7 +7,7 @@ import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 import 'package:herzinsuffizienz/profile/profile.dart';
 import 'package:herzinsuffizienz/settings/Settings.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
-import 'package:herzinsuffizienz/vitalparameters/bpm.dart';
+import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
 import 'package:herzinsuffizienz/vitalparameters/vitalparameters.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 
@@ -51,21 +51,23 @@ class Home extends StatelessWidget {
             },
           ),
         ),
-        Card(
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => VitalParameters()));
+          },
+          child:
+          Card(
           shadowColor: Colors.grey,
           child: Column(children: <Widget>[
             ListTile(
               //leading: Icon(Icons.trending_up),
               title: Text('Vitalparameter'),
               subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => VitalParameters()));
-              },
             ),
             BPM(),
           ]),
-        ),
+        ),),
       ]),
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
