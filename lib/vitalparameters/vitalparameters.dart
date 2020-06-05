@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 
 class VitalParameters extends StatelessWidget {
@@ -30,7 +31,7 @@ class VitalParameters extends StatelessWidget {
                 title: Text('Herzfrequenz (bpm)'),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => VitalParameters()));
+                      MaterialPageRoute(builder: (context) => BPM()));
                 },
               ),
               CreateSparkline(data: dataBPM,), //TODO: on tap genaueres Diagramm mit Achsenbeschr.

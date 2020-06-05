@@ -30,3 +30,4 @@ class _CreateSparklineState extends State<CreateSparkline> {
     );
   }
 }
+

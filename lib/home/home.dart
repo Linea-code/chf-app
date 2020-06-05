@@ -8,10 +8,11 @@ import 'package:herzinsuffizienz/profile/profile.dart';
 import 'package:herzinsuffizienz/settings/Settings.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
+import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:herzinsuffizienz/vitalparameters/vitalparameters.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
 
 class Home extends StatelessWidget {
+  var dataBPM = [71.0, 57.0, 59.0, 60.0, 62.0, 100.0, 77.0, 60.0, 55.0, 100.0,88.0,55.0,64.0];// beispielhaft manuell Daten eingegeben
   final NewProfile newprofile;
   Home({this.newprofile});
   @override
@@ -65,7 +66,7 @@ class Home extends StatelessWidget {
               title: Text('Vitalparameter'),
               subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
             ),
-            BPM(),
+            CreateSparkline(data: dataBPM,),
           ]),
         ),),
       ]),
