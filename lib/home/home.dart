@@ -10,9 +10,25 @@ import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:herzinsuffizienz/vitalparameters/vitalparameters.dart';
+import 'package:health/health.dart';
+import 'package:herzinsuffizienz/vitalparameters/VitalparameterNeu.dart';
 
 class Home extends StatelessWidget {
-  var dataBPM = [71.0, 57.0, 59.0, 60.0, 62.0, 100.0, 77.0, 60.0, 55.0, 100.0,88.0,55.0,64.0];// beispielhaft manuell Daten eingegeben
+  var bpm = [
+    71.0,
+    57.0,
+    59.0,
+    60.0,
+    62.0,
+    100.0,
+    77.0,
+    60.0,
+    55.0,
+    100.0,
+    88.0,
+    55.0,
+    64.0
+  ]; // beispielhaft manuell Daten eingegeben
   final NewProfile newprofile;
   Home({this.newprofile});
   @override
@@ -41,34 +57,52 @@ class Home extends StatelessWidget {
           ),
         ),
         Card(
-          child: ListTile(
-            leading: Icon(Icons.question_answer),
-            title: Text('Symptome'),
-            subtitle: Text(
-                'Bitte beantworten Sie heute noch Ihren Symptom-Fragebogen!'),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Symptoms()));
-            },
+          child: Container(
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                colorFilter: new ColorFilter.mode(
+                    Colors.black.withOpacity(0.2), BlendMode.dstATop),
+                image: AssetImage('assets/Blume.JPG'),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter,
+              ),
+            ),
+            child: InkWell(
+              splashColor: Colors.lightGreen[200],
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Symptoms()));
+              },
+
+            child: ListTile(
+              leading: Icon(Icons.question_answer),
+              title: Text('Symptome'),
+              subtitle: Text(
+                  'Bitte beantworten Sie heute noch Ihren Symptom-Fragebogen!'),
+            ),
+            ),
           ),
         ),
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => VitalParameters()));
+                MaterialPageRoute(builder: (context) => Vitalparameter())); // muss evtl. wieder gändert werden zu VitalParameters()
           },
-          child:
-          Card(
-          shadowColor: Colors.grey,
-          child: Column(children: <Widget>[
-            ListTile(
-              //leading: Icon(Icons.trending_up),
-              title: Text('Vitalparameter'),
-              subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
-            ),
-            CreateSparkline(data: dataBPM,),
-          ]),
-        ),),
+          child: Card(
+            shadowColor: Colors.grey,
+            child: Column(children: <Widget>[
+              ListTile(
+                //leading: Icon(Icons.trending_up),
+                title: Text('Vitalparameter'),
+                subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
+              ),
+              CreateSparkline(
+                data: bpm,
+              ),
+            ]),
+          ),
+        ),
       ]),
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
@@ -93,7 +127,7 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => VitalParameters()));
+                  MaterialPageRoute(builder: (context) => Vitalparameter()));  //Änderung, muss evtl. wieder rückgängig gemacht werden zu VitalParameters()
             },
           ),
           ListTile(
@@ -168,4 +202,7 @@ class Home extends StatelessWidget {
       ),
     );
   }
+
 }
+
+

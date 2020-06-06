@@ -6,6 +6,7 @@ import 'package:herzinsuffizienz/onboarding/cameraaccess.dart';
 import 'package:herzinsuffizienz/onboarding/createprofile.dart';
 
 
+
 class Access extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,9 @@ class Access extends StatelessWidget {
             ),
           ),
         ),
-        AppleHealth(),
+        AppleHealth(), // TODO: apple hinzufügen API
         AktivitaetsDaten(),
-        KameraZugriff(),
+        KameraZugriff(), //TODO Permission hinzufügen
         Container(
           child: RaisedButton(
             child: Text('Weiter'),

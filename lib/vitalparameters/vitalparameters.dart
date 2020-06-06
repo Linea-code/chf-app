@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
+import 'package:health/health.dart';
 
 class VitalParameters extends StatelessWidget {
   var dataBPM = [71.0, 57.0, 59.0, 60.0, 62.0, 100.0, 77.0, 60.0, 55.0, 100.0,88.0,55.0,64.0];// beispielhaft manuell Daten eingegeben
@@ -68,5 +69,43 @@ class VitalParameters extends StatelessWidget {
         ],
       ),
     );
+  }
+  static List<HealthDataPoint> getBPM() {
+    Future.delayed(Duration(seconds: 2), () async {
+      List<HealthDataPoint> healthData =  await Health.getHealthDataFromType(
+          DateTime(2020),
+          DateTime.now(),
+          HealthDataType
+              .WEIGHT);
+
+      List<double> bpm = List<double>();
+
+      for (HealthDataPoint dataPoint in healthData) {
+        bpm.add(dataPoint.value);
+      }
+
+      print(bpm);
+    });
+  }
+
+  static void getHealthData() async {
+    try {
+      List<HealthDataPoint> healthData =  await Health.getHealthDataFromType(
+          DateTime(2020),
+          DateTime.now(),
+          HealthDataType
+              .WEIGHT);
+
+      List<double> bpm = List<double>();
+
+      for (HealthDataPoint dataPoint in healthData) {
+        bpm.add(dataPoint.value);
+      }
+
+      print(bpm);
+    } catch(exception) {
+      print(exception.toString());
+    }
+
   }
 }

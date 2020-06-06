@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:health/health.dart';
 
 class AktivitaetsDaten extends StatefulWidget {
   @override
@@ -14,10 +15,16 @@ class _AktivitaetsDatenState extends State<AktivitaetsDaten> {
     return SwitchListTile(
       title: const Text('Aktivitätsdaten'),
       value: _aktivity,
-      onChanged: (bool value) {
+      onChanged: (bool value) { //ab hier neue Funktion mit Daten einlesen
+    Future.delayed(Duration(seconds: 2), () async {
+      bool isAuthorized = await Health.requestAuthorization();
+      if (isAuthorized) {
         setState(() {
           _aktivity = value;
         });
+      }
+    }
+    );
       },
     );
   }
