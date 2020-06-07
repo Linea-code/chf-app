@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:herzinsuffizienz/connectioncode/connectioncode.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
 import 'package:herzinsuffizienz/medication/medication.dart';
@@ -46,8 +47,25 @@ class Home extends StatelessWidget {
       ),
       body: ListView(children: <Widget>[
         Card(
+      child: Container(
+          height: 80,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: new ColorFilter.mode(
+                  Colors.black.withOpacity(0.1), BlendMode.dstATop),
+              image: AssetImage('assets/green_background.jpg'),
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
+            ),
+          ),
+          child: InkWell(
+            splashColor: Colors.lightGreen[100],
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Symptoms()));
+            },
           child: ListTile(
-            leading: Icon(Icons.local_hospital),
+            leading: Icon(Icons.add_alert),
             title: Text('Medikationseinnahme'),
             subtitle: Text('Sie müssen heute noch Ihre Mediakmente einnehmen!'),
             onTap: () {
@@ -56,30 +74,32 @@ class Home extends StatelessWidget {
             },
           ),
         ),
+      ),
+        ),
         Card(
           child: Container(
-            height: 200,
+            height: 80,
             decoration: BoxDecoration(
-              image: DecorationImage(
-                colorFilter: new ColorFilter.mode(
-                    Colors.black.withOpacity(0.2), BlendMode.dstATop),
-                image: AssetImage('assets/Blume.JPG'),
-                fit: BoxFit.fitWidth,
+             image: DecorationImage(
+             colorFilter: new ColorFilter.mode(
+                    Colors.black.withOpacity(0.1), BlendMode.dstATop),
+                image: AssetImage('assets/green_background.jpg'),
+                fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
               ),
             ),
             child: InkWell(
-              splashColor: Colors.lightGreen[200],
+              splashColor: Colors.lightGreen[100],
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Symptoms()));
               },
 
             child: ListTile(
-              leading: Icon(Icons.question_answer),
+              //leading: Icon(Icons.question_answer),
               title: Text('Symptome'),
               subtitle: Text(
-                  'Bitte beantworten Sie heute noch Ihren Symptom-Fragebogen!'),
+                  'Bitte beantworten Sie einmal alle 2 Wochen die Symptom-Fragebögen!'),
             ),
             ),
           ),
@@ -90,17 +110,33 @@ class Home extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => Vitalparameter())); // muss evtl. wieder gändert werden zu VitalParameters()
           },
           child: Card(
-            shadowColor: Colors.grey,
-            child: Column(children: <Widget>[
-              ListTile(
-                //leading: Icon(Icons.trending_up),
-                title: Text('Vitalparameter'),
-                subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
+            child: Container(
+              height: 80,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.1), BlendMode.dstATop),
+                  image: AssetImage('assets/green_background.jpg'),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
               ),
-              CreateSparkline(
-                data: bpm,
+              child: InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Symptoms()));
+                },
+                child: ListTile(
+                  title: Text('Vitalparameter'),
+                  subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Vitalparameter()));
+                  },
+                ),
               ),
-            ]),
+            ),
           ),
         ),
       ]),

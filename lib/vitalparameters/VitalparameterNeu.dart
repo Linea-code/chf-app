@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:health/health.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Vitalparameter extends StatefulWidget {
   @override
@@ -11,7 +12,6 @@ class Vitalparameter extends StatefulWidget {
 
 class _VitalparameterState extends State<Vitalparameter> {
   final String _title = "Vitalparameter";
-  // var _healthKitOutput; wird nichtmehr verwendet aktuell
   var _healthDataList = List<HealthDataPoint>();
   bool _isAuthorized = false;
   List<double> weight = List<double>();
@@ -34,7 +34,7 @@ class _VitalparameterState extends State<Vitalparameter> {
   }
 
   Future<void> initPlatformState() async {
-    DateTime startDate = DateTime.utc(2001, 01, 01);
+    DateTime startDate = DateTime.utc(2020,DateTime.now().month-1,DateTime.now().day);
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
@@ -160,11 +160,13 @@ class _VitalparameterState extends State<Vitalparameter> {
                   ListTile(
                     //leading: Icon(Icons.trending_up),
                     title: Text('Herzfrequenz (bpm)'),
+                    subtitle: Text("letzte Messung: " + (bpm.isEmpty ? " " : bpm.last.round().toString())),
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => BPM()));
                     },
                   ),
+                  bpm.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
                   CreateSparkline(
                     data: bpm,
                   ), //TODO: on tap genaueres Diagramm mit Achsenbeschr.
@@ -176,6 +178,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                   ListTile(
                     //leading: Icon(Icons.trending_up),
                     title: Text('Gewicht (kg)'),
+                    subtitle: Text("letzte Messung: " + (weight.isEmpty ? " " : weight.last.round().toString())),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -183,6 +186,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                               builder: (context) => Vitalparameter()));
                     },
                   ),
+                  weight.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
                   CreateSparkline(
                     data: weight,
                   ),
@@ -193,13 +197,18 @@ class _VitalparameterState extends State<Vitalparameter> {
                 child: Column(children: <Widget>[
                   ListTile(
                     //leading: Icon(Icons.trending_up),
-                    title: Text('Herzfrequenzvariabilität'),
+                    title: Text('Körperfett'),
+                    subtitle: Text("letzte Messung: " + (bodyFat.isEmpty ? " " : bodyFat.last.round().toString())),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => Vitalparameter()));
                     },
+                  ),
+                  bodyFat.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
+                  CreateSparkline(
+                    data: bodyFat,
                   ),
                 ]),
               ),
@@ -207,16 +216,16 @@ class _VitalparameterState extends State<Vitalparameter> {
                 shadowColor: Colors.grey,
                 child: Column(children: <Widget>[
                   ListTile(
-                    //leading: Icon(Icons.trending_up),
                     title: Text('Schritte'),
+                    subtitle: Text("letzte Messung: " + (steps.isEmpty ? " " : steps.last.round().toString())),
                     onTap: () {
-                      print(steps);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => Vitalparameter()));
                     },
                   ),
+                  steps.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
                   CreateSparkline(data: steps),
                 ]),
               ),
