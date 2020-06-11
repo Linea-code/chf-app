@@ -32,7 +32,7 @@ class VitalParameters extends StatelessWidget {
                 title: Text('Herzfrequenz (bpm)'),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BPM()));
+                      MaterialPageRoute(builder: (context) => BPMTest()));
                 },
               ),
               CreateSparkline(data: dataBPM,), //TODO: on tap genaueres Diagramm mit Achsenbeschr.

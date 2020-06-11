@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
@@ -20,7 +21,7 @@ class _VitalparameterState extends State<Vitalparameter> {
   List<double> bmi = List<double>();
   List<double> bodyFat = List<double>();
   List<double> activeEnergy = List<double>();
-  List<double> bpm = List<double>();
+  List<double> _bpm = List<double>();
   List<double> bpSystolic = List<double>();
   List<double> bpDiastolic = List<double>();
   List<double> restingHR = List<double>();
@@ -47,7 +48,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           HealthDataType.BODY_MASS_INDEX,
           HealthDataType.BODY_FAT_PERCENTAGE,
           HealthDataType.ACTIVE_ENERGY_BURNED,
-          HealthDataType.BASAL_ENERGY_BURNED,
+         // HealthDataType.BASAL_ENERGY_BURNED,
           HealthDataType.HEART_RATE,
           HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
           HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
@@ -103,7 +104,7 @@ class _VitalparameterState extends State<Vitalparameter> {
             break;
           case "HEART_RATE":
             {
-              bpm.add(point.value.toDouble());
+              _bpm.add(point.value.toDouble());
             }
             break;
           case "BLOOD_PRESSURE_SYSTOLIC":
@@ -160,15 +161,15 @@ class _VitalparameterState extends State<Vitalparameter> {
                   ListTile(
                     //leading: Icon(Icons.trending_up),
                     title: Text('Herzfrequenz (bpm)'),
-                    subtitle: Text("letzte Messung: " + (bpm.isEmpty ? " " : bpm.last.round().toString())),
+                    subtitle: Text("letzte Messung: " + (_bpm.isEmpty ? " " : _bpm.last.round().toString())),
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BPM()));
+                          MaterialPageRoute(builder: (context) => BPMTest()));
                     },
                   ),
-                  bpm.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
+                  _bpm.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
                   CreateSparkline(
-                    data: bpm,
+                    data: _bpm,
                   ), //TODO: on tap genaueres Diagramm mit Achsenbeschr.
                 ]),
               ),

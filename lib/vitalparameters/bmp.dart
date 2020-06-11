@@ -1,96 +1,133 @@
+import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-//TODO: hier müssen neue Interfaces erstellt werden für die Details.
-class BPM extends StatefulWidget {
+import 'package:health/health.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-
+class BPMTest extends StatefulWidget {
   @override
-  _BPMState createState() => _BPMState();
+  _BPMTestState createState() => _BPMTestState();
 }
 
-class _BPMState extends State<BPM> {
-List<charts.Series<Datapoints,int>>  _seriesData;
+class _BPMTestState extends State<BPMTest> {
+  var _healthDataList = List<HealthDataPoint>();
+  bool _isAuthorized = false;
+  var bpm = List<Datapoints>();
 
-  _generateData(){
-    var dataBP = [
-      new Datapoints(1, 77),
-      new Datapoints(4, 65),
-      new Datapoints(5, 85),
-      new Datapoints(6, 45),
-      new Datapoints(9, 100),
-    ];
-    _seriesData.add(
-      charts.Series(
-        data: dataBP,
-        domainFn: (Datapoints datapoints,_)=> datapoints.day,
-        measureFn: (Datapoints datapoints,_)=> datapoints.value,
-        id: 'Tägliche Herzfrequenz in BPM',
-      ),
-    );
-  }
+  List<charts.Series<Datapoints, int>> _seriesData;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _seriesData = List<charts.Series<Datapoints,int>>();
-    _generateData();
-
+    _seriesData = List<charts.Series<Datapoints, int>>();
+    initPlatformState();
   }
+
+  Future<void> initPlatformState() async {
+    DateTime startDate = DateTime.utc(2020,DateTime.now().month-1,DateTime.now().day);
+    DateTime endDate = DateTime.now();
+
+    Future.delayed(Duration(seconds: 2), () async {
+      _isAuthorized = await Health.requestAuthorization();
+      if (_isAuthorized) {
+        List<HealthDataType> types = [
+          HealthDataType.HEART_RATE,
+        ];
+        for (HealthDataType type in types) {
+          try {
+            List<HealthDataPoint> healthData =
+            await Health.getHealthDataFromType(startDate, endDate, type);
+            _healthDataList.addAll(healthData);
+          } catch (exception) {
+            print(exception.toString());
+          }
+        }
+        setState(() {});
+      } else {
+        print("Keine Authorisierung vorliegend");
+      }
+      for (HealthDataPoint point in _healthDataList) {
+        switch (point.dataType) {
+          case "HEART_RATE":
+            {
+              bpm.add(new Datapoints(point.dateFrom , point.value));
+            }
+            break;
+        }
+
+      }
+
+      _seriesData.add(
+        charts.Series(
+          data: bpm,
+          domainFn: (Datapoints datapoints, _) => datapoints.getDate(),
+          measureFn: (Datapoints datapoints, _) => datapoints.getValue(),
+          id: 'Herzfrequenz in BPM',
+          colorFn: (_,__) => charts.MaterialPalette.green.shadeDefault,
+        ),
+      );
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return
-      Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Übersicht',
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.w800,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Herzfrequenz - Übersicht',
+          style: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.w800,
           ),
-          backgroundColor: Colors.lightGreen[500],
         ),
-        body: ListView(children: <Widget>[
-        Card(
-        child: ListTile(
-            leading: Icon(Icons.local_hospital),
-        title: Text('Medikationseinnahme'),
-        subtitle: Text('Sie müssen heute noch Ihre Mediakmente einnehmen!'),
+        backgroundColor: Colors.lightGreen[500],
       ),
-    ),
-    Card(
-      child:
-      Padding(
-      padding: EdgeInsets.all(8.0),
-    child:
-        Column(
-          children: <Widget>[
-            Text('Test'),
-    Expanded(
-        child:
-    charts.LineChart(
-        _seriesData,
-        defaultRenderer: new charts.LineRendererConfig(
-          includeArea: true, stacked: true,
-        ),
-        animate: true,
-        animationDuration: Duration(seconds: 3),
-        behaviors: [
-          new charts.ChartTitle('BPM'),
-        ],
-      )),
-    ]),),)
-    ],
-    ),
-      );
+      body: Container(
+            child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(children: <Widget>[
+            Expanded(
+                child:
+                _seriesData.isEmpty ? SpinKitPumpingHeart(color: Colors.red[400],) : Container(
+                child:
+                 charts.LineChart(
+              _seriesData,
+              defaultRenderer: new charts.LineRendererConfig(
+               // includeArea: true,  Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
+                stacked: true,
+              ),
+              animate: true,
+              animationDuration: Duration(seconds: 3),
+              behaviors: [
+                new charts.ChartTitle('Herzfrequenz (BPM)'),
+              ],
+            ))
+            ),
+            Card(
+              child:
+              ListTile(
+                title: Text("Was bedeutet dir Herzfrequenz?"),
+              ),
+            ),
+          ]),
+        ))
+    );
   }
 }
 
+class Datapoints {
+  int date;
+  double value;
 
-class Datapoints{
-  int day;
-  int value;
+  Datapoints(this.date, this.value);
 
-  Datapoints(this.day,this.value);
+  double getValue (){
+    return value;
+  }
+  int getDate (){
+    return date;
+  }
 }
