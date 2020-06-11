@@ -16,6 +16,13 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     floatingActionButton: FloatingActionButton(
+       backgroundColor: Colors.lightGreen[500],
+          child:
+          Text("?",style: TextStyle(fontSize: 50,),),
+          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
           'Übersicht',
@@ -31,12 +38,10 @@ class Home extends StatelessWidget {
       child: Container(
           height: 80,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              colorFilter: new ColorFilter.mode(
-                  Colors.black.withOpacity(0.1), BlendMode.dstATop),
-              image: AssetImage('assets/green_background.jpg'),
-              fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
+           gradient: LinearGradient(
+             begin: Alignment.topLeft,
+             end: Alignment.bottomRight,
+             colors: [Colors.lightGreen[50], Colors.lightGreen[100]]
             ),
           ),
           child: InkWell(
@@ -61,12 +66,10 @@ class Home extends StatelessWidget {
           child: Container(
             height: 80,
             decoration: BoxDecoration(
-             image: DecorationImage(
-             colorFilter: new ColorFilter.mode(
-                    Colors.black.withOpacity(0.1), BlendMode.dstATop),
-                image: AssetImage('assets/green_background.jpg'),
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter,
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.lightGreen[50], Colors.lightGreen[100]]
               ),
             ),
             child: InkWell(
@@ -94,12 +97,10 @@ class Home extends StatelessWidget {
             child: Container(
               height: 80,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(0.1), BlendMode.dstATop),
-                  image: AssetImage('assets/green_background.jpg'),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.lightGreen[50], Colors.lightGreen[100]]
                 ),
               ),
               child: InkWell(
@@ -120,7 +121,9 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
+
       ]),
+
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           Container(
