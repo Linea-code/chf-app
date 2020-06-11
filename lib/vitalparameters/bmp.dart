@@ -5,12 +5,12 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class BPMTest extends StatefulWidget {
+class BPM extends StatefulWidget {
   @override
-  _BPMTestState createState() => _BPMTestState();
+  _BPMState createState() => _BPMState();
 }
 
-class _BPMTestState extends State<BPMTest> {
+class _BPMState extends State<BPM> {
   var _healthDataList = List<HealthDataPoint>();
   bool _isAuthorized = false;
   var bpm = List<Datapoints>();

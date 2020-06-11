@@ -8,28 +8,9 @@ import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 import 'package:herzinsuffizienz/profile/profile.dart';
 import 'package:herzinsuffizienz/settings/Settings.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
-import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
-import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
-import 'package:herzinsuffizienz/vitalparameters/vitalparameters.dart';
-import 'package:health/health.dart';
 import 'package:herzinsuffizienz/vitalparameters/VitalparameterNeu.dart';
 
 class Home extends StatelessWidget {
-  var bpm = [
-    71.0,
-    57.0,
-    59.0,
-    60.0,
-    62.0,
-    100.0,
-    77.0,
-    60.0,
-    55.0,
-    100.0,
-    88.0,
-    55.0,
-    64.0
-  ]; // beispielhaft manuell Daten eingegeben
   final NewProfile newprofile;
   Home({this.newprofile});
   @override
@@ -107,7 +88,7 @@ class Home extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Vitalparameter())); // muss evtl. wieder gändert werden zu VitalParameters()
+                MaterialPageRoute(builder: (context) => Vitalparameter()));
           },
           child: Card(
             child: Container(
