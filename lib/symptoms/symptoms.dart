@@ -3,12 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:herzinsuffizienz/symptoms/weeklyquesthealth.dart';
 import 'package:herzinsuffizienz/symptoms/weeklyquestsymptoms.dart';
+import 'package:herzinsuffizienz/faq/faq.dart';
 
 class Symptoms extends StatelessWidget {
   final String _title = "Symptome";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightGreen[500],
+          child:
+          Text("?",style: TextStyle(fontSize: 50,),),
+          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(_title,
           style: TextStyle(

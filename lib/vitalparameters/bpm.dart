@@ -11,16 +11,15 @@ class BPM extends StatefulWidget {
 }
 
 class _BPMState extends State<BPM> {
-  var _healthDataList = List<HealthDataPoint>();
   bool _isAuthorized = false;
   var bpm = List<Datapoints>();
 
-  List<charts.Series<Datapoints, int>> _seriesData;
+  List<charts.Series<Datapoints, DateTime>> _seriesData;
 
   @override
   void initState() {
     super.initState();
-    _seriesData = List<charts.Series<Datapoints, int>>();
+    _seriesData = List<charts.Series<Datapoints, DateTime>>();
     initPlatformState();
   }
 
@@ -31,32 +30,20 @@ class _BPMState extends State<BPM> {
     Future.delayed(Duration(seconds: 2), () async {
       _isAuthorized = await Health.requestAuthorization();
       if (_isAuthorized) {
-        List<HealthDataType> types = [
-          HealthDataType.HEART_RATE,
-        ];
-        for (HealthDataType type in types) {
-          try {
-            List<HealthDataPoint> healthData =
-            await Health.getHealthDataFromType(startDate, endDate, type);
-            _healthDataList.addAll(healthData);
-          } catch (exception) {
-            print(exception.toString());
+        try {
+          List<HealthDataPoint> data =
+          await Health.getHealthDataFromType(
+              startDate, endDate, HealthDataType.WEIGHT); //TODO: ACHTUNG AKTUELL FALSCHE DATEN HINTERLEGT!
+          for (HealthDataPoint point in data) {
+            bpm.add(new Datapoints(point.dateFrom , point.value));
           }
+        } catch (exception) {
+          print(exception.toString());
         }
-        setState(() {});
       } else {
         print("Keine Authorisierung vorliegend");
       }
-      for (HealthDataPoint point in _healthDataList) {
-        switch (point.dataType) {
-          case "HEART_RATE":
-            {
-              bpm.add(new Datapoints(point.dateFrom , point.value));
-            }
-            break;
-        }
-
-      }
+      setState(() {});
 
       _seriesData.add(
         charts.Series(
@@ -88,23 +75,39 @@ class _BPMState extends State<BPM> {
       body: Container(
             child: Padding(
           padding: EdgeInsets.all(8.0),
-          child: Column(children: <Widget>[
-            Expanded(
+          child: ListView(children: <Widget>[
+            _seriesData.isEmpty ? Container(child: SpinKitPumpingHeart(color: Colors.red[400],)) : Container(
+                  height: 300,
                 child:
-                _seriesData.isEmpty ? SpinKitPumpingHeart(color: Colors.red[400],) : Container(
-                child:
-                 charts.LineChart(
+                    Card(
+                      child:
+                 charts.TimeSeriesChart(
               _seriesData,
+                   primaryMeasureAxis: new charts.NumericAxisSpec(
+                       tickProviderSpec:
+                       new charts.BasicNumericTickProviderSpec(zeroBound: false)),
               defaultRenderer: new charts.LineRendererConfig(
-               // includeArea: true,  Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
+               //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
                 stacked: true,
               ),
-              animate: true,
+              animate: false,
               animationDuration: Duration(seconds: 3),
               behaviors: [
                 new charts.ChartTitle('Herzfrequenz (BPM)'),
               ],
             ))
+            ),
+            Card(
+              child:
+              ListTile(
+                title: Text("Was bedeutet dir Herzfrequenz?"),
+              ),
+            ),
+            Card(
+              child:
+              ListTile(
+                title: Text("Was bedeutet dir Herzfrequenz?"),
+              ),
             ),
             Card(
               child:
@@ -127,7 +130,7 @@ class Datapoints {
   double getValue (){
     return value;
   }
-  int getDate (){
-    return date;
+  DateTime getDate (){
+    return DateTime.fromMillisecondsSinceEpoch(date);
   }
 }

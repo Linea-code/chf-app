@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  health: ^1.0.2
+  health: ^1.0.2+2
   flutter:
     sdk: flutter
 
@@ -37,6 +37,7 @@ dependencies:
   fit_kit: 1.1.1
   flutter_spinkit: ^4.1.2+1
   qr_flutter: ^3.2.0
+  folding_cell: "^0.1.2"
 
 
 

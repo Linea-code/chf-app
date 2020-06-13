@@ -2,9 +2,10 @@ import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
-import 'package:herzinsuffizienz/vitalparameters/bmp.dart';
+import 'package:herzinsuffizienz/vitalparameters/bpm.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:herzinsuffizienz/vitalparameters/weight.dart';
 
 class Vitalparameter extends StatefulWidget {
   @override
@@ -48,7 +49,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           HealthDataType.BODY_MASS_INDEX,
           HealthDataType.BODY_FAT_PERCENTAGE,
           HealthDataType.ACTIVE_ENERGY_BURNED,
-          HealthDataType.HEART_RATE,
+          //HealthDataType.HEART_RATE,
           HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
           HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
           HealthDataType.RESTING_HEART_RATE,
@@ -57,9 +58,11 @@ class _VitalparameterState extends State<Vitalparameter> {
         ];
         for (HealthDataType type in types) {
           try {
-            List<HealthDataPoint> healthData =
-                await Health.getHealthDataFromType(startDate, endDate, type);
-            _healthDataList.addAll(healthData);
+            if (Health.isDataTypeAvailable(type)) {
+              List<HealthDataPoint> healthData =
+              await Health.getHealthDataFromType(startDate, endDate, type);
+              _healthDataList.addAll(healthData);
+            }
           } catch (exception) {
             print(exception.toString());
           }
@@ -178,12 +181,12 @@ class _VitalparameterState extends State<Vitalparameter> {
                   ListTile(
                     //leading: Icon(Icons.trending_up),
                     title: Text('Gewicht (kg)'),
-                    subtitle: Text("letzte Messung: " + (weight.isEmpty ? " " : weight.last.round().toString())),
+                    subtitle: Text("letzte Messung: " + (weight.isEmpty ? " " : weight.last.toStringAsFixed(2))),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Vitalparameter()));
+                              builder: (context) => Weight()));
                     },
                   ),
                   weight.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):

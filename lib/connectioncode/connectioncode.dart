@@ -10,6 +10,13 @@ class ConnectionCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.lightGreen[500],
+            child:
+            Text("?",style: TextStyle(fontSize: 50,),),
+            onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(_title,
           style: TextStyle(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:herzinsuffizienz/onboarding/createprofile.dart';
 import 'package:herzinsuffizienz/onboarding/newprofile.dart';
+import 'package:herzinsuffizienz/faq/faq.dart';
 
 
 class Profile extends StatelessWidget {
@@ -11,6 +12,13 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightGreen[500],
+          child:
+          Text("?",style: TextStyle(fontSize: 50,),),
+          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
           _title + newprofile.vorname + " "+ newprofile.nachname,
