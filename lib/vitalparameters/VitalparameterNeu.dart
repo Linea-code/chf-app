@@ -2,9 +2,11 @@ import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
+import 'package:herzinsuffizienz/vitalparameters/bodyfat.dart';
 import 'package:herzinsuffizienz/vitalparameters/bpm.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:herzinsuffizienz/vitalparameters/steps.dart';
 import 'package:herzinsuffizienz/vitalparameters/weight.dart';
 
 class Vitalparameter extends StatefulWidget {
@@ -49,7 +51,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           HealthDataType.BODY_MASS_INDEX,
           HealthDataType.BODY_FAT_PERCENTAGE,
           HealthDataType.ACTIVE_ENERGY_BURNED,
-          //HealthDataType.HEART_RATE,
+          HealthDataType.HEART_RATE,
           HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
           HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
           HealthDataType.RESTING_HEART_RATE,
@@ -206,7 +208,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Vitalparameter()));
+                              builder: (context) => Bodyfat()));
                     },
                   ),
                   bodyFat.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
@@ -225,7 +227,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Vitalparameter()));
+                              builder: (context) => Steps()));
                     },
                   ),
                   steps.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):

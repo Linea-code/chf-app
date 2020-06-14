@@ -5,15 +5,15 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Weight extends StatefulWidget {
+class Steps extends StatefulWidget {
   @override
-  _WeightState createState() => _WeightState();
+  _StepsState createState() => _StepsState();
 }
 
-class _WeightState extends State<Weight> {
+class _StepsState extends State<Steps> {
   bool _isAuthorized = false;
-  var weight = List<Datapoints>();
-  double avrWeight = 0;
+  var steps = List<Datapoints>();
+  double avrSteps = 0;
 
   List<charts.Series<Datapoints, DateTime>> _seriesData;
 
@@ -26,7 +26,7 @@ class _WeightState extends State<Weight> {
 
   Future<void> initPlatformState() async {
     DateTime startDate =
-        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
+    DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
@@ -34,10 +34,10 @@ class _WeightState extends State<Weight> {
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
-              startDate, endDate, HealthDataType.WEIGHT);
+              startDate, endDate, HealthDataType.STEPS);
           for (HealthDataPoint point in data) {
-            weight.add(new Datapoints(point.dateFrom, point.value));
-            avrWeight += point.value;
+            steps.add(new Datapoints(point.dateFrom, point.value));
+            avrSteps += point.value;
           }
         } catch (exception) {
           print(exception.toString());
@@ -46,13 +46,13 @@ class _WeightState extends State<Weight> {
         print("Keine Authorisierung vorliegend");
       }
       setState(() {});
-      avrWeight = avrWeight / weight.length;
+      avrSteps = avrSteps / steps.length;
       _seriesData.add(
         charts.Series(
-          data: weight,
+          data: steps,
           domainFn: (Datapoints datapoints, _) => datapoints.getDate(),
           measureFn: (Datapoints datapoints, _) => datapoints.getValue(),
-          id: 'Gewicht in kg',
+          id: 'Schritte',
           colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
         ),
       );
@@ -64,7 +64,7 @@ class _WeightState extends State<Weight> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Gewicht - Übersicht',
+          'Schritte - Übersicht',
           style: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w800,
@@ -79,24 +79,24 @@ class _WeightState extends State<Weight> {
             children: <Widget>[
               _seriesData.isEmpty
                   ? Container(
-                      child: SpinKitPumpingHeart(
-                      color: Colors.red[400],
-                    ))
+                  child: SpinKitPumpingHeart(
+                    color: Colors.red[400],
+                  ))
                   : Container(
-                      height: 300,
-                      child: Card(
-                          child: charts.TimeSeriesChart(
+                  height: 300,
+                  child: Card(
+                      child: charts.TimeSeriesChart(
                         _seriesData,
                         primaryMeasureAxis: new charts.NumericAxisSpec(
                             tickProviderSpec:
-                                new charts.BasicNumericTickProviderSpec(
-                                    zeroBound: false)),
+                            new charts.BasicNumericTickProviderSpec(
+                                zeroBound: false)),
                         domainAxis: new charts.DateTimeAxisSpec(
                             tickFormatterSpec:
-                                new charts.AutoDateTimeTickFormatterSpec(
-                                    day: new charts.TimeFormatterSpec(
-                                        format: 'd',
-                                        transitionFormat: 'd.MM'))),
+                            new charts.AutoDateTimeTickFormatterSpec(
+                                day: new charts.TimeFormatterSpec(
+                                    format: 'd',
+                                    transitionFormat: 'd.MM'))),
                         defaultRenderer: new charts.LineRendererConfig(
                           //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
                           stacked: true,
@@ -104,30 +104,30 @@ class _WeightState extends State<Weight> {
                         animate: false,
                         animationDuration: Duration(seconds: 3),
                         behaviors: [
-                          new charts.ChartTitle('Gewicht (kg)'),
+                          new charts.ChartTitle('Schritte'),
                         ],
                       ))),
               Card(
                   child: ExpansionTile(
-                title: Text(
-                  ("Durchschnittliches Gewicht des letzten Monats: " +
-                      (avrWeight.toStringAsFixed(2))),
-                  style: TextStyle(
-                    fontSize: 18.0,
-                  ),
-                ),
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      "Ihr durchschnittliches Gewicht setzt sich aus allen Messwerten des vergangen Monats zusammen. Sollten Sie starke Gewichtsveränderungen feststellen kontaktieren Sie bitte Ihren Arzt.",
+                    title: Text(
+                      ("Durchschnittliche Schrittzahl des letzten Monats: " +
+                          (avrSteps.toStringAsFixed(2))),
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                       ),
                     ),
-                  ),
-                ],
-              ))
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          "Ihre durchschnittliche Schrittzahl setzt sich aus allen Messwerten des vergangen Monats zusammen.",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ))
             ],
           ),
         ),
