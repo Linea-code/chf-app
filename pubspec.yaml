@@ -37,7 +37,8 @@ dependencies:
   fit_kit: 1.1.1
   flutter_spinkit: ^4.1.2+1
   qr_flutter: ^3.2.0
-  folding_cell: "^0.1.2"
+
+
 
 
 
@@ -65,6 +66,9 @@ flutter:
     - assets/bp.csv
     - assets/weight.csv
     - assets/Blume.JPG
+    - assets/Blutdruck_messen.png
+    - assets/Herzinsuffizienz_Abb.jpg
+    - assets/Survey.png
 
 
 

@@ -10,6 +10,7 @@ import 'package:herzinsuffizienz/settings/Settings.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 import 'package:herzinsuffizienz/vitalparameters/VitalparameterNeu.dart';
 
+
 class Home extends StatelessWidget {
   final NewProfile newprofile;
   Home({this.newprofile});
@@ -33,10 +34,23 @@ class Home extends StatelessWidget {
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
-      body: ListView(children: <Widget>[
-        Card(
+      body:Container(
+        padding: EdgeInsets.all(10.0),
+          child: ListView(children: <Widget>[
+        SizedBox(height: 10.0,),
+        Row(
+          children:<Widget>[
+            Expanded(
+              flex: 1,
+              child: Icon(Icons.add_alert,
+              size: 60,
+              color: Colors.grey,),
+            ),
+          Expanded(
+            flex: 3,
+            child: Card(
       child: Container(
-          height: 80,
+          height: 100,
           decoration: BoxDecoration(
            gradient: LinearGradient(
              begin: Alignment.topLeft,
@@ -50,21 +64,34 @@ class Home extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Symptoms()));
             },
-          child: ListTile(
-            leading: Icon(Icons.add_alert),
+          child:
+          Center(
+            child: ListTile(
             title: Text('Medikationseinnahme'),
             subtitle: Text('Sie müssen heute noch Ihre Mediakmente einnehmen!'),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Medication()));
             },
-          ),
+          ),)
         ),
       ),
-        ),
-        Card(
+        ),)]),
+        SizedBox(height: 10.0,),
+        Row (
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Icon(Icons.assignment,
+                size: 60.0,
+                color: Colors.grey,),
+            ),
+            Expanded(
+              flex: 3,
+              child:
+          Card(
           child: Container(
-            height: 80,
+            height: 100,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -78,24 +105,35 @@ class Home extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Symptoms()));
               },
-
-            child: ListTile(
-              //leading: Icon(Icons.question_answer),
+            child: Center(
+              child: ListTile(
               title: Text('Symptome'),
               subtitle: Text(
                   'Bitte beantworten Sie einmal alle 2 Wochen die Symptom-Fragebögen!'),
-            ),
+            ),)
             ),
           ),
-        ),
+        ),),
+           ]),
+        SizedBox(height: 10.0,),
         GestureDetector(
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => Vitalparameter()));
           },
+          child:Row(
+    children:<Widget>[
+      Expanded(
+        flex: 1,
+        child: Icon(Icons.favorite_border,
+        size: 60,
+        color: Colors.grey,)
+      ),
+          Expanded(
+            flex:3,
           child: Card(
             child: Container(
-              height: 80,
+              height: 100,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -109,20 +147,21 @@ class Home extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Symptoms()));
                 },
-                child: ListTile(
+                child: Center(
+                  child:   ListTile(
                   title: Text('Vitalparameter'),
                   subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Vitalparameter()));
                   },
-                ),
+                ),)
               ),
             ),
-          ),
+          ),)])
         ),
 
-      ]),
+      ])),
 
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
