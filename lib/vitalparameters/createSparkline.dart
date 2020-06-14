@@ -17,14 +17,14 @@ class _CreateSparklineState extends State<CreateSparkline> {
       padding: EdgeInsets.only(top: 1.0, bottom: 3.0, left: 3.0,right: 3.0),
       child: Sparkline(
         data: widget.data,
-        fillMode: FillMode.below,
-        lineColor: Colors.lightGreen[800],
-        fillGradient: new LinearGradient(
+        //fillMode: FillMode.below,
+        lineColor: Colors.lightGreen[500],
+        /*fillGradient: new LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Colors.lightGreen[800], Colors.lightGreen[100]],
+          colors: [Colors.lightGreen[500], Colors.lightGreen[100]],
 
-        ),
+        ),*/
 
       ),
     );

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:herzinsuffizienz/faq/faq.dart';
 
 class Bodyfat extends StatefulWidget {
   @override
@@ -34,7 +35,7 @@ class _BodyfatState extends State<Bodyfat> {
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
-              startDate, endDate, HealthDataType.STEPS);
+              startDate, endDate, HealthDataType.BODY_FAT_PERCENTAGE);
           for (HealthDataPoint point in data) {
             bodyfat.add(new Datapoints(point.dateFrom, point.value));
             avrBodyfat += point.value;
@@ -62,6 +63,13 @@ class _BodyfatState extends State<Bodyfat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightGreen[500],
+          child:
+          Text("?",style: TextStyle(fontSize: 50,),),
+          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
           'Körperfett - Übersicht',

@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
+import 'package:herzinsuffizienz/faq/faq.dart';
 import 'package:herzinsuffizienz/vitalparameters/bodyfat.dart';
 import 'package:herzinsuffizienz/vitalparameters/bpm.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
@@ -38,7 +39,8 @@ class _VitalparameterState extends State<Vitalparameter> {
   }
 
   Future<void> initPlatformState() async {
-    DateTime startDate = DateTime.utc(2020,DateTime.now().month-1,DateTime.now().day);
+    DateTime startDate =
+        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
@@ -62,7 +64,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           try {
             if (Health.isDataTypeAvailable(type)) {
               List<HealthDataPoint> healthData =
-              await Health.getHealthDataFromType(startDate, endDate, type);
+                  await Health.getHealthDataFromType(startDate, endDate, type);
               _healthDataList.addAll(healthData);
             }
           } catch (exception) {
@@ -144,6 +146,13 @@ class _VitalparameterState extends State<Vitalparameter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightGreen[500],
+          child:
+          Text("?",style: TextStyle(fontSize: 50,),),
+          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
           _title,
@@ -159,81 +168,109 @@ class _VitalparameterState extends State<Vitalparameter> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Card(
-                shadowColor: Colors.grey,
-                child: Column(children: <Widget>[
-                  ListTile(
-                    //leading: Icon(Icons.trending_up),
-                    title: Text('Herzfrequenz (bpm)'),
-                    subtitle: Text("letzte Messung: " + (_bpm.isEmpty ? " " : _bpm.last.round().toString())),
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => BPM()));
-                    },
-                  ),
-                  _bpm.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
-                  CreateSparkline(
-                    data: _bpm,
-                  ), //TODO: on tap genaueres Diagramm mit Achsenbeschr.
-                ]),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BPM()));
+                },
+                child: Card(
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Herzfrequenz (bpm)'),
+                      subtitle: Text("letzte Messung: " +
+                          (_bpm.isEmpty ? " " : _bpm.last.round().toString())),
+                    ),
+                    _bpm.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        : CreateSparkline(
+                      data: _bpm,
+                    ),
+                  ]),
+                ),
               ),
-              Card(
-                shadowColor: Colors.grey,
-                child: Column(children: <Widget>[
-                  ListTile(
-                    //leading: Icon(Icons.trending_up),
-                    title: Text('Gewicht (kg)'),
-                    subtitle: Text("letzte Messung: " + (weight.isEmpty ? " " : weight.last.toStringAsFixed(2))),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Weight()));
-                    },
-                  ),
-                  weight.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
-                  CreateSparkline(
-                    data: weight,
-                  ),
-                ]),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Weight()));
+                },
+                child: Card(
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Gewicht (kg)'),
+                      subtitle: Text("letzte Messung: " +
+                          (weight.isEmpty
+                              ? " "
+                              : weight.last.toStringAsFixed(2))),
+                    ),
+                    weight.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        : CreateSparkline(
+                      data: weight,
+                    ),
+                  ]),
+                ),
               ),
-              Card(
-                shadowColor: Colors.grey,
-                child: Column(children: <Widget>[
-                  ListTile(
-                    //leading: Icon(Icons.trending_up),
-                    title: Text('Körperfett'),
-                    subtitle: Text("letzte Messung: " + (bodyFat.isEmpty ? " " : bodyFat.last.round().toString())),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Bodyfat()));
-                    },
-                  ),
-                  bodyFat.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
-                  CreateSparkline(
-                    data: bodyFat,
-                  ),
-                ]),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Bodyfat()));
+                },
+                child: Card(
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Körperfett'),
+                      subtitle: Text("letzte Messung: " +
+                          (bodyFat.isEmpty
+                              ? " "
+                              : bodyFat.last.round().toString())),
+                    ),
+                    bodyFat.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        : CreateSparkline(
+                      data: bodyFat,
+                    ),
+                  ]),
+                ),
               ),
-              Card(
-                shadowColor: Colors.grey,
-                child: Column(children: <Widget>[
-                  ListTile(
-                    title: Text('Schritte'),
-                    subtitle: Text("letzte Messung: " + (steps.isEmpty ? " " : steps.last.round().toString())),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Steps()));
-                    },
-                  ),
-                  steps.isEmpty ? Container(padding: EdgeInsets.only(bottom: 15.0),child: SpinKitPumpingHeart(color: Colors.red[300])):
-                  CreateSparkline(data: steps),
-                ]),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Steps()));
+                },
+                child: Card(
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      title: Text('Schritte'),
+                      subtitle: Text("letzte Messung: " +
+                          (steps.isEmpty ? " " : steps.last.round().toString())),
+                    ),
+                    steps.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        : CreateSparkline(data: steps),
+                  ]),
+                ),
               ),
+
+
             ],
           ),
         ),

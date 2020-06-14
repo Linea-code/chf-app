@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:herzinsuffizienz/faq/faq.dart';
 
 class Weight extends StatefulWidget {
   @override
@@ -62,6 +63,13 @@ class _WeightState extends State<Weight> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightGreen[500],
+          child:
+          Text("?",style: TextStyle(fontSize: 50,),),
+          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
           'Gewicht - Übersicht',

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:herzinsuffizienz/faq/faq.dart';
 
 class BPM extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class BPM extends StatefulWidget {
 class _BPMState extends State<BPM> {
   bool _isAuthorized = false;
   var bpm = List<Datapoints>();
+  double avrBpm = 0;
 
   List<charts.Series<Datapoints, DateTime>> _seriesData;
 
@@ -36,6 +38,7 @@ class _BPMState extends State<BPM> {
               startDate, endDate, HealthDataType.HEART_RATE);
           for (HealthDataPoint point in data) {
             bpm.add(new Datapoints(point.dateFrom, point.value));
+            avrBpm += point.value;
           }
         } catch (exception) {
           print(exception.toString());
@@ -44,6 +47,7 @@ class _BPMState extends State<BPM> {
         print("Keine Authorisierung vorliegend");
       }
       setState(() {});
+      avrBpm= avrBpm/bpm.length;
 
       _seriesData.add(
         charts.Series(
@@ -60,6 +64,13 @@ class _BPMState extends State<BPM> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.lightGreen[500],
+            child:
+            Text("?",style: TextStyle(fontSize: 50,),),
+            onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         appBar: AppBar(
           title: Text(
             'Herzfrequenz - Übersicht',
@@ -104,20 +115,26 @@ class _BPMState extends State<BPM> {
                       ],
                     ))),
             Card(
-              child: ListTile(
-                title: Text("Was bedeutet dir Herzfrequenz?"),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                title: Text("Was bedeutet dir Herzfrequenz?"),
-              ),
-            ),
-            Card(
-              child: ListTile(
-                title: Text("Was bedeutet dir Herzfrequenz?"),
-              ),
-            ),
+                child: ExpansionTile(
+                  title: Text(
+                    ("Durchschnittliche Herzfrequenz des letzten Monats: " +
+                        (avrBpm.toStringAsFixed(2))),
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        "Ihr durchschnittliche Herzfrequenz setzt sich aus allen Messwerten des vergangen Monats zusammen.",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ))
           ]),
         )));
   }
