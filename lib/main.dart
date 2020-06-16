@@ -5,7 +5,7 @@ import 'package:herzinsuffizienz/onboarding/Permissions.dart';
 import 'package:herzinsuffizienz/onboarding/accessrights.dart';
 import 'package:herzinsuffizienz/onboarding/firstscreen.dart';
 
-void main() => runApp(MaterialApp(home: Home()));
+void main() => runApp(MaterialApp(home: Start()));
 
 
 

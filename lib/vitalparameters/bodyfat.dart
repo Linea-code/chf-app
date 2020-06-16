@@ -135,6 +135,48 @@ class _BodyfatState extends State<Bodyfat> {
                         ),
                       ),
                     ],
+                  )),
+              Card(
+                  child: ExpansionTile(
+                    title: Text(
+                      ("Was sagt der Körperfettanteil aus?"),
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          "Der Körperfettanteil beschreibt wie hoch der Fettanteil des Körpers im Verhältnis zum gesamten Körpergewicht ist. EIn Fettanteil von 25 % sagt somit aus, dass 20 % des Körpergewichtes aus angelagertem Fett bestehen.",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
+              Card(
+                  child: ExpansionTile(
+                    title: Text(
+                      ("Normalbereiche des Körperfettanteils:"),
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          "Wie hoch ein normaler/gesunder Körperfettanteil ist, hängt von verschiedenen Faktoren ab. Vor allem das Alter und das Geschlecht spielen hier eine wichtige Rolle."
+                              "Im allgemeinen gilt, dass ein Frauen einen höheren Körperfettanteil als Männer haben sollten. Die Normalwerte schwanken je nach Alter zwischen 21 und 36 %."
+                              "Bei Männern schwanken die Richtwerte für einen gesunden Körperfettanteil je nach ALter zwischen 8 und 25 %.",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ],
                   ))
             ],
           ),

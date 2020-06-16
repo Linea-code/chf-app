@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:folding_cell/folding_cell.dart';
 
 class FAQ extends StatelessWidget {
   final String _title = "FAQ";

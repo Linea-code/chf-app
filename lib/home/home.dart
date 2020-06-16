@@ -8,7 +8,7 @@ import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 import 'package:herzinsuffizienz/profile/profile.dart';
 import 'package:herzinsuffizienz/settings/Settings.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
-import 'package:herzinsuffizienz/vitalparameters/VitalparameterNeu.dart';
+import 'package:herzinsuffizienz/vitalparameters/Vitalparameter.dart';
 
 
 class Home extends StatelessWidget {
@@ -38,6 +38,7 @@ class Home extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
           child: ListView(children: <Widget>[
         SizedBox(height: 10.0,),
+        Card(child:
         Row(
           children:<Widget>[
             Expanded(
@@ -76,8 +77,9 @@ class Home extends StatelessWidget {
           ),)
         ),
       ),
-        ),)]),
+        ),)]),),
         SizedBox(height: 10.0,),
+        Card(child:
         Row (
           children: <Widget>[
             Expanded(
@@ -114,8 +116,9 @@ class Home extends StatelessWidget {
             ),
           ),
         ),),
-           ]),
+           ]),),
         SizedBox(height: 10.0,),
+        Card(child:
         GestureDetector(
           onTap: () {
             Navigator.push(context,
@@ -159,7 +162,7 @@ class Home extends StatelessWidget {
               ),
             ),
           ),)])
-        ),
+        ),),
 
       ])),
 

@@ -134,6 +134,47 @@ class _BPMState extends State<BPM> {
                       ),
                     ),
                   ],
+                )),
+            Card(
+                child: ExpansionTile(
+                  title: Text(
+                    ("Was sagt die Herzfrequenz aus?"),
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        "Die Herzfrequenz gibt die Anzahl der Herzschläge pro Minute an. Eine Herzfrequenz von 60 BPM bedeutet demnach, dass das Herz in einer Minute 60 mal schlägt. ",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+            Card(
+                child: ExpansionTile(
+                  title: Text(
+                    ("Eine gesunde Herzfrequenz liegt bei ca. 50 bis 100 BPM."),
+                    style: TextStyle(
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        "Wie hoch genau eine gesunde Herzfrequenz ist, hängt von vielen Faktoren ab. Beispielsweise das Alter, Geschlecht und die körperlicge Fitness wirken sich stark auf die Herzfequenz aus."
+                            "So liegt bei einem Neugeborenen die gesunde Herzfrequenz deutlich höher, bei rund 120 BPM, wohingegen ein junger, männlicher Athlet eine Herzfrequenz von rund 55 BPM hat.",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ))
           ]),
         )));
