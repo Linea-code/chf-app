@@ -2,9 +2,13 @@ import 'dart:collection';
 import 'package:herzinsuffizienz/symptoms/AppBuilder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:herzinsuffizienz/symptoms/UmfrageKnopf.dart';
+import 'package:herzinsuffizienz/symptoms/surveyButton.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 
+//2Wöchentlicher Fragebogen zum Ausfüllen der Gesundheit/Depressionsfragebogen
+//Umsetzung mittels Steppers
+//Pro Antwortauswahl wird ein SurveyButton (siehe eigene Klasse) gebildet und ein spezifischer Text übergeben
+//Mittels AppBuilder und callback wird die Seite konstant geupdated und somit ist auch ein "umentscheiden" bzw. erneutes anklicken möglich sowie ein vor und zurück gehen
 
 class WeeklyQuestHealth extends StatefulWidget {
   @override
@@ -113,19 +117,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep,)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep,)),
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -142,19 +146,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -171,19 +175,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -200,19 +204,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -229,19 +233,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -258,19 +262,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -287,19 +291,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -316,19 +320,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -345,19 +349,19 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "überhaupt nicht",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an einzelnen Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "an mehr als der Hälfte der Tagen",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "beinahe jeden Tag",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),
@@ -374,23 +378,23 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             Container(
               width: MediaQuery.of(context).size.width,
               child:
-              UmfrageButton(text: "ich hatte keines der angegebenen Probleme",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+              SurveyButton(text: "ich hatte keines der angegebenen Probleme",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "überhaupt nicht erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "überhaupt nicht erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "etwas erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "etwas erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "relativ stark erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "relativ stark erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
             Container(
                 width: MediaQuery.of(context).size.width,
                 child:
-                UmfrageButton(text: "sehr stark erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
+                SurveyButton(text: "sehr stark erschwert",callback: callback,currentValue: healthvalues[currentStep],currentStep: currentStep)),
           ],
         ),
       ),

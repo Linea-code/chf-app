@@ -6,6 +6,8 @@ import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
 
+//Laden der BPM Daten -> speicherung in Liste-> Darstellung in Diagramm
+
 class BPM extends StatefulWidget {
   @override
   _BPMState createState() => _BPMState();
@@ -31,7 +33,7 @@ class _BPMState extends State<BPM> {
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization();
+      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
@@ -63,7 +65,7 @@ class _BPMState extends State<BPM> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( //FAQ-Button unten rechts
         floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.lightGreen[500],
             child:
@@ -71,7 +73,7 @@ class _BPMState extends State<BPM> {
             onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        appBar: AppBar(
+        appBar: AppBar( //Kopfzeile mit Titel
           title: Text(
             'Herzfrequenz - Übersicht',
             style: TextStyle(
@@ -85,6 +87,7 @@ class _BPMState extends State<BPM> {
             child: Padding(
           padding: EdgeInsets.all(8.0),
           child: ListView(children: <Widget>[
+            //Ladebildschirm bei keinen Daten/leere Liste
             _seriesData.isEmpty
                 ? Container(
                     child: SpinKitPumpingHeart(
@@ -92,7 +95,7 @@ class _BPMState extends State<BPM> {
                   ))
                 : Container(
                     height: 300,
-                    child: Card(
+                    child: Card( //Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen
                         child: charts.TimeSeriesChart(
                       _seriesData,
                       primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -114,6 +117,7 @@ class _BPMState extends State<BPM> {
                         new charts.ChartTitle('Herzfrequenz (BPM)'),
                       ],
                     ))),
+            //Ergänzug um Innormationsboxen-> zum auklappen
             Card(
                 child: ExpansionTile(
                   title: Text(
@@ -180,7 +184,7 @@ class _BPMState extends State<BPM> {
         )));
   }
 }
-
+//Eigene Klasse für Datenpunkte
 class Datapoints {
   int date;
   double value;
@@ -192,6 +196,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return DateTime.fromMillisecondsSinceEpoch(date);
+    return DateTime.fromMillisecondsSinceEpoch(date); //Umwandlung in korrektes Datenformat
   }
 }

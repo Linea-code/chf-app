@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+//Erstellen der einzlenen Knöpfe für Fragebogen mit spezifischem Text
 class Health0 extends StatefulWidget {
   @override
   _Health0State createState() => _Health0State();

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-class Erschweren0 extends StatefulWidget {
+// Erstellen der einzelnen Auswahlmöglichkeiten für die Fragebögen -> jeweils einzelne Knöpfe mit spezifischem Text
+class Complicate0 extends StatefulWidget {
   @override
-  _Erschweren0State createState() => _Erschweren0State();
+  _Complicate0State createState() => _Complicate0State();
 }
 
-class _Erschweren0State extends State<Erschweren0> {
+class _Complicate0State extends State<Complicate0> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,12 @@ class _Erschweren0State extends State<Erschweren0> {
     );
   }
 }
-class Erschweren1 extends StatefulWidget {
+class Complicate1 extends StatefulWidget {
   @override
-  _Erschweren1State createState() => _Erschweren1State();
+  _Complicate1State createState() => _Complicate1State();
 }
 
-class _Erschweren1State extends State<Erschweren1> {
+class _Complicate1State extends State<Complicate1> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {
@@ -37,12 +37,12 @@ class _Erschweren1State extends State<Erschweren1> {
     );
   }
 }
-class Erschweren2 extends StatefulWidget {
+class Complicate2 extends StatefulWidget {
   @override
-  _Erschweren2State createState() => _Erschweren2State();
+  _Complicate2State createState() => _Complicate2State();
 }
 
-class _Erschweren2State extends State<Erschweren2> {
+class _Complicate2State extends State<Complicate2> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {
@@ -55,12 +55,12 @@ class _Erschweren2State extends State<Erschweren2> {
     );
   }
 }
-class Erschweren3 extends StatefulWidget {
+class Complicate3 extends StatefulWidget {
   @override
-  _Erschweren3State createState() => _Erschweren3State();
+  _Complicate3State createState() => _Complicate3State();
 }
 
-class _Erschweren3State extends State<Erschweren3> {
+class _Complicate3State extends State<Complicate3> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {
@@ -73,12 +73,12 @@ class _Erschweren3State extends State<Erschweren3> {
     );
   }
 }
-class Erschweren4 extends StatefulWidget {
+class Complicate4 extends StatefulWidget {
   @override
-  _Erschweren4State createState() => _Erschweren4State();
+  _Complicate4State createState() => _Complicate4State();
 }
 
-class _Erschweren4State extends State<Erschweren4> {
+class _Complicate4State extends State<Complicate4> {
   bool _pressed = false;
   @override
   Widget build(BuildContext context) {

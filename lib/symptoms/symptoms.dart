@@ -10,6 +10,7 @@ class Symptoms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //FAQ-Knopf unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
           child:
@@ -17,7 +18,7 @@ class Symptoms extends StatelessWidget {
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      appBar: AppBar(
+      appBar: AppBar( //Kopfzeile mit Titel
         title: Text(_title,
           style: TextStyle(
             fontSize: 22.0,
@@ -35,7 +36,7 @@ class Symptoms extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
-                    image: AssetImage('assets/Neuseeland_Panorama.JPG'),
+                    image: AssetImage('assets/Neuseeland_Panorama.JPG'), //Hintergrundbild aus Assets
                     fit: BoxFit.fitHeight,
                     alignment: Alignment.topCenter,
                   ),
@@ -45,7 +46,7 @@ class Symptoms extends StatelessWidget {
                   onTap: (){
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context)=> WeeklyQuestSymptoms())
+                        MaterialPageRoute(builder: (context)=> WeeklyQuestSymptoms()) //Bei Klick gelangen zu Fragebogen
                     );
                   },
                   child:
@@ -71,7 +72,7 @@ class Symptoms extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
-                  image: AssetImage('assets/Neuseeland_Steine.png'),
+                  image: AssetImage('assets/Neuseeland_Steine.png'), //Hintergundbild aus Assets
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topCenter,
                 ),
@@ -80,7 +81,7 @@ class Symptoms extends StatelessWidget {
               splashColor: Colors.lightGreen[200],
               onTap: (){
                 Navigator.push(context,
-                MaterialPageRoute(builder: (context)=> WeeklyQuestHealth(),));
+                MaterialPageRoute(builder: (context)=> WeeklyQuestHealth(),)); //Bei Klick gelangen zu Fragebogen
               },
               child:
               ListTile(

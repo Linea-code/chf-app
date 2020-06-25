@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+//Speicherung bzw. neuladen der Seite ermöglichen
 class AppBuilder extends StatefulWidget {
   final Function(BuildContext) builder;
 

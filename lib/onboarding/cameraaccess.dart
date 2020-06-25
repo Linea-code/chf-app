@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class KameraZugriff extends StatefulWidget {
+class CameraAccess extends StatefulWidget {
   @override
-  _KameraZugriffState createState() => _KameraZugriffState();
+  _CameraAccessState createState() => _CameraAccessState();
 }
 
-class _KameraZugriffState extends State<KameraZugriff> {
+class _CameraAccessState extends State<CameraAccess> {
+  // Kamerazugriff vorerst nicht gestattet
   bool _camera = false;
 
   @override

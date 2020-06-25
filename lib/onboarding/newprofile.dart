@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Anlage der eigenen Klasse Profil mit Deklaration der Variablen: Vorname, Nachname, Begleiterkrankungen, Lebensumstände, Geburtsdatum, Krankenhausaufenthalte, Geschlecht
 class NewProfile{
-  String vorname;
-  String nachname;
-  String begleiterkrankungen;
-  String lebensumstaende = "mit Ehepartner";
+  String firstName;
+  String secondName;
+  String comorbidities;
+  String livingConditions = "mit Ehepartner";
   DateTime birthdate;
-  int krankenhausaufenthalte;
-  String geschlecht;
-  NewProfile({this.vorname, this.nachname, this.lebensumstaende, this.birthdate ,this.begleiterkrankungen ,this.krankenhausaufenthalte, this.geschlecht
+  int hospitalization;
+  String gender;
+  NewProfile({this.firstName, this.secondName, this.livingConditions, this.birthdate ,this.comorbidities ,this.hospitalization, this.gender
   });
   }

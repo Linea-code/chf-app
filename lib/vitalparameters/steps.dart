@@ -5,7 +5,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
-
+//Klassse um Schrittzahl darzustellen-> Speicherung der Daten in Liste und erstellung von Diagramm
 class Steps extends StatefulWidget {
   @override
   _StepsState createState() => _StepsState();
@@ -31,7 +31,7 @@ class _StepsState extends State<Steps> {
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization();
+      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
@@ -47,7 +47,9 @@ class _StepsState extends State<Steps> {
         print("Keine Authorisierung vorliegend");
       }
       setState(() {});
-      avrSteps = avrSteps / steps.length;
+      avrSteps = avrSteps / steps.length; //Durchschnitt berechnen
+
+      //DAtenserie anlegen um später dem Diagramm zu übergeben
       _seriesData.add(
         charts.Series(
           data: steps,
@@ -63,6 +65,7 @@ class _StepsState extends State<Steps> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //FAQ-Button
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
           child:
@@ -70,7 +73,7 @@ class _StepsState extends State<Steps> {
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      appBar: AppBar(
+      appBar: AppBar( //Kopfzeile mit Überschrift
         title: Text(
           'Schritte - Übersicht',
           style: TextStyle(
@@ -82,9 +85,10 @@ class _StepsState extends State<Steps> {
       ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0), //Seitenabstand
           child: ListView(
             children: <Widget>[
+              //Ladebildschirm falls keine Daten vorhanden oder fals Daten noch laden
               _seriesData.isEmpty
                   ? Container(
                   child: SpinKitPumpingHeart(
@@ -93,6 +97,7 @@ class _StepsState extends State<Steps> {
                   : Container(
                   height: 300,
                   child: Card(
+                    //Diagramm mit spezifischen Achsenbeschriftungen und Datenformaten
                       child: charts.TimeSeriesChart(
                         _seriesData,
                         primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -115,6 +120,7 @@ class _StepsState extends State<Steps> {
                           new charts.ChartTitle('Schritte'),
                         ],
                       ))),
+              //Infos unterhalb des Diagramms-> zum ausklappen
               Card(
                   child: ExpansionTile(
                     title: Text(
@@ -143,7 +149,7 @@ class _StepsState extends State<Steps> {
     );
   }
 }
-
+//Eigene Klasse für Datenpunkte
 class Datapoints {
   int date;
   double value;

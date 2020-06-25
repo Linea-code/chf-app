@@ -6,6 +6,8 @@ import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
 
+//Laden der Körperfettwerte aus dem letzten Monat (vergangene 30 Tage)
+
 class Bodyfat extends StatefulWidget {
   @override
   _BodyfatState createState() => _BodyfatState();
@@ -27,11 +29,11 @@ class _BodyfatState extends State<Bodyfat> {
 
   Future<void> initPlatformState() async {
     DateTime startDate =
-    DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
+    DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day); //festlegung des Zeitraums
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization();
+      _isAuthorized = await Health.requestAuthorization(); //Abfrage der Autorisierung über health kit
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
@@ -47,7 +49,9 @@ class _BodyfatState extends State<Bodyfat> {
         print("Keine Authorisierung vorliegend");
       }
       setState(() {});
-      avrBodyfat = avrBodyfat / bodyfat.length;
+      avrBodyfat = avrBodyfat / bodyfat.length; //Bilden eines Durchschnittwerts
+
+      //Anlegung einer Datenserie um diese dem Diagramm zu übergeben
       _seriesData.add(
         charts.Series(
           data: bodyfat,
@@ -63,6 +67,7 @@ class _BodyfatState extends State<Bodyfat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
           child:
@@ -71,6 +76,7 @@ class _BodyfatState extends State<Bodyfat> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
+        //Kopfzeile mit Titel
         title: Text(
           'Körperfett - Übersicht',
           style: TextStyle(
@@ -84,7 +90,7 @@ class _BodyfatState extends State<Bodyfat> {
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: ListView(
-            children: <Widget>[
+            children: <Widget>[ //Ldebildschirm (Herz) bei keinen Daten und bei warten auf Daten
               _seriesData.isEmpty
                   ? Container(
                   child: SpinKitPumpingHeart(
@@ -92,7 +98,7 @@ class _BodyfatState extends State<Bodyfat> {
                   ))
                   : Container(
                   height: 300,
-                  child: Card(
+                  child: Card( //Detailierter Graph zu Daten mit spezifizierung der Achsenbeschriftungen und Farben etc.
                       child: charts.TimeSeriesChart(
                         _seriesData,
                         primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -115,6 +121,7 @@ class _BodyfatState extends State<Bodyfat> {
                           new charts.ChartTitle('Körperfett'),
                         ],
                       ))),
+              //Ergänzen von Informationen unterhalb des Grafen mit ausklapp Funktion
               Card(
                   child: ExpansionTile(
                     title: Text(
@@ -186,6 +193,8 @@ class _BodyfatState extends State<Bodyfat> {
   }
 }
 
+//Eigene Klasse um Datenpunkte zu spezifirieren inklusive getter-Methoen für Werte
+
 class Datapoints {
   int date;
   double value;
@@ -197,6 +206,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return DateTime.fromMillisecondsSinceEpoch(date);
+    return DateTime.fromMillisecondsSinceEpoch(date); //Umwandlung in korrektes Datenformat
   }
 }

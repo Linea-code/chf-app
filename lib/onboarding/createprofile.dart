@@ -11,9 +11,10 @@ class CreateProfile extends StatefulWidget {
 }
 
 class _CreateProfileState extends State<CreateProfile> {
-  SingingCharacter _gender;
+
+  SingingCharacter _gender; //Variable für Geschlecht anlegen
   final formKey = GlobalKey<FormState>();
- final newprofile = NewProfile();
+ final newProfile = NewProfile(); // neues Proofil anlegen
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -32,17 +33,17 @@ class _CreateProfileState extends State<CreateProfile> {
         Form(
           key: formKey,
           child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-            TextFormField(
+            TextFormField( //Feld zum Namen eintragen
               decoration: InputDecoration(labelText: 'Vorname:'),
               validator: (input) =>
                   input.isEmpty ? 'Bitte geben Sie Ihren Vornamen ein' : null,
-              onSaved: (input) =>  newprofile.vorname= input,
+              onSaved: (input) =>  newProfile.firstName= input, //Speichern in Profil
             ),
-            TextFormField(
+            TextFormField( //Feld zum Nachnamen eintragen
               decoration: InputDecoration(labelText: 'Nachname:'),
               validator: (input) =>
                   input.isEmpty ? 'Bitte geben Sie Ihren Nachnamen ein' : null,
-              onSaved: (input) => newprofile.nachname = input,
+              onSaved: (input) => newProfile.secondName = input, //Speichern in Profil
             ),
             SizedBox(height: 15),
             Column(
@@ -56,7 +57,7 @@ class _CreateProfileState extends State<CreateProfile> {
                     color: Colors.black54,
                   ),
                 ),
-                Row(
+                Row( //Auswahlfelder für Geschlecht
                   children: <Widget>[
                     Radio(
                       value: SingingCharacter.male,
@@ -64,7 +65,7 @@ class _CreateProfileState extends State<CreateProfile> {
                       onChanged: (SingingCharacter value) {
                         setState(() {
                           _gender = value;
-                          newprofile.geschlecht="männlich";
+                          newProfile.gender="männlich"; //Speichern in Profil
                         });
                       },
                     ),
@@ -82,7 +83,7 @@ class _CreateProfileState extends State<CreateProfile> {
                       onChanged: (SingingCharacter value) {
                         setState(() {
                           _gender = value;
-                          newprofile.geschlecht="weiblich";
+                          newProfile.gender="weiblich"; //Speichern in Profil
                         });
                       },
                     ),
@@ -100,7 +101,7 @@ class _CreateProfileState extends State<CreateProfile> {
                       onChanged: (SingingCharacter value) {
                         setState(() {
                           _gender = value;
-                          newprofile.geschlecht="divers";
+                          newProfile.gender="divers"; //Speichern in Profil
                         });
                       },
                     ),
@@ -133,13 +134,13 @@ class _CreateProfileState extends State<CreateProfile> {
             SizedBox(height: 15),
             Container(
               height: 75,
-              child: CupertinoDatePicker(
+              child: CupertinoDatePicker( //Datumswähler beginnend bei Jahr von heute - 120nd endend bei Jahr von heute
                 mode: CupertinoDatePickerMode.date,
-                minimumYear: 1900,
-                maximumYear: 2020,
+                minimumYear: DateTime.now().year - 120,
+                maximumYear: DateTime.now().year,
                 initialDateTime: DateTime.now(),
                 onDateTimeChanged: (DateTime newDateTime) {
-                  newprofile.birthdate = newDateTime;
+                  newProfile.birthdate = newDateTime; //Speichern in Profil
                 },
               ),
             ),
@@ -151,8 +152,8 @@ class _CreateProfileState extends State<CreateProfile> {
                     fontFamily: "Arial",
                     color: Colors.black54,
                 ),),
-                  DropdownButton<String>(
-                  value: newprofile.lebensumstaende,
+                  DropdownButton<String>( //Dropdown Menu um Lebensumstände auszuwählen
+                  value: newProfile.livingConditions,
                   icon: Icon(Icons.arrow_downward),
                   style: TextStyle(
                     fontSize: 16.0,
@@ -161,7 +162,7 @@ class _CreateProfileState extends State<CreateProfile> {
                   ),
                   onChanged: (String newValue){
                     setState(() {
-                      newprofile.lebensumstaende = newValue;
+                      newProfile.livingConditions = newValue;
                     });
                   },
                   items: <String>['mit Ehepartner','mit festem Partner','alleinstehend','verwitwet','geschieden'].map<DropdownMenuItem<String>>((String value){
@@ -171,15 +172,15 @@ class _CreateProfileState extends State<CreateProfile> {
                 ),
               ],
             ),
-            TextFormField(
+            TextFormField( //Eingabefeld für bisherige Krankenhaus aufenthalte
               decoration: InputDecoration(
                   labelText: 'Anzahl bisheriger Krankenhausaufenthalte:'),
               validator: (input) => input.isEmpty
                   ? 'Bitte geben Sie die Anzahl Ihrer bisheringen Krankenhausaufenthalte ein!'
                   : null,
-              onSaved: (input) => newprofile.krankenhausaufenthalte = int.parse(input),
+              onSaved: (input) => newProfile.hospitalization = int.parse(input),
             ),
-            TextFormField(
+            TextFormField( //Eingabefeld für Begleiterkrankungen
               keyboardType: TextInputType.multiline,
               maxLines: null,
               decoration: InputDecoration(
@@ -187,7 +188,7 @@ class _CreateProfileState extends State<CreateProfile> {
               validator: (input) => input.isEmpty
                   ? 'Bitte geben Sie Ihre Begleiterkrankungen ein!'
                   : null,
-              onSaved: (input) => newprofile.begleiterkrankungen = input,
+              onSaved: (input) => newProfile.comorbidities = input,
             ),
             Column(children: <Widget>[
               Row(
@@ -208,13 +209,13 @@ class _CreateProfileState extends State<CreateProfile> {
       ]),
     );
   }
-
+//Definition der eigenen Methode "weiter" -> wenn alle Werte ihre Voraussetzungen erfüllen kann zur nächsten Seite (Home) fortgefahren werden
   void _weiter() {
     if (formKey.currentState.validate() &&
         (_gender != null) &&
-        (newprofile.birthdate != DateTime.now())) {
+        (newProfile.birthdate != DateTime.now())) {
       formKey.currentState.save();
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home(newprofile: newprofile,)));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Home(newprofile: newProfile,)));
     }
   }
 }

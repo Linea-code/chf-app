@@ -8,6 +8,7 @@ class AppleHealth extends StatefulWidget {
 }
 
 class _AppleHealthState extends State<AppleHealth> {
+  // Zurfiff auf Apple Helath vorerst ausgeschaltet
   bool _apple = false;
 
   @override
@@ -17,7 +18,7 @@ class _AppleHealthState extends State<AppleHealth> {
       value: _apple,
       onChanged: (bool value) {
         setState(() {
-          _apple = value;
+          _apple = value; //Bei Klick veränderung des Wertes auf wahr/falsch
         });
       },
     );

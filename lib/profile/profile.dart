@@ -6,12 +6,13 @@ import 'package:herzinsuffizienz/faq/faq.dart';
 
 
 class Profile extends StatelessWidget {
+  //Ermöglichung der Übertragung der Daten aus CreateProfile in die Profilansicht
   final NewProfile newprofile;
   Profile({this.newprofile});
   final String _title = "Profil: ";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( //FAQ-Knopf unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
           child:
@@ -19,9 +20,9 @@ class Profile extends StatelessWidget {
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      appBar: AppBar(
+      appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
         title: Text(
-          _title + newprofile.vorname + " "+ newprofile.nachname,
+          _title + newprofile.firstName + " "+ newprofile.secondName,
           style: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w800,
@@ -48,9 +49,10 @@ class Profile extends StatelessWidget {
                   ),
                 ]),
           ),
+          //Liste mit einzelnen Angaben, welche in CreateProfile getätigt wurden
           ListTile(
                   title: Text(
-                    "Vorname: ${newprofile.vorname} ",
+                    "Vorname: ${newprofile.firstName} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -60,7 +62,7 @@ class Profile extends StatelessWidget {
                 ),
           ListTile(
                   title: Text(
-                    "Nachname: ${newprofile.nachname}",
+                    "Nachname: ${newprofile.secondName}",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -70,7 +72,7 @@ class Profile extends StatelessWidget {
                 ),
           ListTile(
                   title: Text(
-                    "Geschlecht: ${newprofile.geschlecht} ",
+                    "Geschlecht: ${newprofile.gender} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -90,7 +92,7 @@ class Profile extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    "Lebensumstände: ${newprofile.lebensumstaende} ",
+                    "Lebensumstände: ${newprofile.livingConditions} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -100,7 +102,7 @@ class Profile extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    "Anzahl der Krankenhausaufenthalte: ${newprofile.krankenhausaufenthalte} ",
+                    "Anzahl der Krankenhausaufenthalte: ${newprofile.hospitalization} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -110,7 +112,7 @@ class Profile extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    "Begleiterkrankungen/Komorbiditäten: ${newprofile.begleiterkrankungen} ",
+                    "Begleiterkrankungen/Komorbiditäten: ${newprofile.comorbidities} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -119,6 +121,7 @@ class Profile extends StatelessWidget {
                   ),
                 ),
           Container(
+            //Knopf zum bearbeiten/neu Eingeben des Profils
             child: RaisedButton(
               color: Colors.black54,
               child: Text("Bearbeiten",

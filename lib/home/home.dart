@@ -17,6 +17,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //Button unten rechts zum FAQ -> bleibt beim scrollen
      floatingActionButton: FloatingActionButton(
        backgroundColor: Colors.lightGreen[500],
           child:
@@ -24,7 +25,7 @@ class Home extends StatelessWidget {
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      appBar: AppBar(
+      appBar: AppBar( //Kopfzeile mit Titel
         title: Text(
           'Übersicht',
           style: TextStyle(
@@ -35,9 +36,13 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.lightGreen[500],
       ),
       body:Container(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(10.0), //Seitenrand von 10 festgelegt
           child: ListView(children: <Widget>[
-        SizedBox(height: 10.0,),
+        SizedBox(height: 10.0,), //Abstandshalter
+
+            // Verschiedene Karten mit den jeweiligen Infos/Erinnerungen und eingeleitet durch ein entsprechendes Icon
+            //Aufteilung jeweils so, dass 1/4 der Siete Icon und 3/4 der Seite Karte mit Text sind
+
         Card(child:
         Row(
           children:<Widget>[
@@ -52,7 +57,7 @@ class Home extends StatelessWidget {
             child: Card(
       child: Container(
           height: 100,
-          decoration: BoxDecoration(
+          decoration: BoxDecoration( //jeweils Farbverlauf im Hintergrund der Karten
            gradient: LinearGradient(
              begin: Alignment.topLeft,
              end: Alignment.bottomRight,
@@ -63,7 +68,7 @@ class Home extends StatelessWidget {
             splashColor: Colors.lightGreen[100],
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Symptoms()));
+                  MaterialPageRoute(builder: (context) => Symptoms())); //Durch Klick auf Karte wechsel zu Symptomen
             },
           child:
           Center(
@@ -72,13 +77,13 @@ class Home extends StatelessWidget {
             subtitle: Text('Sie müssen heute noch Ihre Mediakmente einnehmen!'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Medication()));
+                  MaterialPageRoute(builder: (context) => Medication())); //Durch Klick auf Karte wechsel zu Medikation
             },
           ),)
         ),
       ),
         ),)]),),
-        SizedBox(height: 10.0,),
+        SizedBox(height: 10.0,), //Abstandshalter
         Card(child:
         Row (
           children: <Widget>[
@@ -105,7 +110,7 @@ class Home extends StatelessWidget {
               splashColor: Colors.lightGreen[100],
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Symptoms()));
+                    MaterialPageRoute(builder: (context) => Symptoms())); //durch Klick gelangen zu Symptomen
               },
             child: Center(
               child: ListTile(
@@ -122,7 +127,7 @@ class Home extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Vitalparameter()));
+                MaterialPageRoute(builder: (context) => Vitalparameter())); // durch Klick gelangen auf Vitalparameter
           },
           child:Row(
     children:<Widget>[
@@ -156,7 +161,7 @@ class Home extends StatelessWidget {
                   subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Vitalparameter()));
+                        MaterialPageRoute(builder: (context) => Vitalparameter())); //durch Klick gelangen auf Vitalparameter
                   },
                 ),)
               ),
@@ -165,6 +170,8 @@ class Home extends StatelessWidget {
         ),),
 
       ])),
+
+      // Drawer oben links -> Menu was geöffnet und geschlossen werden kann und eine Übersicht über alle Funktionen inklusive der entsprechenden Navigation gefunden werden kann
 
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
@@ -189,7 +196,7 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Vitalparameter()));  //Änderung, muss evtl. wieder rückgängig gemacht werden zu VitalParameters()
+                  MaterialPageRoute(builder: (context) => Vitalparameter()));  // Wechsel zu Vitalparameter
             },
           ),
           ListTile(
@@ -200,7 +207,7 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Symptoms()));
+                  context, MaterialPageRoute(builder: (context) => Symptoms())); //wechsel zu Symptome
             },
           ),
           ListTile(
@@ -211,7 +218,7 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Medication()));
+                  MaterialPageRoute(builder: (context) => Medication())); // wechsel zu Medikation
             },
           ),
           ListTile(
@@ -222,7 +229,7 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ConnectionCode()));
+                  MaterialPageRoute(builder: (context) => ConnectionCode())); // Wechsel zu Visitencode
             },
           ),
           ListTile(
@@ -235,18 +242,18 @@ class Home extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Profile(newprofile: newprofile)));
+                      builder: (context) => Profile(newprofile: newprofile))); // wechsel zu Profil und Übergabe der eingegebenen Werte auf onboarding Seite
             },
           ),
           ListTile(
             leading: Icon(Icons.help_outline),
             title: Text(
-              'FAQ',
+              'Häufig gestellte Fragen',
               style: TextStyle(fontSize: 16.0),
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => FAQ()));
+                  context, MaterialPageRoute(builder: (context) => FAQ())); // wechsel zu FAQ
             },
           ),
           ListTile(
@@ -257,7 +264,7 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Settings()));
+                  context, MaterialPageRoute(builder: (context) => Settings())); // wechsel zu Einstellungen
             },
           )
         ]),

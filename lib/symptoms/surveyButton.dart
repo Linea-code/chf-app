@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:herzinsuffizienz/symptoms/AppBuilder.dart';
-
-class UmfrageButton extends StatefulWidget {
+//Erstellen des Knopfes für die Umfragen -> mit callback Funktion um die Ergebnisse während der Umfarge kurz zu speichern und die Frabe zu ändern (grün wenn ausgewählt und weiß wenn nicht ausgewählt)
+class SurveyButton extends StatefulWidget {
   final String text;
   Function(String, int) callback;
   String currentValue;
   final int currentStep;
 
 
-  UmfrageButton({this.text, this.callback, this.currentValue, this.currentStep});
+  SurveyButton({this.text, this.callback, this.currentValue, this.currentStep});
 
   @override
-  _UmfrageButtonState createState() => _UmfrageButtonState();
+  _SurveyButtonState createState() => _SurveyButtonState();
 }
 
-class _UmfrageButtonState extends State<UmfrageButton> {
+class _SurveyButtonState extends State<SurveyButton> {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(

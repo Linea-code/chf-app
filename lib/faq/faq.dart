@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FAQ extends StatelessWidget {
-  final String _title = "FAQ";
+  final String _title = "Häufig gestellte Fragen";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar: AppBar( //Kopfzeile mit Titel
           title: Text(
             _title,
             style: TextStyle(
@@ -29,6 +29,10 @@ class FAQ extends StatelessWidget {
                 //color: Colors.lightGreen[800],
               ),),
             ),
+
+            //Einzelne Karten, jeweils zum Ausklappen -> auf Vorderseite Frage, bei Ausklappen Antwort/Tipps etc. mit Bildern und Texten
+            //Zudem unterteilung der Fragen in spezifische Gruppen um eine bessere Strucktur zu ermöglichen
+
             Card(
               child: ExpansionTile(
                 title: Text(
@@ -40,9 +44,9 @@ class FAQ extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     child: Column(children: <Widget>[
-                      Image.asset("assets/Herzinsuffizienz_Abb.jpg"),
+                      Image.asset("assets/Herzinsuffizienz_Abb.jpg"), //Bild aus dem Ordner Assets
                       Text(
-                        "http://www.info-praxisteam.de/2010/03/img/8-2.jpg?m=1396268804",
+                        "http://www.info-praxisteam.de/2010/03/img/8-2.jpg?m=1396268804", //Bildquelle
                         style: TextStyle(
                           fontSize: 10.0,
                           color: Colors.grey,
@@ -83,9 +87,9 @@ class FAQ extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     child: Column(children: <Widget>[
-                      Image.asset("assets/Blutdruck_messen.png"),
+                      Image.asset("assets/Blutdruck_messen.png"), //Bild aus dem Ordner assets
                       Text(
-                        "https://www.blutdruckdaten.de/images/man/Richtig-messen2.png",
+                        "https://www.blutdruckdaten.de/images/man/Richtig-messen2.png", //Bildquelle
                         style: TextStyle(
                           fontSize: 10.0,
                           color: Colors.grey,

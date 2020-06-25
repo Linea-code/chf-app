@@ -5,7 +5,7 @@ import 'package:charts_flutter/flutter.dart' as charts; //Um Charts zu erstellen
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
-
+//Detailansicht Gewicht
 class Weight extends StatefulWidget {
   @override
   _WeightState createState() => _WeightState();
@@ -27,17 +27,17 @@ class _WeightState extends State<Weight> {
 
   Future<void> initPlatformState() async {
     DateTime startDate =
-        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
+        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day); //Zeitraum der Datenabfrage
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization();
+      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage über Health kit
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
               startDate, endDate, HealthDataType.WEIGHT);
           for (HealthDataPoint point in data) {
-            weight.add(new Datapoints(point.dateFrom, point.value));
+            weight.add(new Datapoints(point.dateFrom, point.value)); //Liste mit Gewichtsdaten füllen
             avrWeight += point.value;
           }
         } catch (exception) {
@@ -47,7 +47,9 @@ class _WeightState extends State<Weight> {
         print("Keine Authorisierung vorliegend");
       }
       setState(() {});
-      avrWeight = avrWeight / weight.length;
+      avrWeight = avrWeight / weight.length; //Durchschnitt bilden
+
+      //Datenserie anlegen mit Gewichtsdaten
       _seriesData.add(
         charts.Series(
           data: weight,
@@ -63,6 +65,7 @@ class _WeightState extends State<Weight> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
           child:
@@ -85,6 +88,7 @@ class _WeightState extends State<Weight> {
           padding: EdgeInsets.all(8.0),
           child: ListView(
             children: <Widget>[
+              //Ladebildschirm falls keine Daten vorhanden oder falls Daten noch laden
               _seriesData.isEmpty
                   ? Container(
                       child: SpinKitPumpingHeart(
@@ -93,6 +97,7 @@ class _WeightState extends State<Weight> {
                   : Container(
                       height: 300,
                       child: Card(
+                        //Diagramm mit detailierten Datenpunkten und spezifischen Achseneinstellungen
                           child: charts.TimeSeriesChart(
                         _seriesData,
                         primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -115,6 +120,8 @@ class _WeightState extends State<Weight> {
                           new charts.ChartTitle('Gewicht (kg)'),
                         ],
                       ))),
+
+              //Ergänzende Infos in ausklappbaren Karten
               Card(
                   child: ExpansionTile(
                 title: Text(
@@ -144,6 +151,7 @@ class _WeightState extends State<Weight> {
   }
 }
 
+//Eigene Klasse um Datenpunkte zu spezifizieren mit getter-Methoden für Werte
 class Datapoints {
   int date;
   double value;
@@ -155,6 +163,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return DateTime.fromMillisecondsSinceEpoch(date);
+    return DateTime.fromMillisecondsSinceEpoch(date);//Umwandlung in korrekten Datentyp
   }
 }

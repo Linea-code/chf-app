@@ -6,7 +6,7 @@ class Start extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar: AppBar( //Kopfzeile mit Titel
           title: Text(
             "Herzinsuffizienz-App",
             style: TextStyle(
@@ -21,7 +21,7 @@ class Start extends StatelessWidget {
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(15.0),
-              child: Text(
+              child: Text( //kurzer Willkommenstext
                 "Herzlich Willkommen in Ihrer Herzinsuffizienz-App! \nDiese App wird Sie im Alltag unterstützen mit Ihrer chronischen Herzinsuffizienz umzugehen! Diese Dinge können in Zukunft für Sie übernehmen werden: ",
                 style: TextStyle(
                   fontFamily: "Arial",
@@ -30,6 +30,9 @@ class Start extends StatelessWidget {
                 ),
               ),
             ),
+
+            //Aufklärung über Leistungen der App
+
             Column(
               children: <Widget>[
                 new ListTile(
@@ -71,7 +74,7 @@ class Start extends StatelessWidget {
               ],
             ),
             Container(
-              child: RaisedButton(
+              child: RaisedButton( //Knopf um auf nächste Seite zu gelangen
                 child: Text('Alles klar!'),
                 onPressed: () {
                   Navigator.push(

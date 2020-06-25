@@ -11,7 +11,7 @@ class Access extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( //Kopfzeile mit Titel
         title: Text(
           'Zugriffsrechte',
           style: TextStyle(
@@ -32,16 +32,17 @@ class Access extends StatelessWidget {
             ),
           ),
         ),
+        // Aufruf eigener Mathoden für Zugriffsrechte
         AppleHealth(), // TODO: apple hinzufügen API
-        AktivitaetsDaten(),
-        KameraZugriff(), //TODO Permission hinzufügen
+        ActivityData(),
+        CameraAccess(), //TODO Permission hinzufügen
         Container(
           child: RaisedButton(
             child: Text('Weiter'),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CreateProfile()),
+                MaterialPageRoute(builder: (context) => CreateProfile()),//Weiterleidtung auf Profilerstellung
               );
             },
           ),

@@ -9,7 +9,7 @@ import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/vitalparameters/steps.dart';
 import 'package:herzinsuffizienz/vitalparameters/weight.dart';
-
+//Übersichtsseite zu Vitalparametern -> viele Karten mit einzelnen Diagrammen zu den Vitalparametern
 class Vitalparameter extends StatefulWidget {
   @override
   _VitalparameterState createState() => _VitalparameterState();
@@ -19,6 +19,7 @@ class _VitalparameterState extends State<Vitalparameter> {
   final String _title = "Vitalparameter";
   var _healthDataList = List<HealthDataPoint>();
   bool _isAuthorized = false;
+  //Einzelne Listen für jeden abgefragten Vitalparametertyp
   List<double> weight = List<double>();
   List<double> height = List<double>();
   List<double> steps = List<double>();
@@ -40,11 +41,11 @@ class _VitalparameterState extends State<Vitalparameter> {
 
   Future<void> initPlatformState() async {
     DateTime startDate =
-        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
+        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day); //Zeitraum für Abfrage = 1 Monat
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization();
+      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage
       if (_isAuthorized) {
         List<HealthDataType> types = [
           HealthDataType.WEIGHT,
@@ -60,6 +61,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           HealthDataType.BLOOD_GLUCOSE,
           HealthDataType.BLOOD_OXYGEN,
         ];
+        //Speicherung aller Datenpunkte in Liste
         for (HealthDataType type in types) {
           try {
             if (Health.isDataTypeAvailable(type)) {
@@ -75,7 +77,7 @@ class _VitalparameterState extends State<Vitalparameter> {
       } else {
         print("Keine Authorisierung vorliegend");
       }
-
+//Befüllen der einzelnen Listen je Datentyp mit Double-Werten
       for (HealthDataPoint point in _healthDataList) {
         switch (point.dataType) {
           case "WEIGHT":
@@ -146,6 +148,7 @@ class _VitalparameterState extends State<Vitalparameter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
           child:
@@ -153,7 +156,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      appBar: AppBar(
+      appBar: AppBar( //Kopfzeile mit Titel
         title: Text(
           _title,
           style: TextStyle(
@@ -164,7 +167,10 @@ class _VitalparameterState extends State<Vitalparameter> {
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
-      body: Container(
+      body:
+      //Body der Seite: pro Vitalparameter eine Karte mit Diagramm über Werte des letzten Monats-> bei Klick auf Karte wechsel zu Detailansicht des jeweiligen Typs
+      //LAden die Daten noch oder sind keine daten verfügbar wird ein Ladebildschirm angezeigt
+      Container(
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
