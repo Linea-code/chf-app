@@ -27,7 +27,9 @@ class ConnectionCode extends StatelessWidget {
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
-      body: Column(
+      body: ListView (
+        children:<Widget> [
+          Column(
         children: <Widget> [
           Container(
             padding: EdgeInsets.all(10.0),
@@ -46,8 +48,17 @@ class ConnectionCode extends StatelessWidget {
         version: QrVersions.auto,
       ),
       ),
-                Text("Web-Adresse: https://www.figma.com/proto/6gqEgzGl8CyR9CjCn1NpWE/Untitled?node-id=30%3A20&scaling=min-zoom ")
-              ]))])
+                Container(
+                  padding:EdgeInsets.all(10.0),
+                  child:
+                      Card(
+                        child:
+                            ListTile (
+                            title: Text("Web-Adresse:") ,
+                            subtitle: Text("https://www.figma.com/proto/6gqEgzGl8CyR9CjCn1NpWE/Untitled?node-id=30%3A20&scaling=min-zoom "),
+    )
+                ))
+              ]))])])
     );
   }
 }

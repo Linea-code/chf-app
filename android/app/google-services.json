@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "372622564954",
+    "firebase_url": "https://chf-app-be167.firebaseio.com",
+    "project_id": "chf-app-be167",
+    "storage_bucket": "chf-app-be167.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372622564954:android:08196a53352a5810be4263",
+        "android_client_info": {
+          "package_name": "com.example.herzinsuffizienz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372622564954-htgnhait6c8f9e13vlcr9831t0hsd0o7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChMPug6jNDYNYf0XHc52GxfBVhSstVmyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372622564954-htgnhait6c8f9e13vlcr9831t0hsd0o7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

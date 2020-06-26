@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
+import 'package:herzinsuffizienz/medication/saveMedications.dart';
 
 class Medication extends StatefulWidget {
   @override
@@ -17,13 +18,12 @@ class _MedicationState extends State<Medication> {
   var medNight = ["1 Tabl. Diphonhydamic-HC (50 mg)"];
 
   List<Widget> list = new List<Widget>();
-// Anlage der Boolschen Variablen für das Abhacken der Medikationseinnahme -> Initialisierung mit false
-  bool checkMorning = false;
-  bool checkDay = false;
-  bool checkEavening = false;
-  bool checkNight = false;
 
   final String _title="Medikation";
+
+  // Anlage der Boolschen Variablen für das Abhacken der Medikationseinnahme -> Initialisierung mit false
+
+  final saveMedications = SaveMedications();
 
   @override
   Widget build(BuildContext context) {
@@ -60,63 +60,63 @@ class _MedicationState extends State<Medication> {
           //Übergabe der Beispiellisten von oben (Medikamentname und Dosirung sowie Einnahmeform) indem eigene Methode (siehe unten) aufgerufen wird
           // Bei Klick auf Box verändert wird der jeweilige Check-Wert auf true verändert und ein Hacken erscheint
           Card(
-              color: checkMorning ? Colors.grey[200] : Colors.white,
+              color: saveMedications.checkMorning ? Colors.grey[200] : Colors.white,
           child:
                 CheckboxListTile(
                   title: Text("Morgens"),
                   subtitle: getText(medMorning),
                   activeColor: Colors.lightGreen[500],
-                  value: checkMorning,
+                  value: saveMedications.checkMorning,
                   onChanged: (bool value){
                     setState(() {
-                      checkMorning = value;
+                      saveMedications.checkMorning = value;
                     });
                   },
                 )
             ),
           Card(
-            color: checkDay ? Colors.grey[200] : Colors.white,
+            color: saveMedications.checkDay ? Colors.grey[200] : Colors.white,
               child:
               CheckboxListTile(
                 title: Text("Mittags"),
                 subtitle: getText(medDay),
                 activeColor: Colors.lightGreen[500],
-                value: checkDay,
+                value: saveMedications.checkDay,
                 onChanged: (bool value){
                   setState(() {
-                    checkDay = value;
+                    saveMedications.checkDay = value;
                   });
                 },
               ),
 
           ),
           Card(
-            color: checkEavening ? Colors.grey[200] : Colors.white,
+            color: saveMedications.checkEavening ? Colors.grey[200] : Colors.white,
             child:
             CheckboxListTile(
               title: Text("Abends"),
               subtitle: getText(medEavening),
-              value: checkEavening,
+              value: saveMedications.checkEavening,
               activeColor: Colors.lightGreen[500],
               onChanged: (bool value){
                 setState(() {
-                  checkEavening = value;
+                  saveMedications.checkEavening = value;
                 });
               },
             ),
 
           ),
           Card(
-            color: checkNight ? Colors.grey[200] : Colors.white,
+            color: saveMedications.checkNight ? Colors.grey[200] : Colors.white,
             child:
             CheckboxListTile(
               title: Text("Nachts"),
               subtitle: getText(medNight),
               activeColor: Colors.lightGreen[500],
-              value: checkNight,
+              value: saveMedications.checkNight,
               onChanged: (bool value){
                 setState(() {
-                  checkNight = value;
+                  saveMedications.checkNight = value;
                 });
               },
             ),
