@@ -3,16 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:herzinsuffizienz/onboarding/createprofile.dart';
 import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  @override
+  _ProfileState createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+
   //Ermöglichung der Übertragung der Daten aus CreateProfile in die Profilansicht
-  final NewProfile newprofile;
-  Profile({this.newprofile});
+ var profile;
+
+  void loadProfile () async{
+    profile = await NewProfile.loadData();
+    setState(() {});
+  }
+  @override
+  void initState() {
+    super.initState();
+    loadProfile();
+  }
+
+
+
   final String _title = "Profil: ";
   @override
   Widget build(BuildContext context) {
-    return Scaffold( //FAQ-Knopf unten rechts
+    return profile != null ? Scaffold( //FAQ-Knopf unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
           child:
@@ -22,13 +41,13 @@ class Profile extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
         title: Text(
-          _title + newprofile.firstName + " "+ newprofile.secondName,
+          _title + profile.firstName + " "+ profile.secondName,
           style: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w800,
             fontFamily: "Arial",
           ),
-        ),
+        ) ,
         backgroundColor: Colors.lightGreen[500],
       ),
       body: ListView(
@@ -51,8 +70,8 @@ class Profile extends StatelessWidget {
           ),
           //Liste mit einzelnen Angaben, welche in CreateProfile getätigt wurden
           ListTile(
-                  title: Text(
-                    "Vorname: ${newprofile.firstName} ",
+                  title:  Text(
+                    "Vorname: ${profile.firstName} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -62,7 +81,7 @@ class Profile extends StatelessWidget {
                 ),
           ListTile(
                   title: Text(
-                    "Nachname: ${newprofile.secondName}",
+                    "Nachname: ${profile.secondName}",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -72,7 +91,16 @@ class Profile extends StatelessWidget {
                 ),
           ListTile(
                   title: Text(
-                    "Geschlecht: ${newprofile.gender} ",
+                    "Geschlecht: ${profile.gender} ",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: "Arial",
+                      color: Colors.black54,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text("Geburtsdatum: ${profile.birthdate.day}.${profile.birthdate.month}.${profile.birthdate.year} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -82,7 +110,7 @@ class Profile extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    "Geburtsdatum: ${newprofile.birthdate.day}.${newprofile.birthdate.month}.${newprofile.birthdate.year} ",
+                    "Lebensumstände: ${profile.livingConditions} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -92,7 +120,7 @@ class Profile extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    "Lebensumstände: ${newprofile.livingConditions} ",
+                    "Anzahl der Krankenhausaufenthalte: ${profile.hospitalization} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -102,17 +130,7 @@ class Profile extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    "Anzahl der Krankenhausaufenthalte: ${newprofile.hospitalization} ",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    "Begleiterkrankungen/Komorbiditäten: ${newprofile.comorbidities} ",
+                    "Begleiterkrankungen/Komorbiditäten: ${profile.comorbidities} ",
                     style: TextStyle(
                       fontSize: 16.0,
                       fontFamily: "Arial",
@@ -140,6 +158,6 @@ class Profile extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ) : Scaffold( body: SpinKitPumpingHeart(color: Colors.red[300]));
   }
 }

@@ -37,6 +37,7 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   qr_flutter: ^3.2.0
   firebase_messaging: ^6.0.16
+  shared_preferences: ^0.5.7+3
 
 
 

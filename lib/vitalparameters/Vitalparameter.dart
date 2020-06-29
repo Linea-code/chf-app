@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
+import 'package:herzinsuffizienz/vitalparameters/activeEnergy.dart';
 import 'package:herzinsuffizienz/vitalparameters/bodyfat.dart';
 import 'package:herzinsuffizienz/vitalparameters/bpm.dart';
 import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
@@ -98,6 +99,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           case "BODY_MASS_INDEX":
             {
               bmi.add(point.value);
+              print(bmi);
             }
             break;
           case "BODY_FAT_PERCENTAGE":
@@ -230,6 +232,55 @@ class _VitalparameterState extends State<Vitalparameter> {
                 splashColor: Colors.lightGreen[100],
                 onTap: () {
                   Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Steps()));
+                },
+                child: Card(
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      title: Text('Schritte'),
+                      subtitle: Text("letzte Messung: " +
+                          (steps.isEmpty ? " " : steps.last.round().toString())),
+                    ),
+                    steps.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        : CreateSparkline(data: steps),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ActiveEnergy()));
+                },
+                child: Card(
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Aktivitätskalorien'),
+                      subtitle: Text("letzte Messung: " +
+                          (activeEnergy.isEmpty
+                              ? " "
+                              : activeEnergy.last.round().toString())),
+                    ),
+                    activeEnergy.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        : CreateSparkline(
+                      data: activeEnergy,
+                    ),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Bodyfat()));
                 },
                 child: Card(
@@ -250,28 +301,6 @@ class _VitalparameterState extends State<Vitalparameter> {
                         : CreateSparkline(
                       data: bodyFat,
                     ),
-                  ]),
-                ),
-              ),
-              InkWell(
-                splashColor: Colors.lightGreen[100],
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Steps()));
-                },
-                child: Card(
-                  shadowColor: Colors.grey,
-                  child: Column(children: <Widget>[
-                    ListTile(
-                      title: Text('Schritte'),
-                      subtitle: Text("letzte Messung: " +
-                          (steps.isEmpty ? " " : steps.last.round().toString())),
-                    ),
-                    steps.isEmpty
-                        ? Container(
-                        padding: EdgeInsets.only(bottom: 15.0),
-                        child: SpinKitPumpingHeart(color: Colors.red[300]))
-                        : CreateSparkline(data: steps),
                   ]),
                 ),
               ),

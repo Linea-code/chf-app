@@ -38,7 +38,6 @@ class _StepsState extends State<Steps> {
               startDate, endDate, HealthDataType.STEPS);
           for (HealthDataPoint point in data) {
             steps.add(new Datapoints(point.dateFrom, point.value.toDouble()));
-            avrSteps += point.value;
           }
         } catch (exception) {
           print(exception.toString());
@@ -46,13 +45,31 @@ class _StepsState extends State<Steps> {
       } else {
         print("Keine Authorisierung vorliegend");
       }
+      steps= steps.map((datapoint) =>
+         new Datapoints(new DateTime.utc(datapoint.getDate().year, datapoint.getDate().month ,datapoint.getDate().day).millisecondsSinceEpoch, datapoint.getValue())).toList();
+
       setState(() {});
+
+      DateTime currentDate;
+      var stepsPerDay = List<Datapoints>();
+      for (Datapoints point in steps) {
+        if(currentDate == null || point.getDate() != currentDate) {
+          stepsPerDay.add(new Datapoints(point.getDate().millisecondsSinceEpoch, point.getValue()));
+          currentDate = point.getDate();
+        }
+        else {
+stepsPerDay.last = new Datapoints(currentDate.millisecondsSinceEpoch, stepsPerDay.last.getValue()+point.getValue());
+        }
+      }
+print('hallo');
+      stepsPerDay.forEach((element) => {print (element.getDate().toString() + " - " + element.getValue().toString()) });
+
       avrSteps = avrSteps / steps.length; //Durchschnitt berechnen
 
-      //DAtenserie anlegen um später dem Diagramm zu übergeben
+      //Datenserie anlegen um später dem Diagramm zu übergeben
       _seriesData.add(
         charts.Series(
-          data: steps,
+          data: stepsPerDay,
           domainFn: (Datapoints datapoints, _) => datapoints.getDate(),
           measureFn: (Datapoints datapoints, _) => datapoints.getValue(),
           id: 'Schritte',

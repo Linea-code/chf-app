@@ -24,6 +24,7 @@ class Access extends StatelessWidget {
       ),
       body: Column(children: <Widget>[
         Container(
+          padding: EdgeInsets.all(10.0),
           child: Text(
             'Auf welche Daten darf die Herzinsuffizienz-App zugreifen? Natürlich werden alle persönlichen Daten vertraulich behandelt und nur in Kooperation mit dem behandelnden Arzt verwendet!',
             style: TextStyle(

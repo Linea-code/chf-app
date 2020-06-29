@@ -14,7 +14,8 @@ class _CreateProfileState extends State<CreateProfile> {
 
   SingingCharacter _gender; //Variable für Geschlecht anlegen
   final formKey = GlobalKey<FormState>();
- final newProfile = NewProfile(); // neues Proofil anlegen
+  final newProfile = new NewProfile(); // neues Profil anlegen
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -215,7 +216,8 @@ class _CreateProfileState extends State<CreateProfile> {
         (_gender != null) &&
         (newProfile.birthdate != DateTime.now())) {
       formKey.currentState.save();
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home(newprofile: newProfile,)));
+      newProfile.saveData();
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     }
   }
 }

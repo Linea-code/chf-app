@@ -3,29 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:herzinsuffizienz/connectioncode/connectioncode.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
+import 'package:herzinsuffizienz/home/daysUntil.dart';
 import 'package:herzinsuffizienz/medication/medication.dart';
-import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 import 'package:herzinsuffizienz/profile/profile.dart';
 import 'package:herzinsuffizienz/settings/Settings.dart';
 import 'package:herzinsuffizienz/symptoms/symptoms.dart';
 import 'package:herzinsuffizienz/vitalparameters/Vitalparameter.dart';
 
-
 class Home extends StatelessWidget {
-  final NewProfile newprofile;
-  Home({this.newprofile});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //Button unten rechts zum FAQ -> bleibt beim scrollen
-     floatingActionButton: FloatingActionButton(
-       backgroundColor: Colors.lightGreen[500],
-          child:
-          Text("?",style: TextStyle(fontSize: 50,),),
-          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
-      ),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightGreen[500],
+          child: Text(
+            "?",
+            style: TextStyle(
+              fontSize: 50,
+            ),
+          ),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => FAQ()));
+          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      appBar: AppBar( //Kopfzeile mit Titel
+      appBar: AppBar(
+        //Kopfzeile mit Titel
         title: Text(
           'Übersicht',
           style: TextStyle(
@@ -35,141 +39,178 @@ class Home extends StatelessWidget {
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
-      body:Container(
-        padding: EdgeInsets.all(10.0), //Seitenrand von 10 festgelegt
+      body: Container(
+          padding: EdgeInsets.all(10.0), //Seitenrand von 10 festgelegt
           child: ListView(children: <Widget>[
-        SizedBox(height: 10.0,), //Abstandshalter
+            SizedBox(
+              height: 10.0,
+            ), //Abstandshalter
 
             // Verschiedene Karten mit den jeweiligen Infos/Erinnerungen und eingeleitet durch ein entsprechendes Icon
             //Aufteilung jeweils so, dass 1/4 der Siete Icon und 3/4 der Seite Karte mit Text sind
-
-        Card(child:
-        Row(
-          children:<Widget>[
-            Expanded(
-              flex: 1,
-              child: Icon(Icons.add_alert,
-              size: 60,
-              color: Colors.grey,),
-            ),
-          Expanded(
-            flex: 3,
-            child: Card(
-      child: Container(
-          height: 100,
-          decoration: BoxDecoration( //jeweils Farbverlauf im Hintergrund der Karten
-           gradient: LinearGradient(
-             begin: Alignment.topLeft,
-             end: Alignment.bottomRight,
-             colors: [Colors.lightGreen[50], Colors.lightGreen[100]]
-            ),
-          ),
-          child: InkWell(
-            splashColor: Colors.lightGreen[100],
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Symptoms())); //Durch Klick auf Karte wechsel zu Symptomen
-            },
-          child:
-          Center(
-            child: ListTile(
-            title: Text('Medikationseinnahme'),
-            subtitle: Text('Sie müssen heute noch Ihre Mediakmente einnehmen!'),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Medication())); //Durch Klick auf Karte wechsel zu Medikation
-            },
-          ),)
-        ),
-      ),
-        ),)]),),
-        SizedBox(height: 10.0,), //Abstandshalter
-        Card(child:
-        Row (
-          children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Icon(Icons.assignment,
-                size: 60.0,
-                color: Colors.grey,),
-            ),
-            Expanded(
-              flex: 3,
-              child:
-          Card(
-          child: Container(
-            height: 100,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Colors.lightGreen[50], Colors.lightGreen[100]]
-              ),
-            ),
-            child: InkWell(
-              splashColor: Colors.lightGreen[100],
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Symptoms())); //durch Klick gelangen zu Symptomen
-              },
-            child: Center(
-              child: ListTile(
-              title: Text('Symptome'),
-              subtitle: Text(
-                  'Bitte beantworten Sie einmal alle 2 Wochen die Symptom-Fragebögen!'),
-            ),)
-            ),
-          ),
-        ),),
-           ]),),
-        SizedBox(height: 10.0,),
-        Card(child:
-        GestureDetector(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Vitalparameter())); // durch Klick gelangen auf Vitalparameter
-          },
-          child:Row(
-    children:<Widget>[
-      Expanded(
-        flex: 1,
-        child: Icon(Icons.favorite_border,
-        size: 60,
-        color: Colors.grey,)
-      ),
-          Expanded(
-            flex:3,
-          child: Card(
-            child: Container(
-              height: 100,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.lightGreen[50], Colors.lightGreen[100]]
+            Card(
+              child: Row(children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Icon(
+                    Icons.add_alert,
+                    size: 60,
+                    color: Colors.grey,
+                  ),
                 ),
-              ),
-              child: InkWell(
-                splashColor: Colors.lightGreen[100],
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Symptoms()));
-                },
-                child: Center(
-                  child:   ListTile(
-                  title: Text('Vitalparameter'),
-                  subtitle: Text('Bitte messen Sie täglich Ihre Vitalparameter!'),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Vitalparameter())); //durch Klick gelangen auf Vitalparameter
-                  },
-                ),)
-              ),
+                Expanded(
+                  flex: 3,
+                  child: Card(
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        //jeweils Farbverlauf im Hintergrund der Karten
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.lightGreen[50],
+                              Colors.lightGreen[100]
+                            ]),
+                      ),
+                      child: InkWell(
+                          splashColor: Colors.lightGreen[100],
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Symptoms())); //Durch Klick auf Karte wechsel zu Symptomen
+                          },
+                          child: Center(
+                            child: ListTile(
+                              title: Text('Medikationseinnahme'),
+                              subtitle: Text(
+                                  'Sie müssen heute noch Ihre Mediakmente einnehmen!'),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Medication())); //Durch Klick auf Karte wechsel zu Medikation
+                              },
+                            ),
+                          )),
+                    ),
+                  ),
+                )
+              ]),
             ),
-          ),)])
-        ),),
-
-      ])),
+            SizedBox(
+              height: 10.0,
+            ), //Abstandshalter
+            Card(
+              child: Row(children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Icon(
+                    Icons.assignment,
+                    size: 60.0,
+                    color: Colors.grey,
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Card(
+                    child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.lightGreen[50],
+                              Colors.lightGreen[100]
+                            ]),
+                      ),
+                      child: InkWell(
+                          splashColor: Colors.lightGreen[100],
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Symptoms())); //durch Klick gelangen zu Symptomen
+                          },
+                          child: Center(
+                            child: ListTile(
+                              title: Text('Symptome'),
+                              subtitle:
+                                DaysUntil(),
+                            ),
+                          )),
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Card(
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Vitalparameter())); // durch Klick gelangen auf Vitalparameter
+                  },
+                  child: Row(children: <Widget>[
+                    Expanded(
+                        flex: 1,
+                        child: Icon(
+                          Icons.favorite_border,
+                          size: 60,
+                          color: Colors.grey,
+                        )),
+                    Expanded(
+                      flex: 3,
+                      child: Card(
+                        child: Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Colors.lightGreen[50],
+                                  Colors.lightGreen[100]
+                                ]),
+                          ),
+                          child: InkWell(
+                              splashColor: Colors.lightGreen[100],
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Symptoms()));
+                              },
+                              child: Center(
+                                child: ListTile(
+                                  title: Text('Vitalparameter'),
+                                  subtitle: Text(
+                                      'Bitte messen Sie täglich Ihre Vitalparameter!'),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                Vitalparameter())); //durch Klick gelangen auf Vitalparameter
+                                  },
+                                ),
+                              )),
+                        ),
+                      ),
+                    )
+                  ])),
+            ),
+          ])),
 
       // Drawer oben links -> Menu was geöffnet und geschlossen werden kann und eine Übersicht über alle Funktionen inklusive der entsprechenden Navigation gefunden werden kann
 
@@ -195,8 +236,11 @@ class Home extends StatelessWidget {
               style: TextStyle(fontSize: 16.0),
             ),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Vitalparameter()));  // Wechsel zu Vitalparameter
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Vitalparameter())); // Wechsel zu Vitalparameter
             },
           ),
           ListTile(
@@ -207,7 +251,9 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Symptoms())); //wechsel zu Symptome
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Symptoms())); //wechsel zu Symptome
             },
           ),
           ListTile(
@@ -217,8 +263,11 @@ class Home extends StatelessWidget {
               style: TextStyle(fontSize: 16.0),
             ),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Medication())); // wechsel zu Medikation
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Medication())); // wechsel zu Medikation
             },
           ),
           ListTile(
@@ -228,8 +277,11 @@ class Home extends StatelessWidget {
               style: TextStyle(fontSize: 16.0),
             ),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ConnectionCode())); // Wechsel zu Visitencode
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ConnectionCode())); // Wechsel zu Visitencode
             },
           ),
           ListTile(
@@ -242,7 +294,7 @@ class Home extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Profile(newprofile: newprofile))); // wechsel zu Profil und Übergabe der eingegebenen Werte auf onboarding Seite
+                      builder: (context) => Profile())); // wechsel zu Profil und Übergabe der eingegebenen Werte auf onboarding Seite
             },
           ),
           ListTile(
@@ -253,7 +305,9 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => FAQ())); // wechsel zu FAQ
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FAQ())); // wechsel zu FAQ
             },
           ),
           ListTile(
@@ -264,14 +318,14 @@ class Home extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Settings())); // wechsel zu Einstellungen
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Settings())); // wechsel zu Einstellungen
             },
           )
         ]),
       ),
     );
   }
-
 }
-
-
