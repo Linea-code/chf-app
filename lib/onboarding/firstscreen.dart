@@ -22,7 +22,7 @@ class Start extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(15.0),
               child: Text( //kurzer Willkommenstext
-                "Herzlich Willkommen in Ihrer Herzinsuffizienz-App! \nDiese App wird Sie im Alltag unterstützen mit Ihrer chronischen Herzinsuffizienz umzugehen! Diese Dinge können in Zukunft für Sie übernehmen werden: ",
+                "Herzlich Willkommen in Ihrer Herzinsuffizienz-App! \nDiese App wird Sie im Alltag unterstützen mit Ihrer chronischen Herzinsuffizienz umzugehen!\n\nFolgendes kann in Zukunft von der App übernommen werden: ",
                 style: TextStyle(
                   fontFamily: "Arial",
                   fontSize: 16.0,
@@ -37,7 +37,7 @@ class Start extends StatelessWidget {
               children: <Widget>[
                 new ListTile(
                   leading: Icon(Icons.check),
-                  title: new Text("Speicherung von Gesundheitsdaten",
+                  title: new Text("Visualisierung und Speicherung von Gesundheitsdaten",
                     style: TextStyle(
                       fontFamily: "Arial",
                       fontSize: 16.0,
@@ -46,7 +46,7 @@ class Start extends StatelessWidget {
                 ),
                 new ListTile(
                   leading: Icon(Icons.check),
-                  title: new Text("Auswertung von Gesundheitsdaten gemeinsam mit deinem Arzt",
+                  title: new Text("Auswertung von Gesundheitsdaten gemeinsam mit Ihrem Arzt",
                     style: TextStyle(
                       fontFamily: "Arial",
                       fontSize: 16.0,
@@ -73,6 +73,7 @@ class Start extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(height: 30,),
             Container(
               child: RaisedButton( //Knopf um auf nächste Seite zu gelangen
                 child: Text('Alles klar!'),

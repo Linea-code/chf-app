@@ -34,19 +34,15 @@ class _ProfileState extends State<Profile> {
     return profile != null ? Scaffold( //FAQ-Knopf unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
+          tooltip:'Increment',
           child:
-          Text("?",style: TextStyle(fontSize: 50,),),
+          Icon(Icons.help_outline,size: 50,),
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
         title: Text(
-          _title + profile.firstName + " "+ profile.secondName,
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-            fontFamily: "Arial",
-          ),
+          _title + profile.firstName + " "+ profile.secondName
         ) ,
         backgroundColor: Colors.lightGreen[500],
       ),
@@ -71,83 +67,43 @@ class _ProfileState extends State<Profile> {
           //Liste mit einzelnen Angaben, welche in CreateProfile getätigt wurden
           ListTile(
                   title:  Text(
-                    "Vorname: ${profile.firstName} ",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
+                    "Vorname: ${profile.firstName} "
                   ),
                 ),
           ListTile(
                   title: Text(
-                    "Nachname: ${profile.secondName}",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
+                    "Nachname: ${profile.secondName}"
                   ),
                 ),
           ListTile(
                   title: Text(
-                    "Geschlecht: ${profile.gender} ",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
+                    "Geschlecht: ${profile.gender} "
                   ),
                 ),
                 ListTile(
-                  title: Text("Geburtsdatum: ${profile.birthdate.day}.${profile.birthdate.month}.${profile.birthdate.year} ",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
+                  title: Text("Geburtsdatum: ${profile.birthdate.day}.${profile.birthdate.month}.${profile.birthdate.year} "
                   ),
                 ),
                 ListTile(
                   title: Text(
-                    "Lebensumstände: ${profile.livingConditions} ",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
+                    "Lebensumstände: ${profile.livingConditions} "
                   ),
                 ),
                 ListTile(
                   title: Text(
-                    "Anzahl der Krankenhausaufenthalte: ${profile.hospitalization} ",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
+                    "Anzahl der Krankenhausaufenthalte: ${profile.hospitalization} "
                   ),
                 ),
                 ListTile(
                   title: Text(
-                    "Begleiterkrankungen/Komorbiditäten: ${profile.comorbidities} ",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: "Arial",
-                      color: Colors.black54,
-                    ),
+                    "Begleiterkrankungen/Komorbiditäten: ${profile.comorbidities} "
                   ),
                 ),
           Container(
+            padding: EdgeInsets.all(30),
             //Knopf zum bearbeiten/neu Eingeben des Profils
             child: RaisedButton(
-              color: Colors.black54,
-              child: Text("Bearbeiten",
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontFamily: "Arial",
-                  color: Colors.white,
-                ),),
+              child: Text("Bearbeiten", style: Theme.of(context).textTheme.headline3),
               onPressed: () {
                 Navigator.push(
                   context,

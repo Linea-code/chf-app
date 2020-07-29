@@ -68,18 +68,15 @@ class _WeightState extends State<Weight> {
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
+          tooltip:'Increment',
           child:
-          Text("?",style: TextStyle(fontSize: 50,),),
+          Icon(Icons.help_outline,size: 50,),
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
-          'Gewicht - Übersicht',
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-          ),
+          'Gewicht',
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
@@ -127,18 +124,12 @@ class _WeightState extends State<Weight> {
                 title: Text(
                   ("Durchschnittliches Gewicht des letzten Monats: " +
                       (avrWeight.toStringAsFixed(2))),
-                  style: TextStyle(
-                    fontSize: 18.0,
-                  ),
                 ),
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(10.0),
                     child: Text(
                       "Ihr durchschnittliches Gewicht setzt sich aus allen Messwerten des vergangen Monats zusammen. Sollten Sie starke Gewichtsveränderungen feststellen kontaktieren Sie bitte Ihren Arzt.",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                      ),
                     ),
                   ),
                 ],

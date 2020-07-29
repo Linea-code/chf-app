@@ -32,9 +32,6 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
       return new Scaffold(
         appBar: AppBar(
           title: Text("Symptomfragebogen",
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.w800,),
           ),
           backgroundColor: Colors.lightGreen[500],
         ),
@@ -63,6 +60,23 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
             )
                 : Expanded(
               child: Stepper(
+                controlsBuilder: (BuildContext context, {VoidCallback onStepContinue, VoidCallback onStepCancel} ){
+                  return Row(
+                    children: <Widget>[
+                      RaisedButton(
+                        color: Colors.lightGreen[400],
+                        child: Text("Weiter"),
+                        onPressed: onStepContinue,
+                      ),
+                      SizedBox(width: 10,),
+                      RaisedButton(
+                        color: Colors.grey[100],
+                        child: Text("Zurück"),
+                        onPressed: onStepCancel,
+                      )
+                    ],
+                  );
+                },
                 type: StepperType.vertical,
                 steps: _mySteps(),
                 currentStep: this.currentStep,

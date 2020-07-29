@@ -41,8 +41,9 @@ class _MedicationState extends State<Medication> {
       //FAQ Button -> bewegt sich bei scrollen mit
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
+          tooltip:'Increment',
           child:
-          Text("?",style: TextStyle(fontSize: 50,),),
+          Icon(Icons.help_outline,size: 50,),
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

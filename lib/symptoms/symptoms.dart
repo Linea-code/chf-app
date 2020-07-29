@@ -13,17 +13,14 @@ class Symptoms extends StatelessWidget {
       //FAQ-Knopf unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
+          tooltip:'Increment',
           child:
-          Text("?",style: TextStyle(fontSize: 50,),),
+         Icon(Icons.help_outline,size: 50,),
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel
         title: Text(_title,
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-          ),
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
@@ -35,7 +32,7 @@ class Symptoms extends StatelessWidget {
                 height: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
+                    colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
                     image: AssetImage('assets/Neuseeland_Panorama.JPG'), //Hintergrundbild aus Assets
                     fit: BoxFit.fitHeight,
                     alignment: Alignment.topCenter,
@@ -58,8 +55,6 @@ class Symptoms extends StatelessWidget {
                       ),),
                     subtitle: Text("Bitte machen Sie in diesem Fragebogen einmal alle 2 Wochen Angaben zu Ihren Symptomen!",
                       style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.0,
                         color: Colors.black,
                       ),),
                   ),
@@ -71,7 +66,7 @@ class Symptoms extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
+                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
                   image: AssetImage('assets/Neuseeland_Steine.png'), //Hintergundbild aus Assets
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.topCenter,
@@ -86,23 +81,12 @@ class Symptoms extends StatelessWidget {
               child:
               ListTile(
               title: Text("Fragebogen: Gesundheit",
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontFamily: "Roboto",
-                  fontSize: 22.0,
-                ),),
+                ),
               subtitle: Text("Bitte machen Sie in diesem Fragebogen einmal alle 2 Wochen Angaben zu Ihrer psychischen Gesundheit!",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Roboto",
-                  fontSize: 16.0,
-                  color: Colors.black,
-                ),),
-            ),
-            ),
+              style: TextStyle(color: Colors.black),),
             )
           ),
-
+            ),)
           ]
       ),
     );

@@ -16,13 +16,10 @@ class Home extends StatelessWidget {
     return Scaffold(
       //Button unten rechts zum FAQ -> bleibt beim scrollen
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
-          child: Text(
-            "?",
-            style: TextStyle(
-              fontSize: 50,
-            ),
-          ),
+          backgroundColor: Colors.lightGreen[400],
+          tooltip:'Increment',
+          child:
+          Icon(Icons.help_outline,size: 50,),
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => FAQ()));
@@ -32,12 +29,9 @@ class Home extends StatelessWidget {
         //Kopfzeile mit Titel
         title: Text(
           'Übersicht',
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-          ),
+          style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[500],
+        backgroundColor: Colors.lightGreen[400],
       ),
       body: Container(
           padding: EdgeInsets.all(10.0), //Seitenrand von 10 festgelegt
@@ -84,9 +78,9 @@ class Home extends StatelessWidget {
                           },
                           child: Center(
                             child: ListTile(
-                              title: Text('Medikationseinnahme'),
+                              title: Text('Medikation'),
                               subtitle: Text(
-                                  'Sie müssen heute noch Ihre Mediakmente einnehmen!'),
+                                  'Sie müssen noch Ihre Medikamente einnehmen!'),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -230,10 +224,9 @@ class Home extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.favorite),
+            leading: Icon(Icons.favorite, size: 35,),
             title: Text(
-              'Vitalparameter',
-              style: TextStyle(fontSize: 16.0),
+              'Vitalparameter', style: Theme.of(context).textTheme.headline4,
             ),
             onTap: () {
               Navigator.push(
@@ -244,10 +237,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.tag_faces),
+            leading: Icon(Icons.tag_faces, size: 35,),
             title: Text(
               'Symptome',
-              style: TextStyle(fontSize: 16.0),
+              style: Theme.of(context).textTheme.headline4,
             ),
             onTap: () {
               Navigator.push(
@@ -257,10 +250,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.local_hospital),
+            leading: Icon(Icons.local_hospital, size: 35,),
             title: Text(
               'Medikamente',
-              style: TextStyle(fontSize: 16.0),
+              style: Theme.of(context).textTheme.headline4,
             ),
             onTap: () {
               Navigator.push(
@@ -271,10 +264,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.share),
+            leading: Icon(Icons.share, size: 35,),
             title: Text(
               'Visitencode',
-              style: TextStyle(fontSize: 16.0),
+              style: Theme.of(context).textTheme.headline4,
             ),
             onTap: () {
               Navigator.push(
@@ -285,10 +278,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.person),
+            leading: Icon(Icons.person, size: 35,),
             title: Text(
               'Profil',
-              style: TextStyle(fontSize: 16.0),
+              style: Theme.of(context).textTheme.headline4,
             ),
             onTap: () {
               Navigator.push(
@@ -298,10 +291,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.help_outline),
+            leading: Icon(Icons.help_outline, size: 35,),
             title: Text(
-              'Häufig gestellte Fragen',
-              style: TextStyle(fontSize: 16.0),
+              'Häufige Fragen',
+              style: Theme.of(context).textTheme.headline4,
             ),
             onTap: () {
               Navigator.push(
@@ -311,10 +304,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
+            leading: Icon(Icons.settings, size: 35,),
             title: Text(
               'Einstellungen',
-              style: TextStyle(fontSize: 16.0),
+              style: Theme.of(context).textTheme.headline4,
             ),
             onTap: () {
               Navigator.push(

@@ -68,18 +68,15 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
     return Scaffold( //FAQ-Button unten rechts
         floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.lightGreen[500],
+            tooltip:'Increment',
             child:
-            Text("?",style: TextStyle(fontSize: 50,),),
+            Icon(Icons.help_outline,size: 50,),
             onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         appBar: AppBar( //Kopfzeile mit Titel
           title: Text(
-            'Aktivitätskalorien - Übersicht',
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.w800,
-            ),
+            'Aktivitätskalorien'
           ),
           backgroundColor: Colors.lightGreen[500],
         ),
@@ -122,19 +119,13 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
                     child: ExpansionTile(
                       title: Text(
                         ("Durchschnittlich verbrannte Aktivitätskalorien des letzten Monats: " +
-                            (avrEnergy.toStringAsFixed(2))),
-                        style: TextStyle(
-                          fontSize: 18.0,
-                        ),
+                            (avrEnergy.toStringAsFixed(2)))
                       ),
                       children: <Widget>[
                         Container(
                           padding: EdgeInsets.all(10.0),
                           child: Text(
-                            "Ihr durchschnittlich verbrannten Aktivitätskalorien setzten sich aus allen Messwerten des vergangen Monats zusammen.",
-                            style: TextStyle(
-                              fontSize: 16.0,
-                            ),
+                            "Ihr durchschnittlich verbrannten Aktivitätskalorien setzten sich aus allen Messwerten des vergangen Monats zusammen."
                           ),
                         ),
                       ],

@@ -12,18 +12,14 @@ class ConnectionCode extends StatelessWidget {
       // Fragezeichen unten rechts, bewegt sich bei scrollen mit
         floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.lightGreen[500],
+            tooltip:'Increment',
             child:
-            Text("?",style: TextStyle(fontSize: 50,),),
+            Icon(Icons.help_outline,size: 50,),
             onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));} //Bei Klick wechsel zu FAQ
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel
-        title: Text(_title,
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-            fontFamily: "Arial",
-          ),
+        title: Text(_title
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
@@ -33,10 +29,7 @@ class ConnectionCode extends StatelessWidget {
         children: <Widget> [
           Container(
             padding: EdgeInsets.all(10.0),
-            child: Text("Bitte zeigen Sie Ihrem behandelnden Arzt den unten stehenden QR-Code oder nennen Sie ihm die unten stehende Webadresse. Mit dem Scan des Codes erlauben Sie den Zugriff auf Ihre persönlichen Gesundheitsdaten.",
-            style: TextStyle(
-              fontSize: 18.0,
-            ),),
+            child: Text("Bitte zeigen Sie Ihrem behandelnden Arzt den unten stehenden QR-Code oder nennen Sie ihm die unten stehende Webadresse. Mit dem Scan des Codes erlauben Sie den Zugriff auf Ihre persönlichen Gesundheitsdaten."),
           ),
       Center(
           child:

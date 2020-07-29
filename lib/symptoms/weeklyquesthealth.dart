@@ -33,9 +33,6 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
       return new Scaffold(
         appBar: AppBar(
           title: Text("Gesundheitsfragebogen",
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.w800,),
           ),
           backgroundColor: Colors.lightGreen[500],
         ),
@@ -64,6 +61,23 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
             )
                 : Expanded(
               child: Stepper(
+                controlsBuilder: (BuildContext context, {VoidCallback onStepContinue, VoidCallback onStepCancel} ){
+                  return Row(
+                    children: <Widget>[
+                      RaisedButton(
+                        color: Colors.lightGreen[400],
+                        child: Text("Weiter"),
+                        onPressed: onStepContinue,
+                      ),
+                      SizedBox(width: 10,),
+                      RaisedButton(
+                        color: Colors.grey[100],
+                        child: Text("Zurück"),
+                        onPressed: onStepCancel,
+                      )
+                    ],
+                  );
+                },
                 type: StepperType.vertical,
                 steps: _mySteps(),
                 currentStep: this.currentStep,
@@ -134,7 +148,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Niedergeschlagenheit"),
+        title: Text("Schwermut"),
         isActive: currentStep > 0,
         state: (currentStep > 0) ? StepState.complete : StepState.editing,
         content: Column(
@@ -398,8 +412,6 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
           ],
         ),
       ),
-
-
 
     ];
     return steps;

@@ -19,7 +19,7 @@ class _SurveyButtonState extends State<SurveyButton> {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-        child: Text(widget.text),
+        child: Text(widget.text,style: Theme.of(context).textTheme.bodyText2,),
         color: (widget.text == widget.currentValue) ? Colors.lightGreen[400] : Colors.grey[300],
         onPressed: () {
           setState(() {

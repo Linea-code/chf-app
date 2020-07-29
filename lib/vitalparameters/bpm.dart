@@ -68,18 +68,15 @@ class _BPMState extends State<BPM> {
     return Scaffold( //FAQ-Button unten rechts
         floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.lightGreen[500],
+            tooltip:'Increment',
             child:
-            Text("?",style: TextStyle(fontSize: 50,),),
+            Icon(Icons.help_outline,size: 50,),
             onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         appBar: AppBar( //Kopfzeile mit Titel
           title: Text(
-            'Herzfrequenz - Übersicht',
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.w800,
-            ),
+            'Herzfrequenz'
           ),
           backgroundColor: Colors.lightGreen[500],
         ),
@@ -122,19 +119,13 @@ class _BPMState extends State<BPM> {
                 child: ExpansionTile(
                   title: Text(
                     ("Durchschnittliche Herzfrequenz des letzten Monats: " +
-                        (avrBpm.toStringAsFixed(2))),
-                    style: TextStyle(
-                      fontSize: 18.0,
-                    ),
+                        (avrBpm.toStringAsFixed(2)))
                   ),
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(10.0),
                       child: Text(
-                        "Ihr durchschnittliche Herzfrequenz setzt sich aus allen Messwerten des vergangen Monats zusammen.",
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),
+                        "Ihr durchschnittliche Herzfrequenz setzt sich aus allen Messwerten des vergangen Monats zusammen."
                       ),
                     ),
                   ],
@@ -142,19 +133,13 @@ class _BPMState extends State<BPM> {
             Card(
                 child: ExpansionTile(
                   title: Text(
-                    ("Was sagt die Herzfrequenz aus?"),
-                    style: TextStyle(
-                      fontSize: 18.0,
-                    ),
+                    ("Was sagt die Herzfrequenz aus?")
                   ),
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(10.0),
                       child: Text(
-                        "Die Herzfrequenz gibt die Anzahl der Herzschläge pro Minute an. Eine Herzfrequenz von 60 BPM bedeutet demnach, dass das Herz in einer Minute 60 mal schlägt. ",
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),
+                        "Die Herzfrequenz gibt die Anzahl der Herzschläge pro Minute an. Eine Herzfrequenz von 60 BPM bedeutet demnach, dass das Herz in einer Minute 60 mal schlägt. "
                       ),
                     ),
                   ],
@@ -162,20 +147,14 @@ class _BPMState extends State<BPM> {
             Card(
                 child: ExpansionTile(
                   title: Text(
-                    ("Eine gesunde Herzfrequenz liegt bei ca. 50 bis 100 BPM."),
-                    style: TextStyle(
-                      fontSize: 18.0,
-                    ),
+                    ("Eine gesunde Herzfrequenz liegt bei ca. 50 bis 100 BPM.")
                   ),
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(10.0),
                       child: Text(
                         "Wie hoch genau eine gesunde Herzfrequenz ist, hängt von vielen Faktoren ab. Beispielsweise das Alter, Geschlecht und die körperlicge Fitness wirken sich stark auf die Herzfequenz aus."
-                            "So liegt bei einem Neugeborenen die gesunde Herzfrequenz deutlich höher, bei rund 120 BPM, wohingegen ein junger, männlicher Athlet eine Herzfrequenz von rund 55 BPM hat.",
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),
+                            "So liegt bei einem Neugeborenen die gesunde Herzfrequenz deutlich höher, bei rund 120 BPM, wohingegen ein junger, männlicher Athlet eine Herzfrequenz von rund 55 BPM hat."
                       ),
                     ),
                   ],

@@ -70,19 +70,16 @@ class _BodyfatState extends State<Bodyfat> {
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
+          tooltip:'Increment',
           child:
-          Text("?",style: TextStyle(fontSize: 50,),),
+          Icon(Icons.help_outline,size: 50,),
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         //Kopfzeile mit Titel
         title: Text(
-          'Körperfett - Übersicht',
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-          ),
+          'Körperfett'
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
@@ -126,19 +123,13 @@ class _BodyfatState extends State<Bodyfat> {
                   child: ExpansionTile(
                     title: Text(
                       ("Durchschnittlicher Körperfettanteil des letzten Monats: " +
-                          (avrBodyfat.toStringAsFixed(2))),
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
+                          (avrBodyfat.toStringAsFixed(2)))
                     ),
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
-                          "Ihr durchschnittlicher Körperfettanteil setzt sich aus allen Messwerten des vergangen Monats zusammen.",
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
+                          "Ihr durchschnittlicher Körperfettanteil setzt sich aus allen Messwerten des vergangen Monats zusammen."
                         ),
                       ),
                     ],
@@ -146,19 +137,13 @@ class _BodyfatState extends State<Bodyfat> {
               Card(
                   child: ExpansionTile(
                     title: Text(
-                      ("Was sagt der Körperfettanteil aus?"),
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
+                      ("Was sagt der Körperfettanteil aus?")
                     ),
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
-                          "Der Körperfettanteil beschreibt wie hoch der Fettanteil des Körpers im Verhältnis zum gesamten Körpergewicht ist. EIn Fettanteil von 25 % sagt somit aus, dass 20 % des Körpergewichtes aus angelagertem Fett bestehen.",
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
+                          "Der Körperfettanteil beschreibt wie hoch der Fettanteil des Körpers im Verhältnis zum gesamten Körpergewicht ist. EIn Fettanteil von 25 % sagt somit aus, dass 20 % des Körpergewichtes aus angelagertem Fett bestehen."
                         ),
                       ),
                     ],
@@ -166,10 +151,7 @@ class _BodyfatState extends State<Bodyfat> {
               Card(
                   child: ExpansionTile(
                     title: Text(
-                      ("Normalbereiche des Körperfettanteils:"),
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
+                      ("Normalbereiche des Körperfettanteils:")
                     ),
                     children: <Widget>[
                       Container(
@@ -177,10 +159,7 @@ class _BodyfatState extends State<Bodyfat> {
                         child: Text(
                           "Wie hoch ein normaler/gesunder Körperfettanteil ist, hängt von verschiedenen Faktoren ab. Vor allem das Alter und das Geschlecht spielen hier eine wichtige Rolle."
                               "Im allgemeinen gilt, dass ein Frauen einen höheren Körperfettanteil als Männer haben sollten. Die Normalwerte schwanken je nach Alter zwischen 21 und 36 %."
-                              "Bei Männern schwanken die Richtwerte für einen gesunden Körperfettanteil je nach ALter zwischen 8 und 25 %.",
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
+                              "Bei Männern schwanken die Richtwerte für einen gesunden Körperfettanteil je nach ALter zwischen 8 und 25 %."
                         ),
                       ),
                     ],

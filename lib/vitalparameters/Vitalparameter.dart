@@ -153,19 +153,15 @@ class _VitalparameterState extends State<Vitalparameter> {
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
+          tooltip:'Increment',
           child:
-          Text("?",style: TextStyle(fontSize: 50,),),
+          Icon(Icons.help_outline,size: 50,),
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel
         title: Text(
-          _title,
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-            fontFamily: "Arial",
-          ),
+          _title
         ),
         backgroundColor: Colors.lightGreen[500],
       ),

@@ -85,18 +85,15 @@ print('hallo');
       //FAQ-Button
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
+          tooltip:'Increment',
           child:
-          Text("?",style: TextStyle(fontSize: 50,),),
+          Icon(Icons.help_outline,size: 50,),
           onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Überschrift
         title: Text(
-          'Schritte - Übersicht',
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-          ),
+          'Schritte',
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
@@ -143,18 +140,12 @@ print('hallo');
                     title: Text(
                       ("Durchschnittliche Schrittzahl des letzten Monats: " +
                           (avrSteps.toStringAsFixed(2))),
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
                     ),
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(10.0),
                         child: Text(
                           "Ihre durchschnittliche Schrittzahl setzt sich aus allen Messwerten des vergangen Monats zusammen.",
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
                         ),
                       ),
                     ],
