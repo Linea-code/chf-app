@@ -165,7 +165,8 @@ class _VitalparameterState extends State<Vitalparameter> {
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
-      body:
+      body:(_bpm.isEmpty && weight.isEmpty && steps.isEmpty && activeEnergy.isEmpty && bodyFat.isEmpty) ? Center(child: Container(
+          child: SpinKitPumpingHeart(color: Colors.red[300], size: 100,))) :
       //Body der Seite: pro Vitalparameter eine Karte mit Diagramm über Werte des letzten Monats-> bei Klick auf Karte wechsel zu Detailansicht des jeweiligen Typs
       //LAden die Daten noch oder sind keine daten verfügbar wird ein Ladebildschirm angezeigt
       Container(
@@ -190,7 +191,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     _bpm.isEmpty
                         ? Container(
                         padding: EdgeInsets.only(bottom: 15.0),
-                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: _bpm,
                     ),
@@ -217,7 +218,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     weight.isEmpty
                         ? Container(
                         padding: EdgeInsets.only(bottom: 15.0),
-                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        child:SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: weight,
                     ),
@@ -241,7 +242,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     steps.isEmpty
                         ? Container(
                         padding: EdgeInsets.only(bottom: 15.0),
-                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(data: steps),
                   ]),
                 ),
@@ -266,7 +267,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     activeEnergy.isEmpty
                         ? Container(
                         padding: EdgeInsets.only(bottom: 15.0),
-                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: activeEnergy,
                     ),
@@ -292,8 +293,8 @@ class _VitalparameterState extends State<Vitalparameter> {
                     ),
                     bodyFat.isEmpty
                         ? Container(
-                        padding: EdgeInsets.only(bottom: 15.0),
-                        child: SpinKitPumpingHeart(color: Colors.red[300]))
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: bodyFat,
                     ),

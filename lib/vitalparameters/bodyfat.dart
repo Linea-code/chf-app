@@ -90,9 +90,8 @@ class _BodyfatState extends State<Bodyfat> {
             children: <Widget>[ //Ldebildschirm (Herz) bei keinen Daten und bei warten auf Daten
               _seriesData.isEmpty
                   ? Container(
-                  child: SpinKitPumpingHeart(
-                    color: Colors.red[400],
-                  ))
+                  padding: EdgeInsets.only(top: 50, bottom: 50),
+                  child:SpinKitWave(color: Theme.of(context).accentColor))
                   : Container(
                   height: 300,
                   child: Card( //Detailierter Graph zu Daten mit spezifizierung der Achsenbeschriftungen und Farben etc.

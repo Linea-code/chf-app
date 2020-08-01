@@ -87,9 +87,8 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
                 //Ladebildschirm bei keinen Daten/leere Liste
                 _seriesData.isEmpty
                     ? Container(
-                    child: SpinKitPumpingHeart(
-                      color: Colors.red[400],
-                    ))
+                    padding: EdgeInsets.only(top: 50, bottom: 50),
+                    child:SpinKitWave(color: Theme.of(context).accentColor))
                     : Container(
                     height: 300,
                     child: Card( //Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen

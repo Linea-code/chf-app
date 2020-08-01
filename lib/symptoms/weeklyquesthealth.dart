@@ -65,12 +65,14 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
                   return Row(
                     children: <Widget>[
                       RaisedButton(
+                        padding: EdgeInsets.only(top: 15, bottom: 15, left: 40, right: 40),
                         color: Colors.lightGreen[400],
                         child: Text("Weiter"),
                         onPressed: onStepContinue,
                       ),
                       SizedBox(width: 10,),
                       RaisedButton(
+                        padding: EdgeInsets.only(top: 15, bottom: 15, left: 40, right: 40),
                         color: Colors.grey[100],
                         child: Text("Zurück"),
                         onPressed: onStepCancel,

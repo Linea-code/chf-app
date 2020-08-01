@@ -64,12 +64,14 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
                   return Row(
                     children: <Widget>[
                       RaisedButton(
+                        padding: EdgeInsets.only(top: 15, bottom: 15, left: 40, right: 40),
                         color: Colors.lightGreen[400],
                         child: Text("Weiter"),
                         onPressed: onStepContinue,
                       ),
                       SizedBox(width: 10,),
                       RaisedButton(
+                        padding: EdgeInsets.only(top: 15, bottom: 15, left: 40, right: 40),
                         color: Colors.grey[100],
                         child: Text("Zurück"),
                         onPressed: onStepCancel,
@@ -906,7 +908,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 20,
       state: (currentStep > 20) ? StepState.complete : StepState.editing,
-      title: Text('Familie und Freunde'),
+      title: Text('Familie/Freunde'),
       content: Column(
         children: <Widget>[
           Container(

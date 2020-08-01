@@ -18,16 +18,17 @@ class SurveyButton extends StatefulWidget {
 class _SurveyButtonState extends State<SurveyButton> {
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return Container(
+      padding: EdgeInsets.only(bottom: 15),
+      child:
+        RaisedButton(padding: EdgeInsets.only(top: 15, bottom: 15),
         child: Text(widget.text,style: Theme.of(context).textTheme.bodyText2,),
         color: (widget.text == widget.currentValue) ? Colors.lightGreen[400] : Colors.grey[300],
         onPressed: () {
           setState(() {
             widget.callback(widget.text, widget.currentStep);
             AppBuilder.of(context).rebuild();
-          });
-
-        }
+          });}),
     );
   }
 }
