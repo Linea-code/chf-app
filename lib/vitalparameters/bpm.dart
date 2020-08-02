@@ -114,7 +114,7 @@ class _BPMState extends State<BPM> {
                       ],
                     ))),
             //Ergänzug um Innormationsboxen-> zum auklappen
-            Card(
+            Card(color: Color(0xfff0fcfc),
                 child: ExpansionTile(
                   title: Text(
                     ("Durchschnittliche Herzfrequenz des letzten Monats: " +
@@ -130,6 +130,7 @@ class _BPMState extends State<BPM> {
                   ],
                 )),
             Card(
+                color: Color(0xfff0fcfc),
                 child: ExpansionTile(
                   title: Text(
                     ("Was sagt die Herzfrequenz aus?")
@@ -144,6 +145,7 @@ class _BPMState extends State<BPM> {
                   ],
                 )),
             Card(
+                color: Color(0xfff0fcfc),
                 child: ExpansionTile(
                   title: Text(
                     ("Eine gesunde Herzfrequenz liegt bei ca. 50 bis 100 BPM.")

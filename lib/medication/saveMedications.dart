@@ -9,6 +9,7 @@ class SaveMedications {
   bool checkEvening = false;
   bool checkNight = false;
   int lastDate;
+  String feeling;
 
   void saveData () async{
     final prefs = await SharedPreferences.getInstance();
@@ -18,6 +19,7 @@ class SaveMedications {
     prefs.setBool("checkEvening", checkEvening);
     prefs.setBool("checkNight", checkNight);
     prefs.setInt('lastDate', lastDate);
+    prefs.setString("feeling", feeling);
   }
 
   static Future<SaveMedications> loadData () async {
@@ -34,14 +36,14 @@ class SaveMedications {
         data.checkDay = prefs.getBool('checkDay');
         data.checkEvening = prefs.getBool('checkEvening');
         data.checkNight = prefs.getBool('checkNight');
+        data.feeling = prefs.getString("feeling");
       } else {
         data.checkMorning = false;
         data.checkDay = false;
         data.checkEvening = false;
         data.checkNight = false;
+        data.feeling = null;
       }
-
-
     }
     return data;
   }

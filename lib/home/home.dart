@@ -63,8 +63,8 @@ class Home extends StatelessWidget {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [
-                              Colors.lightGreen[50],
-                              Colors.lightGreen[100]
+                              Color(0xfff0fcfc),
+                              Color(0xffbed3d4),
                             ]),
                       ),
                       child: InkWell(
@@ -118,8 +118,8 @@ class Home extends StatelessWidget {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [
-                              Colors.lightGreen[50],
-                              Colors.lightGreen[100]
+                              Color(0xfffaf7e3),
+                              Color(0xffe8caa4),
                             ]),
                       ),
                       child: InkWell(
@@ -173,8 +173,8 @@ class Home extends StatelessWidget {
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [
-                                  Colors.lightGreen[50],
-                                  Colors.lightGreen[100]
+                                  Color(0xfffffad9),
+                                  Color(0xffe5d67b),
                                 ]),
                           ),
                           child: InkWell(
@@ -201,9 +201,32 @@ class Home extends StatelessWidget {
                               )),
                         ),
                       ),
-                    )
+                    ),
                   ])),
             ),
+            Card(
+              child:
+                  Container(
+                   
+                    child:
+                        Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Text("Aktueller Gesundheitsstatus:\n8/10"),
+                            ),
+                  Container(
+                    padding: EdgeInsets.all(15),
+                    height: 60,
+                    child:
+                  LinearProgressIndicator(
+                    backgroundColor: Colors.grey[300],
+              valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+              value: 0.8,),
+                  ),
+               Container(
+                 padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                 child: Text("Der Status berechnet sich basierend auf Ihren Vitalparametern und den Symptomfragebögen", style: Theme.of(context).textTheme.subtitle2,),
+               )           ])))
           ])),
 
       // Drawer oben links -> Menu was geöffnet und geschlossen werden kann und eine Übersicht über alle Funktionen inklusive der entsprechenden Navigation gefunden werden kann

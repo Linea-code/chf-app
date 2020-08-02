@@ -119,6 +119,7 @@ class _WeightState extends State<Weight> {
 
               //Ergänzende Infos in ausklappbaren Karten
               Card(
+                  color: Color(0xfffcf6ed),
                   child: ExpansionTile(
                 title: Text(
                   ("Durchschnittliches Gewicht des letzten Monats: " +

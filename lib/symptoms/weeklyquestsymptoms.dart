@@ -132,23 +132,23 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem eingeschränkt',callback: callback,currentValue: values[currentStep],currentStep: currentStep,),),
+            SurveyButton(text: '\u{2639} extrem eingeschränkt',callback: callback,currentValue: values[currentStep],currentStep: currentStep,),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),), //TODO: hashMap.get(Frage1)
+            SurveyButton(text: '\u{1F641} sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),), //TODO: hashMap.get(Frage1)
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -167,23 +167,23 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep,),),
+            SurveyButton(text: '\u{2639} extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep,),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -202,23 +202,23 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{2639} extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -237,23 +237,23 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{2639} extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -272,23 +272,23 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{2639} extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -307,23 +307,23 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{2639} extrem eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} sehr eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mäßig eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} etwas eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} gar nicht eingeschränkt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
 
         ],
@@ -344,28 +344,28 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr viel schlimmer', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} sehr viel schlimmer', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas schlimmer', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} etwas schlimmer', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'unverändert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} unverändert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas besser', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} etwas besser', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr viel besser', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} sehr viel besser', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'beschwerdefrei seit 1 Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} beschwerdefrei seit 1 Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -385,24 +385,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'jeden Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} jeden Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '3 oder mehrfach pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} 3 oder mehrfach pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} 1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'weniger als 1 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} weniger als 1 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -420,28 +420,28 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} extrem lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ziemlich lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} ziemlich lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} etwas lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'wenig lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} wenig lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nicht lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} nicht lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich hatte keine', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} ich hatte keine', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -459,28 +459,28 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'die ganze Zeit', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} die ganze Zeit', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'einige Male am Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} einige Male am Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mindestens 1 mal pro Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mindestens 1 mal pro Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '3 mal oder weniger pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} 3 mal oder weniger pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} 1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -499,28 +499,28 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'extrem lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} extrem lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ziemlich lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} ziemlich lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} etwas lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'wenig lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} wenig lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nicht lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} nicht lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich hatte keine', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} ich hatte keine', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -538,28 +538,28 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'die ganze Zeit', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} die ganze Zeit', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'einige Male am Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} einige Male am Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'mindestens 1 mal pro Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} mindestens 1 mal pro Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '3 mal oder weniger pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} 3 mal oder weniger pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} 1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
 
         ],
 
@@ -578,28 +578,28 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
               child:
-              SurveyButton(text: 'extrem lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+              SurveyButton(text: '\u{2639} extrem lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ziemlich lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} ziemlich lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} etwas lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'wenig lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} wenig lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nicht lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} nicht lästig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich hatte keine', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} ich hatte keine', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -617,24 +617,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'jeden Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} jeden Tag', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '3 oder mehrfach pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} 3 oder mehrfach pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: '1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} 1-2 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'weniger als 1 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} weniger als 1 mal pro Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} nie in der Woche', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -652,24 +652,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich habe überhaupt keine Ahnung', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} ich habe überhaupt keine Ahnung', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich habe wenig Ahnung', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} ich habe wenig Ahnung', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich bin ein wenig versorgt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} ich bin ein wenig versorgt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich bin gut versorgt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} ich bin gut versorgt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich bin komplett und gut versorgt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} ich bin komplett und gut versorgt', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -688,24 +688,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich verstehe gar nichts', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} ich verstehe gar nichts', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich verstehe nur wenig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} ich verstehe nur wenig', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich verstehe etwas', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} ich verstehe etwas', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich verstehe fast alles', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} ich verstehe fast alles', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ich bin komplett informiert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} ich bin komplett informiert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -723,29 +723,29 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich ziemlich behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{1F641} es hat mich ziemlich behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -763,29 +763,29 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'sehr unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} sehr unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'ziemlich unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{1F641} ziemlich unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'etwas unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} etwas unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'wenig unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} wenig unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'kaum unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F60A} kaum unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gar nicht unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} gar nicht unglücklich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -803,24 +803,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'immer', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} immer', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'oft', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} oft', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'gelegentlich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} gelegentlich', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'selten', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} selten', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'nie', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} nie', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -843,24 +843,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -883,24 +883,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -923,24 +923,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),
@@ -963,24 +963,24 @@ List<Step> _mySteps(){
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
+            SurveyButton(text: '\u{2639} es hat mich extrem behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F641} es hat mich etwas behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F610} es hat mich wenig behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F642} es hat mich kaum behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
           Container(
             width: MediaQuery.of(context).size.width,
             child:
-            SurveyButton(text: 'es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
+            SurveyButton(text: '\u{1F603} es hat mich gar nicht behindert', callback: callback, currentValue: values[currentStep],currentStep: currentStep),),
         ],
 
       ),

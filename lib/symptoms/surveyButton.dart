@@ -21,8 +21,11 @@ class _SurveyButtonState extends State<SurveyButton> {
     return Container(
       padding: EdgeInsets.only(bottom: 15),
       child:
-        RaisedButton(padding: EdgeInsets.only(top: 15, bottom: 15),
-        child: Text(widget.text,style: Theme.of(context).textTheme.bodyText2,),
+        RaisedButton(padding: EdgeInsets.only(top: 15, bottom: 15, left: 10),
+        child:Align(
+          alignment: Alignment.centerLeft,
+          child:
+        Text(widget.text,style: Theme.of(context).textTheme.bodyText2,textAlign: TextAlign.left,)),
         color: (widget.text == widget.currentValue) ? Colors.lightGreen[400] : Colors.grey[300],
         onPressed: () {
           setState(() {

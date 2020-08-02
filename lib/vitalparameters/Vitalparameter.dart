@@ -150,6 +150,7 @@ class _VitalparameterState extends State<Vitalparameter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfffaf7e3),
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
@@ -205,6 +206,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                       MaterialPageRoute(builder: (context) => Weight()));
                 },
                 child: Card(
+
                   shadowColor: Colors.grey,
                   child: Column(children: <Widget>[
                     ListTile(

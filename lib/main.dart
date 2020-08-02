@@ -9,8 +9,9 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   final newProfile = await NewProfile.loadData();
   runApp(MaterialApp(
-    theme: ThemeData(primaryColor: Colors.lightGreen[400],
-      accentColor: Colors.lightGreen[600],
+    theme: ThemeData(
+        primaryColor: Color(0xffa1b872), //Colors.lightGreen[400],
+      accentColor:Color(0xffa1b872),  //Colors.lightGreen[600],
       hoverColor: Colors.lightGreen[300],
       textTheme: TextTheme(bodyText1: TextStyle(fontFamily: "Roboto-Light", fontSize: 30.0),
       bodyText2: TextStyle( fontFamily: "Roboto-Light", fontSize: 16.0, fontWeight: FontWeight.bold),

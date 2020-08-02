@@ -38,6 +38,7 @@ class _MedicationState extends State<Medication> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff0fcfc),
       //FAQ Button -> bewegt sich bei scrollen mit
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightGreen[500],
@@ -49,27 +50,60 @@ class _MedicationState extends State<Medication> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(_title,
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-            fontFamily: "Arial",
-          ),
         ),
         backgroundColor: Colors.lightGreen[500],
       ),
       body: ListView(
         children: <Widget>[
+          (medicationState != null && medicationState.feeling != null) ? SizedBox():
+          Card(
+            child:
+            ListTile(
+              title: Text("Wie geht es Ihnen heute?"),
+              subtitle: Row(children: <Widget>[
+                RaisedButton(
+                  color: Colors.lightGreen[200],
+                  child: Text("\u{1F642} gut"),
+                  onPressed: (){ setState(() {
+                    medicationState.feeling = "gut";
+                    medicationState.saveData();
+                  });},
+                ),
+                SizedBox(width: 10,),
+                RaisedButton(
+                  color: Colors.orange[200],
+                  child: Text("\u{1F610} mittel"),
+                  onPressed: (){ setState(() {
+                    medicationState.feeling = "mittel";
+                    medicationState.saveData();
+                  });},
+                ),
+                SizedBox(width: 10,),
+                RaisedButton(
+                  color: Colors.red[200],
+                  child: Text("\u{1F641} schlecht"),
+                  onPressed: (){ setState(() {
+                    medicationState.feeling = "schlecht";
+                    medicationState.saveData();
+                  });},
+                ),
+              ],),
+            ),
+
+          ),
           Container(
-            padding: EdgeInsets.all(10.0),
-            child: Text("Basierend auf Ihrer Patientenakte müssen Sie folgende Medikamente zu den angegebenen Tageszeiten einnehmen:",
-            style: TextStyle(
-              fontSize: 16.0,
-            ),),
+            color: Color(0xfff0fcfc),
+            padding: EdgeInsets.all(20.0),
+            child: Text("Sie müssen heute folgende Medikamente einnehmen:",
+            style: Theme.of(context).textTheme.headline3),
           ),
 
           // Einzelne Karten je Tageszeit um Medikationseinnahme sparat abzuhacken
           //Übergabe der Beispiellisten von oben (Medikamentname und Dosirung sowie Einnahmeform) indem eigene Methode (siehe unten) aufgerufen wird
           // Bei Klick auf Box verändert wird der jeweilige Check-Wert auf true verändert und ein Hacken erscheint
+          //(medicationState != null && medicationState.checkMorning) ? SizedBox(): // Dieser Codeabschnitt kann eingefügt werden, wenn die Karten zur Medikation
+          //nach Einnahme verschwieden sillen -> Aufgrund von vermutlichen Usability Problemen, da ältere menschen versehentlich auf den Knopf drücken können
+          // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
               color: (medicationState != null
                   && medicationState.checkMorning) ? Colors.grey[200] : Colors.white,
@@ -87,6 +121,9 @@ class _MedicationState extends State<Medication> {
                   },
                 )
             ),
+          //(medicationState != null && medicationState.checkDay) ? SizedBox(): // Dieser Codeabschnitt kann eingefügt werden, wenn die Karten zur Medikation
+          //nach Einnahme verschwieden sillen -> Aufgrund von vermutlichen Usability Problemen, da ältere menschen versehentlich auf den Knopf drücken können
+          // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
             color:  (medicationState != null && medicationState.checkDay) ? Colors.grey[200] : Colors.white,
               child:
@@ -104,6 +141,9 @@ class _MedicationState extends State<Medication> {
               ),
 
           ),
+          //(medicationState != null && medicationState.checkEvening) ? SizedBox(): // Dieser Codeabschnitt kann eingefügt werden, wenn die Karten zur Medikation
+          //nach Einnahme verschwieden sillen -> Aufgrund von vermutlichen Usability Problemen, da ältere menschen versehentlich auf den Knopf drücken können
+          // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
             color:  (medicationState != null && medicationState.checkEvening) ? Colors.grey[200] : Colors.white,
             child:
@@ -121,6 +161,9 @@ class _MedicationState extends State<Medication> {
             ),
 
           ),
+          //(medicationState != null && medicationState.checkNight) ? SizedBox(): // Dieser Codeabschnitt kann eingefügt werden, wenn die Karten zur Medikation
+          //nach Einnahme verschwieden sillen -> Aufgrund von vermutlichen Usability Problemen, da ältere menschen versehentlich auf den Knopf drücken können
+          // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
             color:  (medicationState != null && medicationState.checkNight) ? Colors.grey[200] : Colors.white,
             child:
@@ -137,7 +180,8 @@ class _MedicationState extends State<Medication> {
               },
             ),
 
-          )
+          ),
+
         ],
       ),
     );
