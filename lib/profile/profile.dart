@@ -33,7 +33,6 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return profile != null ? Scaffold( //FAQ-Knopf unten rechts
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -42,9 +41,8 @@ class _ProfileState extends State<Profile> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
         title: Text(
-          _title + profile.firstName + " "+ profile.secondName
+          _title + profile.firstName + " "+ profile.secondName, style: Theme.of(context).textTheme.headline1,
         ) ,
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: ListView(
         children: <Widget>[
@@ -114,6 +112,11 @@ class _ProfileState extends State<Profile> {
           ),
         ],
       ),
-    ) : Scaffold( body: SpinKitPumpingHeart(color: Colors.red[300]));
+    ) : Scaffold( appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
+      title: Text(
+       "Steckbiref ", style: Theme.of(context).textTheme.headline1,
+      ) ,
+    ),
+        body: Center( child: SpinKitPumpingHeart(color: Colors.red[300])));
   }
 }

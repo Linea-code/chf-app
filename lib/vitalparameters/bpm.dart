@@ -67,7 +67,6 @@ class _BPMState extends State<BPM> {
   Widget build(BuildContext context) {
     return Scaffold( //FAQ-Button unten rechts
         floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.lightGreen[500],
             tooltip:'Increment',
             child:
             Icon(Icons.help_outline,size: 50,),
@@ -76,9 +75,8 @@ class _BPMState extends State<BPM> {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         appBar: AppBar( //Kopfzeile mit Titel
           title: Text(
-            'Herzfrequenz'
+            'Herzfrequenz', style: Theme.of(context).textTheme.headline4,
           ),
-          backgroundColor: Colors.lightGreen[500],
         ),
         body: Container(
             child: Padding(

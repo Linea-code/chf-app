@@ -13,14 +13,8 @@ class Access extends StatelessWidget {
     return Scaffold(
       appBar: AppBar( //Kopfzeile mit Titel
         title: Text(
-          'Zugriffsrechte',
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-            fontFamily: "Arial",
-          ),
+          'Zugriffsrechte', style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: Column(children: <Widget>[
         Container(

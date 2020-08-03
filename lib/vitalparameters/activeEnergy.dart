@@ -67,7 +67,6 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
   Widget build(BuildContext context) {
     return Scaffold( //FAQ-Button unten rechts
         floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.lightGreen[500],
             tooltip:'Increment',
             child:
             Icon(Icons.help_outline,size: 50,),
@@ -76,9 +75,8 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         appBar: AppBar( //Kopfzeile mit Titel
           title: Text(
-            'Aktivitätskalorien'
+            'Aktivitätskalorien', style: Theme.of(context).textTheme.headline4,
           ),
-          backgroundColor: Colors.lightGreen[500],
         ),
         body: Container(
             child: Padding(
@@ -114,7 +112,7 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
                           ],
                         ))),
                 //Ergänzug um Innormationsboxen-> zum auklappen
-                Card(
+                Card(color: Color(0xfff0fcfc),
                     child: ExpansionTile(
                       title: Text(
                         ("Durchschnittlich verbrannte Aktivitätskalorien des letzten Monats: " +

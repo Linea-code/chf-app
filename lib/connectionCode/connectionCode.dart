@@ -11,7 +11,6 @@ class ConnectionCode extends StatelessWidget {
     return Scaffold(
       // Fragezeichen unten rechts, bewegt sich bei scrollen mit
         floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.lightGreen[500],
             tooltip:'Increment',
             child:
             Icon(Icons.help_outline,size: 50,),
@@ -19,17 +18,16 @@ class ConnectionCode extends StatelessWidget {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel
-        title: Text(_title
+        title: Text(_title, style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: ListView (
         children:<Widget> [
           Column(
         children: <Widget> [
           Container(
-            padding: EdgeInsets.all(10.0),
-            child: Text("Bitte zeigen Sie Ihrem behandelnden Arzt den unten stehenden QR-Code oder nennen Sie ihm die unten stehende Webadresse. Mit dem Scan des Codes erlauben Sie den Zugriff auf Ihre persönlichen Gesundheitsdaten."),
+            padding: EdgeInsets.all(15.0),
+            child: Text("Code für Ihren behandelnden Arzt: Mit dem Scan des Codes erlauben Sie den Zugriff auf Ihre persönlichen Gesundheitsdaten.", style: Theme.of(context).textTheme.subtitle1,),
           ),
       Center(
           child:
@@ -44,7 +42,7 @@ class ConnectionCode extends StatelessWidget {
                 Container(
                   padding:EdgeInsets.all(10.0),
                   child:
-                      Card(
+                      Card( color: Color(0xfff0fcfc),
                         child:
                             ListTile (
                             title: Text("Web-Adresse:") ,

@@ -11,7 +11,6 @@ class Settings extends StatelessWidget {
     return Scaffold(
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -19,9 +18,8 @@ class Settings extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel der Seite
-        title: Text(_title,
+        title: Text(_title,style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
     );
   }

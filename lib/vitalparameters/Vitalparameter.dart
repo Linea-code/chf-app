@@ -153,7 +153,6 @@ class _VitalparameterState extends State<Vitalparameter> {
       backgroundColor: Color(0xfffaf7e3),
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -162,9 +161,8 @@ class _VitalparameterState extends State<Vitalparameter> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel
         title: Text(
-          _title
+          _title,style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body:(_bpm.isEmpty && weight.isEmpty && steps.isEmpty && activeEnergy.isEmpty && bodyFat.isEmpty) ? Center(child: Container(
           child: SpinKitPumpingHeart(color: Colors.red[300], size: 100,))) :

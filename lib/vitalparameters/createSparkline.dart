@@ -20,7 +20,7 @@ class _CreateSparklineState extends State<CreateSparkline> {
       child: Sparkline(
         data: widget.data, //Datenübergabe
         //fillMode: FillMode.below, //kan hinzugefügt werden um Bereich unter Grafen zu füllen
-        lineColor: Colors.lightGreen[500],
+        lineColor: Theme.of(context).primaryColor,//Colors.lightGreen[500],
         //kann hinzugefügt werden um Füllung unter Graphen mit Farbverlauf zu versehen
         /*fillGradient: new LinearGradient(
           begin: Alignment.topCenter,

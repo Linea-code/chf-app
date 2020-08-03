@@ -69,7 +69,6 @@ class _BodyfatState extends State<Bodyfat> {
     return Scaffold(
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -79,9 +78,8 @@ class _BodyfatState extends State<Bodyfat> {
       appBar: AppBar(
         //Kopfzeile mit Titel
         title: Text(
-          'Körperfett'
+          'Körperfett', style: Theme.of(context).textTheme.headline4,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: Container(
         child: Padding(
@@ -118,7 +116,7 @@ class _BodyfatState extends State<Bodyfat> {
                         ],
                       ))),
               //Ergänzen von Informationen unterhalb des Grafen mit ausklapp Funktion
-              Card(
+              Card(color: Color(0xfff0fcfc),
                   child: ExpansionTile(
                     title: Text(
                       ("Durchschnittlicher Körperfettanteil des letzten Monats: " +
@@ -133,7 +131,7 @@ class _BodyfatState extends State<Bodyfat> {
                       ),
                     ],
                   )),
-              Card(
+              Card(color: Color(0xfff0fcfc),
                   child: ExpansionTile(
                     title: Text(
                       ("Was sagt der Körperfettanteil aus?")
@@ -147,7 +145,7 @@ class _BodyfatState extends State<Bodyfat> {
                       ),
                     ],
                   )),
-              Card(
+              Card(color: Color(0xfff0fcfc),
                   child: ExpansionTile(
                     title: Text(
                       ("Normalbereiche des Körperfettanteils:")

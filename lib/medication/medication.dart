@@ -38,10 +38,9 @@ class _MedicationState extends State<Medication> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff0fcfc),
+      //backgroundColor: Color(0xfff0fcfc),
       //FAQ Button -> bewegt sich bei scrollen mit
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -49,9 +48,8 @@ class _MedicationState extends State<Medication> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
-        title: Text(_title,
+        title: Text(_title, style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: ListView(
         children: <Widget>[
@@ -92,7 +90,6 @@ class _MedicationState extends State<Medication> {
 
           ),
           Container(
-            color: Color(0xfff0fcfc),
             padding: EdgeInsets.all(20.0),
             child: Text("Sie müssen heute folgende Medikamente einnehmen:",
             style: Theme.of(context).textTheme.headline3),
@@ -106,7 +103,7 @@ class _MedicationState extends State<Medication> {
           // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
               color: (medicationState != null
-                  && medicationState.checkMorning) ? Colors.grey[200] : Colors.white,
+                  && medicationState.checkMorning) ? Colors.grey[200] : Color(0xfff0fcfc),
           child:
                 CheckboxListTile(
                   title: Text("Morgens"),
@@ -125,7 +122,7 @@ class _MedicationState extends State<Medication> {
           //nach Einnahme verschwieden sillen -> Aufgrund von vermutlichen Usability Problemen, da ältere menschen versehentlich auf den Knopf drücken können
           // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
-            color:  (medicationState != null && medicationState.checkDay) ? Colors.grey[200] : Colors.white,
+            color:  (medicationState != null && medicationState.checkDay) ? Colors.grey[200] : Color(0xfff0fcfc),
               child:
               CheckboxListTile(
                 title: Text("Mittags"),
@@ -145,7 +142,7 @@ class _MedicationState extends State<Medication> {
           //nach Einnahme verschwieden sillen -> Aufgrund von vermutlichen Usability Problemen, da ältere menschen versehentlich auf den Knopf drücken können
           // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
-            color:  (medicationState != null && medicationState.checkEvening) ? Colors.grey[200] : Colors.white,
+            color:  (medicationState != null && medicationState.checkEvening) ? Colors.grey[200] : Color(0xfff0fcfc),
             child:
             CheckboxListTile(
               title: Text("Abends"),
@@ -165,7 +162,7 @@ class _MedicationState extends State<Medication> {
           //nach Einnahme verschwieden sillen -> Aufgrund von vermutlichen Usability Problemen, da ältere menschen versehentlich auf den Knopf drücken können
           // und dann ihre medikation nicht mehr sehen und es so zu falschen Angaben beim Arzt kommen kann, wurde dieser Abschnitt hier auskommentiert
           Card(
-            color:  (medicationState != null && medicationState.checkNight) ? Colors.grey[200] : Colors.white,
+            color:  (medicationState != null && medicationState.checkNight) ? Colors.grey[200] : Color(0xfff0fcfc),
             child:
             CheckboxListTile(
               title: Text("Nachts"),

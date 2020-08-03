@@ -84,7 +84,6 @@ print('hallo');
     return Scaffold(
       //FAQ-Button
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -93,9 +92,8 @@ print('hallo');
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Überschrift
         title: Text(
-          'Schritte',
+          'Schritte', style: Theme.of(context).textTheme.headline4,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: Container(
         child: Padding(
@@ -134,7 +132,7 @@ print('hallo');
                         ],
                       ))),
               //Infos unterhalb des Diagramms-> zum ausklappen
-              Card(
+              Card(color: Color(0xfff0fcfc),
                   child: ExpansionTile(
                     title: Text(
                       ("Durchschnittliche Schrittzahl des letzten Monats: " +

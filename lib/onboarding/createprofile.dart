@@ -21,14 +21,8 @@ class _CreateProfileState extends State<CreateProfile> {
     return new Scaffold(
       appBar: AppBar(
         title: Text(
-          'Steckbrief',
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.w800,
-            fontFamily: "Arial",
-          ),
+          'Steckbrief',style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: ListView(padding: const EdgeInsets.all(8), children: <Widget>[
         Form(
@@ -52,11 +46,6 @@ class _CreateProfileState extends State<CreateProfile> {
               children: <Widget>[
                 Text(
                   'Geschlecht:',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontFamily: "Arial",
-                    color: Colors.black54,
-                  ),
                 ),
                 Row( //Auswahlfelder für Geschlecht
                   children: <Widget>[
@@ -72,11 +61,6 @@ class _CreateProfileState extends State<CreateProfile> {
                     ),
                     Text(
                       'männlich',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontFamily: "Arial",
-                        color: Colors.black54,
-                      ),
                     ),
                     Radio(
                       value: SingingCharacter.female,
@@ -90,11 +74,6 @@ class _CreateProfileState extends State<CreateProfile> {
                     ),
                     Text(
                       'weiblich',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontFamily: "Arial",
-                        color: Colors.black54,
-                      ),
                     ),
                     Radio(
                       value: SingingCharacter.diverse,
@@ -108,11 +87,6 @@ class _CreateProfileState extends State<CreateProfile> {
                     ),
                     Text(
                       'divers',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontFamily: "Arial",
-                        color: Colors.black54,
-                      ),
                     )
                   ],
                 )
@@ -124,11 +98,6 @@ class _CreateProfileState extends State<CreateProfile> {
               children: <Widget>[
                 Text(
                   "Bitte wählen Sie Ihr Geburtsdatum aus:",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontFamily: "Arial",
-                    color: Colors.black54,
-                  ),
                 )
               ],
             ),
@@ -148,19 +117,10 @@ class _CreateProfileState extends State<CreateProfile> {
             Row(
               children: <Widget>[
                 Text ("Lebensumstände:    ",
-                style: TextStyle(
-                    fontSize: 16.0,
-                    fontFamily: "Arial",
-                    color: Colors.black54,
-                ),),
+              ),
                   DropdownButton<String>( //Dropdown Menu um Lebensumstände auszuwählen
                   value: newProfile.livingConditions,
                   icon: Icon(Icons.arrow_downward),
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontFamily: "Arial",
-                    color: Colors.black54,
-                  ),
                   onChanged: (String newValue){
                     setState(() {
                       newProfile.livingConditions = newValue;

@@ -31,9 +31,8 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
     {
       return new Scaffold(
         appBar: AppBar(
-          title: Text("Symptomfragebogen",
+          title: Text("Symptomfragebogen", style: Theme.of(context).textTheme.headline4,
           ),
-          backgroundColor: Colors.lightGreen[500],
         ),
         body: Column(
           children: <Widget>[

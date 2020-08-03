@@ -67,7 +67,6 @@ class _WeightState extends State<Weight> {
     return Scaffold(
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[500],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -76,9 +75,8 @@ class _WeightState extends State<Weight> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
-          'Gewicht',
+          'Gewicht', style: Theme.of(context).textTheme.headline4,
         ),
-        backgroundColor: Colors.lightGreen[500],
       ),
       body: Container(
         child: Padding(
@@ -119,7 +117,7 @@ class _WeightState extends State<Weight> {
 
               //Ergänzende Infos in ausklappbaren Karten
               Card(
-                  color: Color(0xfffcf6ed),
+                  color: Color(0xfff0fcfc),
                   child: ExpansionTile(
                 title: Text(
                   ("Durchschnittliches Gewicht des letzten Monats: " +

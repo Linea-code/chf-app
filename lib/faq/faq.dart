@@ -6,11 +6,10 @@ class FAQ extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar( //Kopfzeile mit Titel
+        appBar: AppBar(//Kopfzeile mit Titel
           title: Text(
-            _title
+            _title, style: Theme.of(context).textTheme.headline1,
           ),
-          backgroundColor: Colors.lightGreen[500],
         ),
         body: Container(
           padding: EdgeInsets.all(10.0),
@@ -27,6 +26,7 @@ class FAQ extends StatelessWidget {
             //Zudem unterteilung der Fragen in spezifische Gruppen um eine bessere Strucktur zu ermöglichen
 
             Card(
+              color:  Color(0xfff0fcfc),
               child: ExpansionTile(
                 title: Text(
                   "Was genau ist chronische Herzinsuffizienz?"
@@ -61,6 +61,7 @@ class FAQ extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,),
             ),
             Card(
+              color:  Color(0xfff0fcfc),
               child: ExpansionTile(
                 title: Text(
                   "Wie misst man korrekt Blutdruck?"
@@ -98,6 +99,7 @@ class FAQ extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,),
             ),
             Card(
+              color:  Color(0xfff0fcfc),
               child: ExpansionTile(
                 title: Text(
                   "Wie kann man Atemnot vorbeugen?"
@@ -117,6 +119,7 @@ class FAQ extends StatelessWidget {
               ),
             ),
             Card(
+              color:  Color(0xfff0fcfc),
               child: ExpansionTile(
                 title: Text(
                   "Wie kann man Schwindel vorbeugen?"
@@ -137,6 +140,7 @@ class FAQ extends StatelessWidget {
               ),
             ),
             Card(
+              color:  Color(0xfff0fcfc),
               child: ExpansionTile(
                 title: Text(
                   "Wie kann man Schwellungen vorbeugen?"
@@ -150,6 +154,45 @@ class FAQ extends StatelessWidget {
                       "Zudem sollten Sie Genussmittel wie Alkohol und Zigaretten meiden. Außerdem müssen Sie sich an die von Ihrem Arzt festgeschriebene Trinkmenge halten und Ihre "
                       "Flüssigkeitszufuhr kontrollieren.\n\n"
                       "Bei sich schnell verschlimmernden Schwellungen oder Unsicherheiten suchen Sie bitte umgehend Ihren behandelnen Arzt auf."
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Text("Notfall",
+                style: Theme.of(context).textTheme.headline3,),
+            ),
+            Card(
+              color:  Color(0xfff0fcfc),
+              child: ExpansionTile(
+                title: Text(
+                    "An wen wende ich mich bei einem Notfall?"
+                ),
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                        "Sollten Sie unter aktuten Krankheitsverschlechterungen leiden, begeben Sie sich bitte umgehend in ein Krankenhaus. "
+                            "Fühlen Sie sich nicht in der Lage eigenständig ein Krankenhaus aufzusuchen, rufen Sie bitte den Notarzt mit der Nummer: 112"
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Card(
+              color:  Color(0xfff0fcfc),
+              child: ExpansionTile(
+                title: Text(
+                    "Wie kann ich mich auf einen Notfall vorbereiten?"
+                ),
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                        "Um auf einen Ernstfall eingerichtet zu sein, sollten Sie sicherstellen, dass Sie immer die Möglichkeit haben Hilfe anzufordern. "
+                            "Tragen Sie beispielsweise grundätzlich ein Ihr Smartphone bei sich. Allen Sie sich außerdem von Ihrem behandelnden Arzt Hinweise zum Umgang mit aktuten Krankheitsverschlechterungen geben."
                     ),
                   )
                 ],

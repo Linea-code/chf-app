@@ -16,7 +16,6 @@ class Home extends StatelessWidget {
     return Scaffold(
       //Button unten rechts zum FAQ -> bleibt beim scrollen
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.lightGreen[400],
           tooltip:'Increment',
           child:
           Icon(Icons.help_outline,size: 50,),
@@ -31,7 +30,6 @@ class Home extends StatelessWidget {
           'Übersicht',
           style: Theme.of(context).textTheme.headline1,
         ),
-        backgroundColor: Colors.lightGreen[400],
       ),
       body: Container(
           padding: EdgeInsets.all(10.0), //Seitenrand von 10 festgelegt
@@ -204,11 +202,12 @@ class Home extends StatelessWidget {
                     ),
                   ])),
             ),
+            SizedBox(
+              height: 10.0,
+            ),
             Card(
               child:
-                  Container(
-                   
-                    child:
+                  Container(child:
                         Column(
                           children: <Widget>[
                             ListTile(
@@ -234,22 +233,19 @@ class Home extends StatelessWidget {
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           Container(
-            height: 100.0,
+            height: 120,
             child: DrawerHeader(
               child: Text(
                 'CHF-App',
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 22.0,
-                ),
+               style: Theme.of(context).textTheme.headline1,
               ),
-              decoration: BoxDecoration(color: Colors.lightGreen[500]),
+              decoration: BoxDecoration(color: Theme.of(context).primaryColor),
             ),
           ),
           ListTile(
             leading: Icon(Icons.favorite, size: 35,),
             title: Text(
-              'Vitalparameter', style: Theme.of(context).textTheme.headline4,
+              'Vitalparameter', style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(
@@ -263,7 +259,7 @@ class Home extends StatelessWidget {
             leading: Icon(Icons.tag_faces, size: 35,),
             title: Text(
               'Symptome',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(
@@ -276,7 +272,7 @@ class Home extends StatelessWidget {
             leading: Icon(Icons.local_hospital, size: 35,),
             title: Text(
               'Medikamente',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(
@@ -290,7 +286,7 @@ class Home extends StatelessWidget {
             leading: Icon(Icons.share, size: 35,),
             title: Text(
               'Visitencode',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(
@@ -304,7 +300,7 @@ class Home extends StatelessWidget {
             leading: Icon(Icons.person, size: 35,),
             title: Text(
               'Profil',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(
@@ -317,7 +313,7 @@ class Home extends StatelessWidget {
             leading: Icon(Icons.help_outline, size: 35,),
             title: Text(
               'Häufige Fragen',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(
@@ -330,7 +326,7 @@ class Home extends StatelessWidget {
             leading: Icon(Icons.settings, size: 35,),
             title: Text(
               'Einstellungen',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(

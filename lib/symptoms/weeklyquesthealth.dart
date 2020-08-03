@@ -32,9 +32,8 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
     {
       return new Scaffold(
         appBar: AppBar(
-          title: Text("Gesundheitsfragebogen",
+          title: Text("Gesundheitsfragebogen", style: Theme.of(context).textTheme.headline4,
           ),
-          backgroundColor: Colors.lightGreen[500],
         ),
         body: Column(
           children: <Widget>[
