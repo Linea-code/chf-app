@@ -114,12 +114,13 @@ class _CreateProfileState extends State<CreateProfile> {
                 },
               ),
             ),
+            SizedBox(height: 15),
             Row(
               children: <Widget>[
                 Text ("Lebensumstände:    ",
               ),
                   DropdownButton<String>( //Dropdown Menu um Lebensumstände auszuwählen
-                  value: newProfile.livingConditions,
+                  value: newProfile.livingConditions, style: TextStyle(fontSize: 16, color: Colors.black),
                   icon: Icon(Icons.arrow_downward),
                   onChanged: (String newValue){
                     setState(() {
@@ -134,17 +135,19 @@ class _CreateProfileState extends State<CreateProfile> {
               ],
             ),
             TextFormField( //Eingabefeld für bisherige Krankenhaus aufenthalte
-              decoration: InputDecoration(
-                  labelText: 'Anzahl bisheriger Krankenhausaufenthalte:'),
+              decoration: InputDecoration(labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+                  labelText: 'Anzahl bisheriger Krankenhausaufenthalte:', ),
               validator: (input) => input.isEmpty
                   ? 'Bitte geben Sie die Anzahl Ihrer bisheringen Krankenhausaufenthalte ein!'
                   : null,
               onSaved: (input) => newProfile.hospitalization = int.parse(input),
             ),
+            SizedBox(height: 15),
             TextFormField( //Eingabefeld für Begleiterkrankungen
               keyboardType: TextInputType.multiline,
               maxLines: null,
               decoration: InputDecoration(
+                  labelStyle: TextStyle(fontSize: 16, color: Colors.black),
                   labelText: 'Begleiterkrankungen/Komorbiditäten:'),
               validator: (input) => input.isEmpty
                   ? 'Bitte geben Sie Ihre Begleiterkrankungen ein!'
@@ -156,10 +159,12 @@ class _CreateProfileState extends State<CreateProfile> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: RaisedButton(
+                      padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                      color: Theme.of(context).primaryColor,
                       onPressed: _weiter,
-                      child: Text('Weiter'),
+                      child: Text('Weiter', style: Theme.of(context).textTheme.headline5,),
                     ),
                   ),
                 ],

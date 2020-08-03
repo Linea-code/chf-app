@@ -41,7 +41,7 @@ class _ProfileState extends State<Profile> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
         title: Text(
-          _title + profile.firstName + " "+ profile.secondName, style: Theme.of(context).textTheme.headline1,
+          _title + profile.firstName + " "+ profile.secondName, style: Theme.of(context).textTheme.headline4,
         ) ,
       ),
       body: ListView(
@@ -63,44 +63,53 @@ class _ProfileState extends State<Profile> {
                 ]),
           ),
           //Liste mit einzelnen Angaben, welche in CreateProfile getätigt wurden
-          ListTile(
-                  title:  Text(
+          Container(
+            padding: EdgeInsets.all(15),
+                  child: Text(
                     "Vorname: ${profile.firstName} "
                   ),
                 ),
-          ListTile(
-                  title: Text(
+          Container(
+            padding: EdgeInsets.all(15),
+            child:  Text(
                     "Nachname: ${profile.secondName}"
                   ),
                 ),
-          ListTile(
-                  title: Text(
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Text(
                     "Geschlecht: ${profile.gender} "
                   ),
                 ),
-                ListTile(
-                  title: Text("Geburtsdatum: ${profile.birthdate.day}.${profile.birthdate.month}.${profile.birthdate.year} "
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    "Lebensumstände: ${profile.livingConditions} "
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    "Anzahl der Krankenhausaufenthalte: ${profile.hospitalization} "
-                  ),
-                ),
-                ListTile(
-                  title: Text(
-                    "Begleiterkrankungen/Komorbiditäten: ${profile.comorbidities} "
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Text("Geburtsdatum: ${profile.birthdate.day}.${profile.birthdate.month}.${profile.birthdate.year} "
                   ),
                 ),
           Container(
-            padding: EdgeInsets.all(30),
+            padding: EdgeInsets.all(15),
+            child: Text(
+                    "Lebensumstände: ${profile.livingConditions} "
+                  ),
+                ),
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Text(
+                    "Krankenhausaufenthalte: ${profile.hospitalization} "
+                  ),
+                ),
+          Container(
+            padding: EdgeInsets.all(15),
+            child:  Text(
+                    "Begleiterkrankungen: ${profile.comorbidities} "
+                  ),
+                ),
+          Container(
+            padding: EdgeInsets.only(left:50,right: 50, top: 30),
             //Knopf zum bearbeiten/neu Eingeben des Profils
             child: RaisedButton(
+              padding: EdgeInsets.all(10),
+              color: Theme.of(context).primaryColor,
               child: Text("Bearbeiten", style: Theme.of(context).textTheme.headline3),
               onPressed: () {
                 Navigator.push(
