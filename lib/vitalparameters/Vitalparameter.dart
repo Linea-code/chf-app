@@ -33,6 +33,7 @@ class _VitalparameterState extends State<Vitalparameter> {
   List<double> restingHR = List<double>();
   List<double> glucose = List<double>();
   List<double> oxygen = List<double>();
+  List<double> hrVariability = List<double>();
 
   @override
   void initState() {
@@ -61,6 +62,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           HealthDataType.RESTING_HEART_RATE,
           HealthDataType.BLOOD_GLUCOSE,
           HealthDataType.BLOOD_OXYGEN,
+          HealthDataType.HEART_RATE_VARIABILITY_SDNN,
         ];
         //Speicherung aller Datenpunkte in Liste
         for (HealthDataType type in types) {
@@ -142,6 +144,11 @@ class _VitalparameterState extends State<Vitalparameter> {
               oxygen.add(point.value);
             }
             break;
+          case "HEART_RATE_VARIABILITY_SDNN":
+            {
+              hrVariability.add(point.value);
+            }
+            break;
         }
       }
     });
@@ -164,7 +171,7 @@ class _VitalparameterState extends State<Vitalparameter> {
           _title,style: Theme.of(context).textTheme.headline1,
         ),
       ),
-      body:(_bpm.isEmpty && weight.isEmpty && steps.isEmpty && activeEnergy.isEmpty && bodyFat.isEmpty) ? Center(child: Container(
+      body:(_bpm.isEmpty && weight.isEmpty && steps.isEmpty && activeEnergy.isEmpty && bodyFat.isEmpty && oxygen.isEmpty && hrVariability.isEmpty) ? Center(child: Container(
           child: SpinKitPumpingHeart(color: Colors.red[300], size: 100,))) :
       //Body der Seite: pro Vitalparameter eine Karte mit Diagramm über Werte des letzten Monats-> bei Klick auf Karte wechsel zu Detailansicht des jeweiligen Typs
       //LAden die Daten noch oder sind keine daten verfügbar wird ein Ladebildschirm angezeigt
@@ -317,6 +324,187 @@ class _VitalparameterState extends State<Vitalparameter> {
                         child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: bodyFat,
+                    ),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+
+                },
+                child:   oxygen.isEmpty ? SizedBox(height: 0,) :  Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Sauerstoffgehalt'),
+                      subtitle: Text("letzte Messung: " +
+                          (oxygen.isEmpty
+                              ? " "
+                              : oxygen.last.round().toString())),
+                    ),
+                    oxygen.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
+                        : CreateSparkline(
+                      data: oxygen,
+                    ),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+
+                },
+                child:   bpDiastolic.isEmpty ? SizedBox(height: 0,) :  Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Diastolischer Blutdruck'),
+                      subtitle: Text("letzte Messung: " +
+                          (bpDiastolic.isEmpty
+                              ? " "
+                              : bpDiastolic.last.round().toString())),
+                    ),
+                    bpDiastolic.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
+                        : CreateSparkline(
+                      data: bpDiastolic,
+                    ),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+
+                },
+                child:   bpSystolic.isEmpty ? SizedBox(height: 0,) :  Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Systolischer Blutdruck'),
+                      subtitle: Text("letzte Messung: " +
+                          (bpSystolic.isEmpty
+                              ? " "
+                              : bpSystolic.last.round().toString())),
+                    ),
+                    bpSystolic.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
+                        : CreateSparkline(
+                      data: bodyFat,
+                    ),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Bodyfat()));
+                },
+                child:   bmi.isEmpty ? SizedBox(height: 0,) :  Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('BMI'),
+                      subtitle: Text("letzte Messung: " +
+                          (bmi.isEmpty
+                              ? " "
+                              : bmi.last.round().toString())),
+                    ),
+                    bodyFat.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
+                        : CreateSparkline(
+                      data: bmi,
+                    ),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+
+                },
+                child:   restingHR.isEmpty ? SizedBox(height: 0,) :  Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Ruheherzfrequenz'),
+                      subtitle: Text("letzte Messung: " +
+                          (restingHR.isEmpty
+                              ? " "
+                              : restingHR.last.round().toString())),
+                    ),
+                    restingHR.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
+                        : CreateSparkline(
+                      data: restingHR,
+                    ),
+                  ]),
+                ),
+              ),
+              InkWell(
+                splashColor: Colors.lightGreen[100],
+                onTap: () {
+
+                },
+                child:   hrVariability.isEmpty ? SizedBox(height: 0,) :  Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  shadowColor: Colors.grey,
+                  child: Column(children: <Widget>[
+                    ListTile(
+                      //leading: Icon(Icons.trending_up),
+                      title: Text('Herzratenvar.'),
+                      subtitle: Text("letzte Messung: " +
+                          (hrVariability.isEmpty
+                              ? " "
+                              : hrVariability.last.round().toString())),
+                    ),
+                    hrVariability.isEmpty
+                        ? Container(
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
+                        child: SpinKitWave(color: Theme.of(context).accentColor))
+                        : CreateSparkline(
+                      data: hrVariability,
                     ),
                   ]),
                 ),
