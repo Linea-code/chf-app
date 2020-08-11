@@ -10,7 +10,7 @@ import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/vitalparameters/steps.dart';
 import 'package:herzinsuffizienz/vitalparameters/weight.dart';
-//Übersichtsseite zu Vitalparametern -> viele Karten mit einzelnen Diagrammen zu den Vitalparametern
+//Übersichtsseite zu Vitalparametern --> viele Karten mit einzelnen Diagrammen zu den Vitalparametern
 class Vitalparameter extends StatefulWidget {
   @override
   _VitalparameterState createState() => _VitalparameterState();
