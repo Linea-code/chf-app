@@ -24,9 +24,9 @@ class Access extends StatelessWidget {
           ),
         ),
         // Aufruf eigener Mathoden für Zugriffsrechte
-        AppleHealth(), // TODO: apple hinzufügen API
+        //AppleHealth(), // TODO: apple hinzufügen API
         ActivityData(),
-        CameraAccess(), //TODO Permission hinzufügen
+        CameraAccess(), //TODO Permission hinzufügen // ist für spätere Erweiterungen gut (z.B. Scannen von Laborbefunden oder Arztbriefen etc.
         Container(
           child: RaisedButton(
             child: Text('Weiter'),

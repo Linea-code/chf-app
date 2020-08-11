@@ -38,6 +38,7 @@ class _StepsState extends State<Steps> {
               startDate, endDate, HealthDataType.STEPS);
           for (HealthDataPoint point in data) {
             steps.add(new Datapoints(point.dateFrom, point.value.toDouble()));
+            avrSteps=avrSteps+point.value.toDouble();
           }
         } catch (exception) {
           print(exception.toString());
@@ -46,7 +47,7 @@ class _StepsState extends State<Steps> {
         print("Keine Authorisierung vorliegend");
       }
       steps= steps.map((datapoint) =>
-         new Datapoints(new DateTime.utc(datapoint.getDate().year, datapoint.getDate().month ,datapoint.getDate().day).millisecondsSinceEpoch, datapoint.getValue())).toList();
+         new Datapoints(new DateTime.utc(datapoint.getDate().year, datapoint.getDate().month ,datapoint.getDate().day), datapoint.getValue())).toList();
 
       setState(() {});
 
@@ -54,17 +55,17 @@ class _StepsState extends State<Steps> {
       var stepsPerDay = List<Datapoints>();
       for (Datapoints point in steps) {
         if(currentDate == null || point.getDate() != currentDate) {
-          stepsPerDay.add(new Datapoints(point.getDate().millisecondsSinceEpoch, point.getValue()));
+          stepsPerDay.add(new Datapoints(point.getDate(), point.getValue()));
           currentDate = point.getDate();
         }
         else {
-stepsPerDay.last = new Datapoints(currentDate.millisecondsSinceEpoch, stepsPerDay.last.getValue()+point.getValue());
+stepsPerDay.last = new Datapoints(currentDate, stepsPerDay.last.getValue()+point.getValue());
         }
       }
-print('hallo');
+
       stepsPerDay.forEach((element) => {print (element.getDate().toString() + " - " + element.getValue().toString()) });
 
-      avrSteps = avrSteps / steps.length; //Durchschnitt berechnen
+      avrSteps = avrSteps / stepsPerDay.length; //Durchschnitt berechnen
 
       //Datenserie anlegen um später dem Diagramm zu übergeben
       _seriesData.add(
@@ -109,7 +110,9 @@ print('hallo');
                   height: 300,
                   child: Card(
                     //Diagramm mit spezifischen Achsenbeschriftungen und Datenformaten
-                      child: charts.TimeSeriesChart(
+                      child: Container( 
+                        padding: EdgeInsets.all(5),
+                          child: charts.TimeSeriesChart(
                         _seriesData,
                         primaryMeasureAxis: new charts.NumericAxisSpec(
                             tickProviderSpec:
@@ -130,7 +133,7 @@ print('hallo');
                         behaviors: [
                           new charts.ChartTitle('Schritte'),
                         ],
-                      ))),
+                      )))),
               //Infos unterhalb des Diagramms-> zum ausklappen
               Card(color: Color(0xfff0fcfc),
                   child: ExpansionTile(
@@ -156,7 +159,7 @@ print('hallo');
 }
 //Eigene Klasse für Datenpunkte
 class Datapoints {
-  int date;
+  DateTime date;
   double value;
 
   Datapoints(this.date, this.value);
@@ -166,6 +169,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return DateTime.fromMillisecondsSinceEpoch(date);
+    return date;
   }
 }

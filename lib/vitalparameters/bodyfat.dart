@@ -92,7 +92,10 @@ class _BodyfatState extends State<Bodyfat> {
                   child:SpinKitWave(color: Theme.of(context).accentColor))
                   : Container(
                   height: 300,
-                  child: Card( //Detailierter Graph zu Daten mit spezifizierung der Achsenbeschriftungen und Farben etc.
+                  child: Card( 
+                    child: Container(
+                      padding: EdgeInsets.all(5)
+                        ,//Detailierter Graph zu Daten mit spezifizierung der Achsenbeschriftungen und Farben etc.
                       child: charts.TimeSeriesChart(
                         _seriesData,
                         primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -114,7 +117,7 @@ class _BodyfatState extends State<Bodyfat> {
                         behaviors: [
                           new charts.ChartTitle('Körperfett'),
                         ],
-                      ))),
+                      )))),
               //Ergänzen von Informationen unterhalb des Grafen mit ausklapp Funktion
               Card(color: Color(0xfff0fcfc),
                   child: ExpansionTile(
@@ -172,7 +175,7 @@ class _BodyfatState extends State<Bodyfat> {
 //Eigene Klasse um Datenpunkte zu spezifirieren inklusive getter-Methoen für Werte
 
 class Datapoints {
-  int date;
+  DateTime date;
   double value;
 
   Datapoints(this.date, this.value);
@@ -182,6 +185,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return DateTime.fromMillisecondsSinceEpoch(date); //Umwandlung in korrektes Datenformat
+    return date; //Umwandlung in korrektes Datenformat
   }
 }

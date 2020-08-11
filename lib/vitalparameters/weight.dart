@@ -91,6 +91,8 @@ class _WeightState extends State<Weight> {
                   : Container(
                       height: 300,
                       child: Card(
+                        child: Container(
+                          padding: EdgeInsets.all(5),
                         //Diagramm mit detailierten Datenpunkten und spezifischen Achseneinstellungen
                           child: charts.TimeSeriesChart(
                         _seriesData,
@@ -113,7 +115,7 @@ class _WeightState extends State<Weight> {
                         behaviors: [
                           new charts.ChartTitle('Gewicht (kg)'),
                         ],
-                      ))),
+                      )))),
 
               //Ergänzende Infos in ausklappbaren Karten
               Card(
@@ -142,7 +144,7 @@ class _WeightState extends State<Weight> {
 
 //Eigene Klasse um Datenpunkte zu spezifizieren mit getter-Methoden für Werte
 class Datapoints {
-  int date;
+  DateTime date;
   double value;
 
   Datapoints(this.date, this.value);
@@ -152,6 +154,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return DateTime.fromMillisecondsSinceEpoch(date);//Umwandlung in korrekten Datentyp
+    return date;//Umwandlung in korrekten Datentyp
   }
 }

@@ -11,13 +11,18 @@ class FAQ extends StatelessWidget {
             _title, style: Theme.of(context).textTheme.headline1,
           ),
         ),
-        body: Container(
+        body:
+        Container(
           padding: EdgeInsets.all(10.0),
           child: ListView(children: <Widget>[
             Container(
+              padding:  EdgeInsets.only(right: 60, left: 60, top: 15, bottom: 15),
+              child: Image.asset('assets/Arzt&Pflegerin.png'),
+            ),
+            Container(
               padding: EdgeInsets.all(10.0),
               child: Text("Krankheitsbild:",
-              style: Theme.of(context).textTheme.headline3,
+              style: Theme.of(context).textTheme.bodyText1,
                 //color: Colors.lightGreen[800],
               ),
             ),
@@ -58,7 +63,7 @@ class FAQ extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(10.0),
               child: Text("Vitalparameter:",
-                style: Theme.of(context).textTheme.headline3,),
+                style: Theme.of(context).textTheme.bodyText1,),
             ),
             Card(
               color:  Color(0xfff0fcfc),
@@ -96,7 +101,7 @@ class FAQ extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(10.0),
               child: Text("Symptome:",
-                style: Theme.of(context).textTheme.headline3,),
+                style: Theme.of(context).textTheme.bodyText1,),
             ),
             Card(
               color:  Color(0xfff0fcfc),
@@ -162,7 +167,7 @@ class FAQ extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(10.0),
               child: Text("Notfall",
-                style: Theme.of(context).textTheme.headline3,),
+                style: Theme.of(context).textTheme.bodyText1,),
             ),
             Card(
               color:  Color(0xfff0fcfc),

@@ -41,6 +41,7 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
           for (HealthDataPoint point in data) {
             activeEnergy.add(new Datapoints(point.dateFrom, point.value));
             avrEnergy += point.value;
+            print(point.value);
           }
         } catch (exception) {
           print(exception.toString());
@@ -89,7 +90,10 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
                     child:SpinKitWave(color: Theme.of(context).accentColor))
                     : Container(
                     height: 300,
-                    child: Card( //Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen
+                    child: Card( 
+                      child: Container(
+                      padding: EdgeInsets.all(5),
+                      //Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen
                         child: charts.TimeSeriesChart(
                           _seriesData,
                           primaryMeasureAxis: new charts.NumericAxisSpec(
@@ -110,7 +114,7 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
                           behaviors: [
                             new charts.ChartTitle('Aktivitätskalorien (kcal)'),
                           ],
-                        ))),
+                        )))),
                 //Ergänzug um Innormationsboxen-> zum auklappen
                 Card(color: Color(0xfff0fcfc),
                     child: ExpansionTile(
@@ -133,7 +137,7 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
 }
 //Eigene Klasse für Datenpunkte
 class Datapoints {
-  int date;
+  DateTime date;
   double value;
 
   Datapoints(this.date, this.value);
@@ -143,6 +147,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return DateTime.fromMillisecondsSinceEpoch(date); //Umwandlung in korrektes Datenformat
+    return date; //Umwandlung in korrektes Datenformat
   }
 }

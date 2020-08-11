@@ -46,7 +46,7 @@ class ConnectionCode extends StatelessWidget {
                         child:
                             ListTile (
                             title: Text("Web-Adresse:") ,
-                            subtitle: Text("https://www.figma.com/proto/6gqEgzGl8CyR9CjCn1NpWE/Untitled?node-id=30%3A20&scaling=min-zoom "),
+                            subtitle: SelectableText("https://www.figma.com/proto/6gqEgzGl8CyR9CjCn1NpWE/Untitled?node-id=30%3A20&scaling=min-zoom "),
     )
                 ))
               ]))])])

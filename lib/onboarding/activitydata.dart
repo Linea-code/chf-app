@@ -18,7 +18,7 @@ class _ActivityDataState extends State<ActivityData> {
       title: const Text('Aktivitätsdaten'),
       value: _aktivity,
       onChanged: (bool value) { //ab hier neue Funktion mit Daten einlesen
-    Future.delayed(Duration(seconds: 2), () async {
+    Future.delayed(Duration(seconds: 0), () async {
       bool isAuthorized = await Health.requestAuthorization(); //Abfragen der Autorisierung über Heath kit
       if (isAuthorized) {
         setState(() {

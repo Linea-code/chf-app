@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:herzinsuffizienz/home/home.dart';
 import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 
@@ -135,6 +136,8 @@ class _CreateProfileState extends State<CreateProfile> {
               ],
             ),
             TextFormField( //Eingabefeld für bisherige Krankenhaus aufenthalte
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter> [WhitelistingTextInputFormatter.digitsOnly],
               decoration: InputDecoration(labelStyle: TextStyle(fontSize: 16, color: Colors.black),
                   labelText: 'Anzahl bisheriger Krankenhausaufenthalte:', ),
               validator: (input) => input.isEmpty

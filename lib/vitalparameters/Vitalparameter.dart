@@ -150,7 +150,7 @@ class _VitalparameterState extends State<Vitalparameter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfffaf7e3),
+      //backgroundColor: Color(0xfffaf7e3),
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
           tooltip:'Increment',
@@ -168,7 +168,8 @@ class _VitalparameterState extends State<Vitalparameter> {
           child: SpinKitPumpingHeart(color: Colors.red[300], size: 100,))) :
       //Body der Seite: pro Vitalparameter eine Karte mit Diagramm über Werte des letzten Monats-> bei Klick auf Karte wechsel zu Detailansicht des jeweiligen Typs
       //LAden die Daten noch oder sind keine daten verfügbar wird ein Ladebildschirm angezeigt
-      Container(
+    Container(
+      padding: EdgeInsets.all(5),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -178,7 +179,11 @@ class _VitalparameterState extends State<Vitalparameter> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => BPM()));
                 },
-                child: Card(
+                child:   _bpm.isEmpty ? SizedBox(height: 0,) : Card(
+                  shape: RoundedRectangleBorder(
+                    side: new BorderSide(color: Color(0xffbed3d4), width: 3),
+                    borderRadius: BorderRadius.circular(5)
+                  ),
                   shadowColor: Colors.grey,
                   child: Column(children: <Widget>[
                     ListTile(
@@ -189,7 +194,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     ),
                     _bpm.isEmpty
                         ? Container(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
                         child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: _bpm,
@@ -203,10 +208,13 @@ class _VitalparameterState extends State<Vitalparameter> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Weight()));
                 },
-                child: Card(
-
+                child:   weight.isEmpty ? SizedBox(height: 0,) : Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 3),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
                   shadowColor: Colors.grey,
-                  child: Column(children: <Widget>[
+                  child: Column( children: <Widget>[
                     ListTile(
                       //leading: Icon(Icons.trending_up),
                       title: Text('Gewicht (kg)'),
@@ -217,7 +225,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     ),
                     weight.isEmpty
                         ? Container(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
                         child:SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: weight,
@@ -231,7 +239,11 @@ class _VitalparameterState extends State<Vitalparameter> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Steps()));
                 },
-                child: Card(
+                child:   steps.isEmpty ? SizedBox(height: 0,) : Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe5d67b), width: 3),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
                   shadowColor: Colors.grey,
                   child: Column(children: <Widget>[
                     ListTile(
@@ -241,7 +253,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     ),
                     steps.isEmpty
                         ? Container(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
                         child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(data: steps),
                   ]),
@@ -253,7 +265,11 @@ class _VitalparameterState extends State<Vitalparameter> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => ActiveEnergy()));
                 },
-                child: Card(
+                child:   activeEnergy.isEmpty ? SizedBox(height: 0,) : Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffbed3d4), width: 3),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
                   shadowColor: Colors.grey,
                   child: Column(children: <Widget>[
                     ListTile(
@@ -266,7 +282,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                     ),
                     activeEnergy.isEmpty
                         ? Container(
-                        padding: EdgeInsets.only(bottom: 15.0),
+                        padding: EdgeInsets.only(bottom: 20.0, top: 20.0),
                         child: SpinKitWave(color: Theme.of(context).accentColor))
                         : CreateSparkline(
                       data: activeEnergy,
@@ -280,7 +296,11 @@ class _VitalparameterState extends State<Vitalparameter> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Bodyfat()));
                 },
-                child: Card(
+                child:   bodyFat.isEmpty ? SizedBox(height: 0,) :  Card(
+                  shape: RoundedRectangleBorder(
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 3),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
                   shadowColor: Colors.grey,
                   child: Column(children: <Widget>[
                     ListTile(
@@ -302,6 +322,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                 ),
               ),
 
+              // Diese Liste an Parametern kann einfach erweitert werden um alle Parameter des HealthKit-> jenachdem, welche dem user angezeigt werden sollen
 
             ],
           ),
