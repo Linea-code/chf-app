@@ -116,7 +116,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
   List<Step> _mySteps(){
     List<Step> steps = [
       Step(
-        title: Text("Tätigkeiten"),
+        title: Text("Tätigkeiten", style: Theme.of(context).textTheme.headline5,),
         isActive: true,
         state: StepState.complete,
         content: Column(
@@ -145,7 +145,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Schwermut"),
+        title: Text("Schwermut", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 0,
         state: (currentStep > 0) ? StepState.complete : StepState.editing,
         content: Column(
@@ -174,7 +174,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Schlaf"),
+        title: Text("Schlaf", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 1,
         state: (currentStep > 1) ? StepState.complete : StepState.editing,
         content: Column(
@@ -203,7 +203,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Müdigkeit"),
+        title: Text("Müdigkeit", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 2,
         state: (currentStep > 2) ? StepState.complete : StepState.editing,
         content: Column(
@@ -232,7 +232,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Appetit"),
+        title: Text("Appetit", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 3,
         state: (currentStep > 3) ? StepState.complete : StepState.editing,
         content: Column(
@@ -261,7 +261,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Ungutes Gefühl"),
+        title: Text("Gefühl", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 4,
         state: (currentStep > 4) ? StepState.complete : StepState.editing,
         content: Column(
@@ -290,7 +290,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Konzentration"),
+        title: Text("Konzentration", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 5,
         state: (currentStep > 5) ? StepState.complete : StepState.editing,
         content: Column(
@@ -319,7 +319,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Bewegungen"),
+        title: Text("Bewegungen", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 6,
         state: (currentStep > 6) ? StepState.complete : StepState.editing,
         content: Column(
@@ -348,7 +348,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Gedanken"),
+        title: Text("Gedanken", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 7,
         state: (currentStep > 7) ? StepState.complete : StepState.editing,
         content: Column(
@@ -377,7 +377,7 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
         ),
       ),
       Step(
-        title: Text("Beeintächtigung"),
+        title: Text("Beeintächtigung", style: Theme.of(context).textTheme.headline5,),
         isActive: currentStep > 8,
         state: (currentStep > 8) ? StepState.complete : StepState.editing,
         content: Column(

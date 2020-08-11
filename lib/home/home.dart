@@ -54,7 +54,10 @@ class Home extends StatelessWidget {
                   flex: 3,
                   child: Card(
                     child: Container(
-                      height: 100,
+                      constraints: BoxConstraints(
+                          minWidth: 100.0,
+                          minHeight: 100.0
+                      ),
                       decoration: BoxDecoration(
                         //jeweils Farbverlauf im Hintergrund der Karten
                         gradient: LinearGradient(
@@ -77,8 +80,9 @@ class Home extends StatelessWidget {
                           child: Center(
                             child: ListTile(
                               title: Text('Medikation'),
-                              subtitle: Text(
-                                  'Sie müssen noch Ihre Medikamente einnehmen!'),
+                              subtitle:
+                              Text(
+                                  'Sie müssen noch Ihre Medikamente einnehmen!',),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -110,7 +114,10 @@ class Home extends StatelessWidget {
                   flex: 3,
                   child: Card(
                     child: Container(
-                      height: 100,
+                      constraints: BoxConstraints(
+                          minWidth: 100.0,
+                          minHeight: 100.0
+                      ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                             begin: Alignment.topLeft,
@@ -165,7 +172,10 @@ class Home extends StatelessWidget {
                       flex: 3,
                       child: Card(
                         child: Container(
-                          height: 100,
+                          constraints: BoxConstraints(
+                              minWidth: 100.0,
+                              minHeight: 100.0
+                          ),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.topLeft,
@@ -207,15 +217,23 @@ class Home extends StatelessWidget {
             ),
             Card(
               child:
-                  Container(child:
+                  Container(
+                      constraints: BoxConstraints(
+                          minWidth: 100.0,
+                          minHeight: 100.0
+                      ),
+                      child:
                         Column(
                           children: <Widget>[
                             ListTile(
                               title: Text("Aktueller Gesundheitsstatus:\n8/10"),
                             ),
                   Container(
+                    constraints: BoxConstraints(
+                        minWidth: 60.0,
+                        minHeight: 60.0
+                    ),
                     padding: EdgeInsets.all(15),
-                    height: 60,
                     child:
                   LinearProgressIndicator(
                     backgroundColor: Colors.grey[300],
@@ -223,6 +241,10 @@ class Home extends StatelessWidget {
               value: 0.8,),
                   ),
                Container(
+                 constraints: BoxConstraints(
+                     minWidth: 50.0,
+                     minHeight: 50.0
+                 ),
                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
                  child: Text("Der Status berechnet sich basierend auf Ihren Vitalparametern und den Symptomfragebögen", style: Theme.of(context).textTheme.subtitle2,),
                )           ])))

@@ -115,7 +115,7 @@ class _WeeklyQuestSymptomsState extends State<WeeklyQuestSymptoms> {
 List<Step> _mySteps(){
   List<Step> steps = [
     Step(
-      title: Text("Ankleiden"),
+      title: Text("Ankleiden", style: Theme.of(context).textTheme.headline5,),
       isActive: true,
       state: StepState.complete,
       content: Column(
@@ -152,7 +152,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 0,
       state: (currentStep > 0) ? StepState.complete : StepState.editing,
-      title: Text('Hygiene'),
+      title: Text('Hygiene', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -187,7 +187,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 1,
       state: (currentStep > 1) ? StepState.complete : StepState.editing,
-      title: Text('Spazieren'),
+      title: Text('Spazieren', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -222,7 +222,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 2,
       state: (currentStep > 2) ? StepState.complete : StepState.editing,
-      title: Text('Tägliche Arbeit'),
+      title: Text('Arbeit', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -257,7 +257,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 3,
       state: (currentStep > 3) ? StepState.complete : StepState.editing,
-      title: Text('Treppen steigen'),
+      title: Text('Treppen', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -292,7 +292,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 4,
       state: (currentStep > 4) ? StepState.complete : StepState.editing,
-      title: Text('Schnelles Gehen'),
+      title: Text('Gehen' , style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -329,7 +329,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 5,
       state: (currentStep > 5) ? StepState.complete : StepState.editing,
-      title: Text('Symptome'),
+      title: Text('Symptome', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -370,7 +370,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 6,
       state: (currentStep > 6) ? StepState.complete : StepState.editing,
-      title: Text('Schwellungen - 1'),
+      title: Text('Schwellungen-1', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -405,7 +405,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 7,
       state: (currentStep > 7) ? StepState.complete : StepState.editing,
-      title: Text('Schwellungen - 2'),
+      title: Text('Schwellungen-2', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -444,7 +444,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 8,
       state: (currentStep > 8) ? StepState.complete : StepState.editing,
-      title: Text('Schlappheit - 1'),
+      title: Text('Schlappheit-1', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -484,7 +484,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 9,
       state: (currentStep > 9) ? StepState.complete : StepState.editing,
-      title: Text('Müdigkeit - 2'),
+      title: Text('Müdigkeit-2', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -523,7 +523,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 10,
       state: (currentStep > 10) ? StepState.complete : StepState.editing,
-      title: Text('Atemnot - 1'),
+      title: Text('Atemnot-1', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -563,7 +563,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 11,
       state: (currentStep > 11) ? StepState.complete : StepState.editing,
-      title: Text('Atemnot - 2'),
+      title: Text('Atemnot-2', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -602,7 +602,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 12,
       state: (currentStep > 12) ? StepState.complete : StepState.editing,
-      title: Text('Atemnot - 3'),
+      title: Text('Atemnot-3', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -637,7 +637,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 13,
       state: (currentStep > 13) ? StepState.complete : StepState.editing,
-      title: Text('Versorgung'),
+      title: Text('Versorgung', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -673,7 +673,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 14,
       state: (currentStep > 14) ? StepState.complete : StepState.editing,
-      title: Text('Verständnis'),
+      title: Text('Verständnis', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -708,7 +708,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 15,
       state: (currentStep > 15) ? StepState.complete : StepState.editing,
-      title: Text('Hindernis'),
+      title: Text('Hindernis', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -748,7 +748,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 16,
       state: (currentStep > 16) ? StepState.complete : StepState.editing,
-      title: Text('Befinden - 1'),
+      title: Text('Befinden-1', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -788,7 +788,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 17,
       state: (currentStep > 17) ? StepState.complete : StepState.editing,
-      title: Text('Befinden - 2'),
+      title: Text('Befinden-2', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -823,7 +823,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 18,
       state: (currentStep > 18) ? StepState.complete : StepState.editing,
-      title: Text('Hobbys'),
+      title: Text('Hobbys', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -863,7 +863,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 19,
       state: (currentStep > 19) ? StepState.complete : StepState.editing,
-      title: Text('Arbeiten'),
+      title: Text('Arbeiten', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -903,7 +903,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 20,
       state: (currentStep > 20) ? StepState.complete : StepState.editing,
-      title: Text('Familie/Freunde'),
+      title: Text('Familie', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(
@@ -943,7 +943,7 @@ List<Step> _mySteps(){
     Step(
       isActive: currentStep > 21,
       state: (currentStep > 21) ? StepState.complete : StepState.editing,
-      title: Text('Sexuelle Aktivität'),
+      title: Text('Aktivität', style: Theme.of(context).textTheme.headline5,),
       content: Column(
         children: <Widget>[
           Container(

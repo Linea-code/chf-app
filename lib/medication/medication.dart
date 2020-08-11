@@ -58,7 +58,8 @@ class _MedicationState extends State<Medication> {
             child:
             ListTile(
               title: Text("Wie geht es Ihnen heute?"),
-              subtitle: Row(children: <Widget>[
+              subtitle: Column(
+                children: <Widget>[
                 RaisedButton(
                   color: Colors.lightGreen[200],
                   child: Text("\u{1F642} gut"),
