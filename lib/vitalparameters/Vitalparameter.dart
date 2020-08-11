@@ -181,7 +181,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                 },
                 child:   _bpm.isEmpty ? SizedBox(height: 0,) : Card(
                   shape: RoundedRectangleBorder(
-                    side: new BorderSide(color: Color(0xffbed3d4), width: 3),
+                    side: new BorderSide(color: Color(0xffbed3d4), width: 1),
                     borderRadius: BorderRadius.circular(5)
                   ),
                   shadowColor: Colors.grey,
@@ -210,7 +210,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                 },
                 child:   weight.isEmpty ? SizedBox(height: 0,) : Card(
                   shape: RoundedRectangleBorder(
-                      side: new BorderSide(color: Color(0xffe8caa4), width: 3),
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
                       borderRadius: BorderRadius.circular(5)
                   ),
                   shadowColor: Colors.grey,
@@ -241,7 +241,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                 },
                 child:   steps.isEmpty ? SizedBox(height: 0,) : Card(
                   shape: RoundedRectangleBorder(
-                      side: new BorderSide(color: Color(0xffe5d67b), width: 3),
+                      side: new BorderSide(color: Color(0xffe5d67b), width: 1),
                       borderRadius: BorderRadius.circular(5)
                   ),
                   shadowColor: Colors.grey,
@@ -267,7 +267,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                 },
                 child:   activeEnergy.isEmpty ? SizedBox(height: 0,) : Card(
                   shape: RoundedRectangleBorder(
-                      side: new BorderSide(color: Color(0xffbed3d4), width: 3),
+                      side: new BorderSide(color: Color(0xffbed3d4), width: 1),
                       borderRadius: BorderRadius.circular(5)
                   ),
                   shadowColor: Colors.grey,
@@ -298,7 +298,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                 },
                 child:   bodyFat.isEmpty ? SizedBox(height: 0,) :  Card(
                   shape: RoundedRectangleBorder(
-                      side: new BorderSide(color: Color(0xffe8caa4), width: 3),
+                      side: new BorderSide(color: Color(0xffe8caa4), width: 1),
                       borderRadius: BorderRadius.circular(5)
                   ),
                   shadowColor: Colors.grey,

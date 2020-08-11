@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:herzinsuffizienz/home/home.dart';
 import 'package:herzinsuffizienz/symptoms/weeklyquesthealth.dart';
 import 'package:herzinsuffizienz/symptoms/weeklyquestsymptoms.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
@@ -10,7 +11,6 @@ class Symptoms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       //FAQ-Knopf unten rechts
       floatingActionButton: FloatingActionButton(
           tooltip:'Increment',
@@ -23,6 +23,7 @@ class Symptoms extends StatelessWidget {
         title: Text(_title,style: Theme.of(context).textTheme.headline1,
         ),
       ),
+
       body: ListView(
         children: <Widget>[
           Container(

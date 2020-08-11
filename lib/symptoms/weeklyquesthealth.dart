@@ -46,12 +46,8 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
                     new FlatButton(
                         child: new Text('Schließen'),
                         onPressed: () {
-                          setState(() {
                             complete = false;
-                          });
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) =>
-                                  Symptoms()));
+                          Navigator.pop(context);
                         }
                     ),
                   ],
@@ -70,12 +66,12 @@ class _WeeklyQuestHealthState extends State<WeeklyQuestHealth> {
                         onPressed: onStepContinue,
                       ),
                       SizedBox(width: 10,),
-                      RaisedButton(
+                      currentStep != 0 ? RaisedButton(
                         padding: EdgeInsets.only(top: 15, bottom: 15, left: 40, right: 40),
                         color: Colors.grey[100],
                         child: Text("Zurück"),
                         onPressed: onStepCancel,
-                      )
+                      ): SizedBox(height: 0,)
                     ],
                   );
                 },
