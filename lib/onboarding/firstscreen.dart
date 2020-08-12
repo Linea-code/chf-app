@@ -31,7 +31,7 @@ class Start extends StatelessWidget {
               children: <Widget>[
                 new ListTile(
                   leading: Icon(Icons.check),
-                  title: new Text("Visualisierung und Speicherung von Gesundheitsdaten",
+                  title: new Text("Darstellung und Speicherung von Gesundheitsdaten",
                     style: TextStyle(
                       fontFamily: "Arial",
                       fontSize: 16.0,

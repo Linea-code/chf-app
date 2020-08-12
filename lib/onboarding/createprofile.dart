@@ -151,7 +151,7 @@ class _CreateProfileState extends State<CreateProfile> {
               maxLines: null,
               decoration: InputDecoration(
                   labelStyle: TextStyle(fontSize: 16, color: Colors.black),
-                  labelText: 'Begleiterkrankungen/Komorbiditäten:'),
+                  labelText: 'Begleiterkrankungen:'),
               validator: (input) => input.isEmpty
                   ? 'Bitte geben Sie Ihre Begleiterkrankungen ein!'
                   : null,
