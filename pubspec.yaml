@@ -82,7 +82,7 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/Herz_EKG_quadratisch.png"
-  adaptive_icon_background: Color(0xFFFFFF)
+  adaptive_icon_background: Color(0xFFFFFF) #Hintergrundfarbe des Icons
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
