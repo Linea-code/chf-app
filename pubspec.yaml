@@ -77,12 +77,13 @@ flutter:
     - assets/Doktor2.PNG
     - assets/Arzt&Pflegerin.png
     - assets/Herz_EKG_quadratisch.png
+    - assets/Herz_IOS.png
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/Herz_EKG_quadratisch.png"
-  adaptive_icon_background: Color(0xFFFFFF) #Hintergrundfarbe des Icons
+  image_path_android: "assets/Herz_EKG_quadratisch.png"
+  image_path_ios: "assets/Herz_IOS.png"
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
