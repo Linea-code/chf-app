@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
 
 
 
-  final String _title = "Profil: ";
+  final String _title = "Profil";
   @override
   Widget build(BuildContext context) {
     return profile != null ? Scaffold( //FAQ-Knopf unten rechts
@@ -41,7 +41,7 @@ class _ProfileState extends State<Profile> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
         title: Text(
-          _title , style: Theme.of(context).textTheme.headline4,
+          _title , style: Theme.of(context).textTheme.headline1,
         ) ,
       ),
       body: ListView(
