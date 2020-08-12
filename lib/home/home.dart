@@ -258,7 +258,7 @@ class Home extends StatelessWidget {
             height: 120,
             child: DrawerHeader(
               child: Text(
-                'CHF-App',
+                'CHI-App',
                style: Theme.of(context).textTheme.headline1,
               ),
               decoration: BoxDecoration(color: Theme.of(context).primaryColor),

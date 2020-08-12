@@ -41,7 +41,7 @@ class _ProfileState extends State<Profile> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar( //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
         title: Text(
-          _title + profile.firstName + " "+ profile.secondName, style: Theme.of(context).textTheme.headline4,
+          _title , style: Theme.of(context).textTheme.headline4,
         ) ,
       ),
       body: ListView(
