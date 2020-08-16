@@ -29,11 +29,12 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
 
   Future<void> initPlatformState() async {
     DateTime startDate =
-    DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
+        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
     DateTime endDate = DateTime.now();
 
-    Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage
+    Future.delayed(Duration(seconds: 0), () async {
+      _isAuthorized =
+          await Health.requestAuthorization(); //Autorisierungsabfrage
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
@@ -49,12 +50,40 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
       } else {
         print("Keine Authorisierung vorliegend");
       }
+      activeEnergy.removeLast();
+
+      activeEnergy = activeEnergy
+          .map((datapoint) => new Datapoints(
+          new DateTime.utc(datapoint.getDate().year,
+              datapoint.getDate().month, datapoint.getDate().day),
+          datapoint.getValue()))
+          .toList();
       setState(() {});
-      avrEnergy= avrEnergy/activeEnergy.length;
+
+      DateTime currentDate;
+      var energyPerDay = List<Datapoints>();
+      for (Datapoints point in activeEnergy) {
+        if (currentDate == null || point.getDate() != currentDate) {
+          energyPerDay.add(new Datapoints(point.getDate(), point.getValue()));
+          currentDate = point.getDate();
+        } else {
+          energyPerDay.last = new Datapoints(
+              currentDate, energyPerDay.last.getValue() + point.getValue());
+        }
+      }
+
+      energyPerDay.forEach((element) => {
+        print(element.getDate().toString() +
+            " - " +
+            element.getValue().toString())
+      });
+
+      avrEnergy = avrEnergy / energyPerDay.length; //Durchschnitt berechnen
+
 
       _seriesData.add(
         charts.Series(
-          data: activeEnergy,
+          data: energyPerDay,
           domainFn: (Datapoints datapoints, _) => datapoints.getDate(),
           measureFn: (Datapoints datapoints, _) => datapoints.getValue(),
           id: 'Aktivitätsenergie',
@@ -66,75 +95,84 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( //FAQ-Button unten rechts
+    return Scaffold(
+        //FAQ-Button unten rechts
         floatingActionButton: FloatingActionButton(
-            tooltip:'Increment',
-            child:
-            Icon(Icons.help_outline,size: 50,),
-            onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
-        ),
+            tooltip: 'Increment',
+            child: Icon(
+              Icons.help_outline,
+              size: 50,
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => FAQ()));
+            }),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        appBar: AppBar( //Kopfzeile mit Titel
+        appBar: AppBar(
+          //Kopfzeile mit Titel
           title: Text(
-            'Aktivitätskalorien', style: Theme.of(context).textTheme.headline4,
+            'Aktivitätskalorien',
+            style: Theme.of(context).textTheme.headline4,
           ),
         ),
         body: Container(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: ListView(children: <Widget>[
-                //Ladebildschirm bei keinen Daten/leere Liste
-                _seriesData.isEmpty
-                    ? Container(
+          padding: EdgeInsets.all(8.0),
+          child: ListView(children: <Widget>[
+            //Ladebildschirm bei keinen Daten/leere Liste
+            _seriesData.isEmpty
+                ? Container(
                     padding: EdgeInsets.only(top: 50, bottom: 50),
-                    child:SpinKitWave(color: Theme.of(context).accentColor))
-                    : Container(
+                    child: SpinKitWave(color: Theme.of(context).accentColor))
+                : Container(
                     height: 300,
-                    child: Card( 
-                      child: Container(
-                      padding: EdgeInsets.all(5),
-                      //Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen
-                        child: charts.TimeSeriesChart(
-                          _seriesData,
-                          primaryMeasureAxis: new charts.NumericAxisSpec(
-                              tickProviderSpec:
-                              new charts.BasicNumericTickProviderSpec(
-                                  zeroBound: false)),
-                          domainAxis: new charts.DateTimeAxisSpec(
-                              tickFormatterSpec:
-                              new charts.AutoDateTimeTickFormatterSpec(
-                                  day: new charts.TimeFormatterSpec(
-                                      format: 'd', transitionFormat: 'd.MM'))),
-                          defaultRenderer: new charts.LineRendererConfig(
-                            //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
-                            stacked: true,
-                          ),
-                          animate: false,
-                          animationDuration: Duration(seconds: 3),
-                          behaviors: [
-                            new charts.ChartTitle('Aktivitätskalorien (kcal)'),
-                          ],
-                        )))),
-                //Ergänzug um Innormationsboxen-> zum auklappen
-                Card(color: Color(0xfff0fcfc),
-                    child: ExpansionTile(
-                      title: Text(
-                        ("Durchschnittlich verbrannte Aktivitätskalorien des letzten Monats: " +
-                            (avrEnergy.toStringAsFixed(2)))
-                      ),
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            "Ihr durchschnittlich verbrannten Aktivitätskalorien setzten sich aus allen Messwerten des vergangen Monats zusammen."
-                          ),
-                        ),
-                      ],
-                    )),
-              ]),
-            )));
+                    child: Card(
+                        child: Container(
+                            padding: EdgeInsets.all(5),
+                            //Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen
+                            child: charts.TimeSeriesChart(
+                              _seriesData,
+                              primaryMeasureAxis: new charts.NumericAxisSpec(
+                                  tickProviderSpec:
+                                      new charts.BasicNumericTickProviderSpec(
+                                          zeroBound: false)),
+                              domainAxis: new charts.DateTimeAxisSpec(
+                                  tickFormatterSpec:
+                                      new charts.AutoDateTimeTickFormatterSpec(
+                                          day: new charts.TimeFormatterSpec(
+                                              format: 'd',
+                                              transitionFormat: 'd.MM'))),
+                              defaultRenderer: new charts.LineRendererConfig(
+                                //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
+                                stacked: true,
+                              ),
+                              animate: false,
+                              animationDuration: Duration(seconds: 3),
+                              behaviors: [
+                                new charts.ChartTitle(
+                                    'Aktivitätskalorien (kcal)'),
+                              ],
+                            )))),
+            //Ergänzug um Innormationsboxen-> zum auklappen
+            Card(
+                color: Color(0xfff0fcfc),
+                child: ExpansionTile(
+                  title: Text(
+                      ("Durchschnittlich verbrannte Aktivitätskalorien des letzten Monats: " +
+                          (avrEnergy.toStringAsFixed(2)))),
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                          "Ihre durchschnittlich verbrannten Aktivitätskalorien setzten sich aus allen Messwerten des vergangen Monats zusammen."),
+                    ),
+                  ],
+                )),
+          ]),
+        )));
   }
 }
+
 //Eigene Klasse für Datenpunkte
 class Datapoints {
   DateTime date;

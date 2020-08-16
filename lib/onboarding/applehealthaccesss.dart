@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
+//falls eine eigene Zugriffsabfrage für Apple Health stattfinden soll-> aktuell wird sowohl apple Health. als auch Google Fit über den Aktivitäts-Slyder abgefragt
 class AppleHealth extends StatefulWidget {
   @override
   _AppleHealthState createState() => _AppleHealthState();

@@ -5,6 +5,7 @@ import 'package:charts_flutter/flutter.dart' as charts; //Um Charts zu erstellen
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
+
 //Detailansicht Gewicht
 class Weight extends StatefulWidget {
   @override
@@ -26,18 +27,20 @@ class _WeightState extends State<Weight> {
   }
 
   Future<void> initPlatformState() async {
-    DateTime startDate =
-        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day); //Zeitraum der Datenabfrage
+    DateTime startDate = DateTime.utc(2020, DateTime.now().month - 1,
+        DateTime.now().day); //Zeitraum der Datenabfrage
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage über Health kit
+      _isAuthorized = await Health
+          .requestAuthorization(); //Autorisierungsabfrage über Health kit
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
               startDate, endDate, HealthDataType.WEIGHT);
           for (HealthDataPoint point in data) {
-            weight.add(new Datapoints(point.dateFrom, point.value)); //Liste mit Gewichtsdaten füllen
+            weight.add(new Datapoints(
+                point.dateFrom, point.value)); //Liste mit Gewichtsdaten füllen
             avrWeight += point.value;
           }
         } catch (exception) {
@@ -67,15 +70,20 @@ class _WeightState extends State<Weight> {
     return Scaffold(
       //FAQ-Button unten rechts
       floatingActionButton: FloatingActionButton(
-          tooltip:'Increment',
-          child:
-          Icon(Icons.help_outline,size: 50,),
-          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
-      ),
+          tooltip: 'Increment',
+          child: Icon(
+            Icons.help_outline,
+            size: 50,
+          ),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => FAQ()));
+          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBar(
         title: Text(
-          'Gewicht', style: Theme.of(context).textTheme.headline4,
+          'Gewicht',
+          style: Theme.of(context).textTheme.headline4,
         ),
       ),
       body: Container(
@@ -86,54 +94,54 @@ class _WeightState extends State<Weight> {
               //Ladebildschirm falls keine Daten vorhanden oder falls Daten noch laden
               _seriesData.isEmpty
                   ? Container(
-                  padding: EdgeInsets.only(top: 50, bottom: 50),
-                  child:SpinKitWave(color: Theme.of(context).accentColor))
+                      padding: EdgeInsets.only(top: 50, bottom: 50),
+                      child: SpinKitWave(color: Theme.of(context).accentColor))
                   : Container(
                       height: 300,
                       child: Card(
-                        child: Container(
-                          padding: EdgeInsets.all(5),
-                        //Diagramm mit detailierten Datenpunkten und spezifischen Achseneinstellungen
-                          child: charts.TimeSeriesChart(
-                        _seriesData,
-                        primaryMeasureAxis: new charts.NumericAxisSpec(
-                            tickProviderSpec:
-                                new charts.BasicNumericTickProviderSpec(
-                                    zeroBound: false)),
-                        domainAxis: new charts.DateTimeAxisSpec(
-                            tickFormatterSpec:
-                                new charts.AutoDateTimeTickFormatterSpec(
-                                    day: new charts.TimeFormatterSpec(
-                                        format: 'd',
-                                        transitionFormat: 'd.MM'))),
-                        defaultRenderer: new charts.LineRendererConfig(
-                          //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
-                          stacked: true,
-                        ),
-                        animate: false,
-                        animationDuration: Duration(seconds: 3),
-                        behaviors: [
-                          new charts.ChartTitle('Gewicht (kg)'),
-                        ],
-                      )))),
+                          child: Container(
+                              padding: EdgeInsets.all(5),
+                              //Diagramm mit detailierten Datenpunkten und spezifischen Achseneinstellungen
+                              child: charts.TimeSeriesChart(
+                                _seriesData,
+                                primaryMeasureAxis: new charts.NumericAxisSpec(
+                                    tickProviderSpec:
+                                        new charts.BasicNumericTickProviderSpec(
+                                            zeroBound: false)),
+                                domainAxis: new charts.DateTimeAxisSpec(
+                                    tickFormatterSpec: new charts
+                                            .AutoDateTimeTickFormatterSpec(
+                                        day: new charts.TimeFormatterSpec(
+                                            format: 'd',
+                                            transitionFormat: 'd.MM'))),
+                                defaultRenderer: new charts.LineRendererConfig(
+                                  //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
+                                  stacked: true,
+                                ),
+                                animate: false,
+                                animationDuration: Duration(seconds: 3),
+                                behaviors: [
+                                  new charts.ChartTitle('Gewicht (kg)'),
+                                ],
+                              )))),
 
               //Ergänzende Infos in ausklappbaren Karten
               Card(
                   color: Color(0xfff0fcfc),
                   child: ExpansionTile(
-                title: Text(
-                  ("Durchschnittliches Gewicht des letzten Monats: " +
-                      (avrWeight.toStringAsFixed(2))),
-                ),
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      "Ihr durchschnittliches Gewicht setzt sich aus allen Messwerten des vergangen Monats zusammen. Sollten Sie starke Gewichtsveränderungen feststellen kontaktieren Sie bitte Ihren Arzt.",
+                    title: Text(
+                      ("Durchschnittliches Gewicht des letzten Monats: " +
+                          (avrWeight.toStringAsFixed(2))),
                     ),
-                  ),
-                ],
-              ))
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          "Ihr durchschnittliches Gewicht setzt sich aus allen Messwerten des vergangen Monats zusammen. Sollten Sie starke Gewichtsveränderungen feststellen kontaktieren Sie bitte Ihren Arzt.",
+                        ),
+                      ),
+                    ],
+                  ))
             ],
           ),
         ),
@@ -154,6 +162,6 @@ class Datapoints {
   }
 
   DateTime getDate() {
-    return date;//Umwandlung in korrekten Datentyp
+    return date; //Umwandlung in korrekten Datentyp
   }
 }

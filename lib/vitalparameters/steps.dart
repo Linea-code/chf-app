@@ -5,6 +5,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:health/health.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/faq/faq.dart';
+
 //Klassse um Schrittzahl darzustellen-> Speicherung der Daten in Liste und erstellung von Diagramm
 class Steps extends StatefulWidget {
   @override
@@ -27,18 +28,19 @@ class _StepsState extends State<Steps> {
 
   Future<void> initPlatformState() async {
     DateTime startDate =
-    DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
+        DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage
+      _isAuthorized =
+          await Health.requestAuthorization(); //Autorisierungsabfrage
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
               startDate, endDate, HealthDataType.STEPS);
           for (HealthDataPoint point in data) {
             steps.add(new Datapoints(point.dateFrom, point.value.toDouble()));
-            avrSteps=avrSteps+point.value.toDouble();
+            avrSteps = avrSteps + point.value.toDouble();
           }
         } catch (exception) {
           print(exception.toString());
@@ -46,24 +48,32 @@ class _StepsState extends State<Steps> {
       } else {
         print("Keine Authorisierung vorliegend");
       }
-      steps= steps.map((datapoint) =>
-         new Datapoints(new DateTime.utc(datapoint.getDate().year, datapoint.getDate().month ,datapoint.getDate().day), datapoint.getValue())).toList();
+      steps = steps
+          .map((datapoint) => new Datapoints(
+              new DateTime.utc(datapoint.getDate().year,
+                  datapoint.getDate().month, datapoint.getDate().day),
+              datapoint.getValue()))
+          .toList();
 
       setState(() {});
 
       DateTime currentDate;
       var stepsPerDay = List<Datapoints>();
       for (Datapoints point in steps) {
-        if(currentDate == null || point.getDate() != currentDate) {
+        if (currentDate == null || point.getDate() != currentDate) {
           stepsPerDay.add(new Datapoints(point.getDate(), point.getValue()));
           currentDate = point.getDate();
-        }
-        else {
-stepsPerDay.last = new Datapoints(currentDate, stepsPerDay.last.getValue()+point.getValue());
+        } else {
+          stepsPerDay.last = new Datapoints(
+              currentDate, stepsPerDay.last.getValue() + point.getValue());
         }
       }
 
-      stepsPerDay.forEach((element) => {print (element.getDate().toString() + " - " + element.getValue().toString()) });
+      stepsPerDay.forEach((element) => {
+            print(element.getDate().toString() +
+                " - " +
+                element.getValue().toString())
+          });
 
       avrSteps = avrSteps / stepsPerDay.length; //Durchschnitt berechnen
 
@@ -85,15 +95,21 @@ stepsPerDay.last = new Datapoints(currentDate, stepsPerDay.last.getValue()+point
     return Scaffold(
       //FAQ-Button
       floatingActionButton: FloatingActionButton(
-          tooltip:'Increment',
-          child:
-          Icon(Icons.help_outline,size: 50,),
-          onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
-      ),
+          tooltip: 'Increment',
+          child: Icon(
+            Icons.help_outline,
+            size: 50,
+          ),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => FAQ()));
+          }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      appBar: AppBar( //Kopfzeile mit Überschrift
+      appBar: AppBar(
+        //Kopfzeile mit Überschrift
         title: Text(
-          'Schritte', style: Theme.of(context).textTheme.headline4,
+          'Schritte',
+          style: Theme.of(context).textTheme.headline4,
         ),
       ),
       body: Container(
@@ -104,38 +120,39 @@ stepsPerDay.last = new Datapoints(currentDate, stepsPerDay.last.getValue()+point
               //Ladebildschirm falls keine Daten vorhanden oder fals Daten noch laden
               _seriesData.isEmpty
                   ? Container(
-                  padding: EdgeInsets.only(top: 50, bottom: 50),
-                  child:SpinKitWave(color: Theme.of(context).accentColor))
+                      padding: EdgeInsets.only(top: 50, bottom: 50),
+                      child: SpinKitWave(color: Theme.of(context).accentColor))
                   : Container(
-                  height: 300,
-                  child: Card(
-                    //Diagramm mit spezifischen Achsenbeschriftungen und Datenformaten
-                      child: Container( 
-                        padding: EdgeInsets.all(5),
-                          child: charts.TimeSeriesChart(
-                        _seriesData,
-                        primaryMeasureAxis: new charts.NumericAxisSpec(
-                            tickProviderSpec:
-                            new charts.BasicNumericTickProviderSpec(
-                                zeroBound: false)),
-                        domainAxis: new charts.DateTimeAxisSpec(
-                            tickFormatterSpec:
-                            new charts.AutoDateTimeTickFormatterSpec(
-                                day: new charts.TimeFormatterSpec(
-                                    format: 'd',
-                                    transitionFormat: 'd.MM'))),
-                        defaultRenderer: new charts.LineRendererConfig(
-                          //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
-                          stacked: true,
-                        ),
-                        animate: false,
-                        animationDuration: Duration(seconds: 3),
-                        behaviors: [
-                          new charts.ChartTitle('Schritte'),
-                        ],
-                      )))),
+                      height: 300,
+                      child: Card(
+                          //Diagramm mit spezifischen Achsenbeschriftungen und Datenformaten
+                          child: Container(
+                              padding: EdgeInsets.all(5),
+                              child: charts.TimeSeriesChart(
+                                _seriesData,
+                                primaryMeasureAxis: new charts.NumericAxisSpec(
+                                    tickProviderSpec:
+                                        new charts.BasicNumericTickProviderSpec(
+                                            zeroBound: false)),
+                                domainAxis: new charts.DateTimeAxisSpec(
+                                    tickFormatterSpec: new charts
+                                            .AutoDateTimeTickFormatterSpec(
+                                        day: new charts.TimeFormatterSpec(
+                                            format: 'd',
+                                            transitionFormat: 'd.MM'))),
+                                defaultRenderer: new charts.LineRendererConfig(
+                                  //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
+                                  stacked: true,
+                                ),
+                                animate: false,
+                                animationDuration: Duration(seconds: 3),
+                                behaviors: [
+                                  new charts.ChartTitle('Schritte'),
+                                ],
+                              )))),
               //Infos unterhalb des Diagramms-> zum ausklappen
-              Card(color: Color(0xfff0fcfc),
+              Card(
+                  color: Color(0xfff0fcfc),
                   child: ExpansionTile(
                     title: Text(
                       ("Durchschnittliche Schrittzahl des letzten Monats: " +
@@ -157,6 +174,7 @@ stepsPerDay.last = new Datapoints(currentDate, stepsPerDay.last.getValue()+point
     );
   }
 }
+
 //Eigene Klasse für Datenpunkte
 class Datapoints {
   DateTime date;

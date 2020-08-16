@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:herzinsuffizienz/home/home.dart';
 import 'package:herzinsuffizienz/onboarding/accessrights.dart';
-import 'package:herzinsuffizienz/onboarding/createprofile2.dart';
 import 'package:herzinsuffizienz/onboarding/firstscreen.dart';
 import 'package:herzinsuffizienz/onboarding/newprofile.dart';
 
+// Main-Methode mit dem allgemeinen Theme der Applikation (Farben und Schrift)
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   final newProfile = await NewProfile.loadData();

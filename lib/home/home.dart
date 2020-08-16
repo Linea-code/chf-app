@@ -16,9 +16,11 @@ class Home extends StatelessWidget {
     return Scaffold(
       //Button unten rechts zum FAQ -> bleibt beim scrollen
       floatingActionButton: FloatingActionButton(
-          tooltip:'Increment',
-          child:
-          Icon(Icons.help_outline,size: 50,),
+          tooltip: 'Increment',
+          child: Icon(
+            Icons.help_outline,
+            size: 50,
+          ),
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => FAQ()));
@@ -54,10 +56,8 @@ class Home extends StatelessWidget {
                   flex: 3,
                   child: Card(
                     child: Container(
-                      constraints: BoxConstraints(
-                          minWidth: 100.0,
-                          minHeight: 100.0
-                      ),
+                      constraints:
+                          BoxConstraints(minWidth: 100.0, minHeight: 100.0),
                       decoration: BoxDecoration(
                         //jeweils Farbverlauf im Hintergrund der Karten
                         gradient: LinearGradient(
@@ -80,9 +80,9 @@ class Home extends StatelessWidget {
                           child: Center(
                             child: ListTile(
                               title: Text('Medikation'),
-                              subtitle:
-                              Text(
-                                  'Sie müssen noch Ihre Medikamente einnehmen!',),
+                              subtitle: Text(
+                                'Sie müssen noch Ihre Medikamente einnehmen!',
+                              ),
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -114,10 +114,8 @@ class Home extends StatelessWidget {
                   flex: 3,
                   child: Card(
                     child: Container(
-                      constraints: BoxConstraints(
-                          minWidth: 100.0,
-                          minHeight: 100.0
-                      ),
+                      constraints:
+                          BoxConstraints(minWidth: 100.0, minHeight: 100.0),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                             begin: Alignment.topLeft,
@@ -139,8 +137,7 @@ class Home extends StatelessWidget {
                           child: Center(
                             child: ListTile(
                               title: Text('Symptome'),
-                              subtitle:
-                                DaysUntil(),
+                              subtitle: DaysUntil(),
                             ),
                           )),
                     ),
@@ -172,10 +169,8 @@ class Home extends StatelessWidget {
                       flex: 3,
                       child: Card(
                         child: Container(
-                          constraints: BoxConstraints(
-                              minWidth: 100.0,
-                              minHeight: 100.0
-                          ),
+                          constraints:
+                              BoxConstraints(minWidth: 100.0, minHeight: 100.0),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.topLeft,
@@ -216,38 +211,35 @@ class Home extends StatelessWidget {
               height: 10.0,
             ),
             Card(
-              child:
-                  Container(
-                      constraints: BoxConstraints(
-                          minWidth: 100.0,
-                          minHeight: 100.0
+                child: Container(
+                    constraints:
+                        BoxConstraints(minWidth: 100.0, minHeight: 100.0),
+                    child: Column(children: <Widget>[
+                      ListTile(
+                        title: Text("Aktueller Gesundheitsstatus:\n8/10"),
                       ),
-                      child:
-                        Column(
-                          children: <Widget>[
-                            ListTile(
-                              title: Text("Aktueller Gesundheitsstatus:\n8/10"),
-                            ),
-                  Container(
-                    constraints: BoxConstraints(
-                        minWidth: 60.0,
-                        minHeight: 60.0
-                    ),
-                    padding: EdgeInsets.all(15),
-                    child:
-                  LinearProgressIndicator(
-                    backgroundColor: Colors.grey[300],
-              valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
-              value: 0.8,),
-                  ),
-               Container(
-                 constraints: BoxConstraints(
-                     minWidth: 50.0,
-                     minHeight: 50.0
-                 ),
-                 padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                 child: Text("Der Status berechnet sich basierend auf Ihren Vitalparametern und den Symptomfragebögen", style: Theme.of(context).textTheme.subtitle2,),
-               )           ])))
+                      Container(
+                        constraints:
+                            BoxConstraints(minWidth: 60.0, minHeight: 60.0),
+                        padding: EdgeInsets.all(15),
+                        child: LinearProgressIndicator(
+                          backgroundColor: Colors.grey[300],
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Theme.of(context).primaryColor),
+                          value: 0.8,
+                        ),
+                      ),
+                      Container(
+                        constraints:
+                            BoxConstraints(minWidth: 50.0, minHeight: 50.0),
+                        padding:
+                            EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                        child: Text(
+                          "Der Status berechnet sich basierend auf Ihren Vitalparametern und den Symptomfragebögen",
+                          style: Theme.of(context).textTheme.subtitle2,
+                        ),
+                      )
+                    ])))
           ])),
 
       // Drawer oben links -> Menu was geöffnet und geschlossen werden kann und eine Übersicht über alle Funktionen inklusive der entsprechenden Navigation gefunden werden kann
@@ -259,15 +251,19 @@ class Home extends StatelessWidget {
             child: DrawerHeader(
               child: Text(
                 'CHI-App',
-               style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.headline1,
               ),
               decoration: BoxDecoration(color: Theme.of(context).primaryColor),
             ),
           ),
           ListTile(
-            leading: Icon(Icons.favorite, size: 35,),
+            leading: Icon(
+              Icons.favorite,
+              size: 35,
+            ),
             title: Text(
-              'Vitalparameter', style: Theme.of(context).textTheme.headline5,
+              'Vitalparameter',
+              style: Theme.of(context).textTheme.headline5,
             ),
             onTap: () {
               Navigator.push(
@@ -278,7 +274,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.tag_faces, size: 35,),
+            leading: Icon(
+              Icons.tag_faces,
+              size: 35,
+            ),
             title: Text(
               'Symptome',
               style: Theme.of(context).textTheme.headline5,
@@ -291,7 +290,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.local_hospital, size: 35,),
+            leading: Icon(
+              Icons.local_hospital,
+              size: 35,
+            ),
             title: Text(
               'Medikamente',
               style: Theme.of(context).textTheme.headline5,
@@ -305,7 +307,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.share, size: 35,),
+            leading: Icon(
+              Icons.share,
+              size: 35,
+            ),
             title: Text(
               'Visitencode',
               style: Theme.of(context).textTheme.headline5,
@@ -319,7 +324,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.person, size: 35,),
+            leading: Icon(
+              Icons.person,
+              size: 35,
+            ),
             title: Text(
               'Profil',
               style: Theme.of(context).textTheme.headline5,
@@ -328,11 +336,15 @@ class Home extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Profile())); // wechsel zu Profil und Übergabe der eingegebenen Werte auf onboarding Seite
+                      builder: (context) =>
+                          Profile())); // wechsel zu Profil und Übergabe der eingegebenen Werte auf onboarding Seite
             },
           ),
           ListTile(
-            leading: Icon(Icons.help_outline, size: 35,),
+            leading: Icon(
+              Icons.help_outline,
+              size: 35,
+            ),
             title: Text(
               'Häufige Fragen',
               style: Theme.of(context).textTheme.headline5,
@@ -345,7 +357,10 @@ class Home extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings, size: 35,),
+            leading: Icon(
+              Icons.settings,
+              size: 35,
+            ),
             title: Text(
               'Einstellungen',
               style: Theme.of(context).textTheme.headline5,

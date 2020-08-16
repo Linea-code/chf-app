@@ -33,7 +33,8 @@ class _BPMState extends State<BPM> {
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health.requestAuthorization(); //Autorisierungsabfrage
+      _isAuthorized =
+          await Health.requestAuthorization(); //Autorisierungsabfrage
       if (_isAuthorized) {
         try {
           List<HealthDataPoint> data = await Health.getHealthDataFromType(
@@ -49,7 +50,7 @@ class _BPMState extends State<BPM> {
         print("Keine Authorisierung vorliegend");
       }
       setState(() {});
-      avrBpm= avrBpm/bpm.length;
+      avrBpm = avrBpm / bpm.length;
 
       _seriesData.add(
         charts.Series(
@@ -65,17 +66,24 @@ class _BPMState extends State<BPM> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( //FAQ-Button unten rechts
+    return Scaffold(
+        //FAQ-Button unten rechts
         floatingActionButton: FloatingActionButton(
-            tooltip:'Increment',
-            child:
-            Icon(Icons.help_outline,size: 50,),
-            onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=> FAQ()));}
-        ),
+            tooltip: 'Increment',
+            child: Icon(
+              Icons.help_outline,
+              size: 50,
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => FAQ()));
+            }),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        appBar: AppBar( //Kopfzeile mit Titel
+        appBar: AppBar(
+          //Kopfzeile mit Titel
           title: Text(
-            'Herzfrequenz', style: Theme.of(context).textTheme.headline4,
+            'Herzfrequenz',
+            style: Theme.of(context).textTheme.headline4,
           ),
         ),
         body: Container(
@@ -85,47 +93,60 @@ class _BPMState extends State<BPM> {
             //Ladebildschirm bei keinen Daten/leere Liste
             _seriesData.isEmpty
                 ? Container(
-                padding: EdgeInsets.only(top: 50, bottom: 50),
-                child:SpinKitWave(color: Theme.of(context).accentColor))
+                    padding: EdgeInsets.only(top: 50, bottom: 50),
+                    child: SpinKitWave(color: Theme.of(context).accentColor))
                 : Container(
                     height: 300,
                     child: Card(
-                      child: Container(
-                        padding: EdgeInsets.all(5),//Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen
-                        child: charts.TimeSeriesChart(
-                      _seriesData,
-                      primaryMeasureAxis: new charts.NumericAxisSpec(
-                          tickProviderSpec:
-                              new charts.BasicNumericTickProviderSpec(
-                                  zeroBound: false)),
-                      domainAxis: new charts.DateTimeAxisSpec(
-                          tickFormatterSpec:
-                              new charts.AutoDateTimeTickFormatterSpec(
-                                  day: new charts.TimeFormatterSpec(
-                                      format: 'd', transitionFormat: 'd.MM'))),
-                      defaultRenderer: new charts.LineRendererConfig(
-                        //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
-                        stacked: true,
-                      ),
-                      animate: false,
-                      animationDuration: Duration(seconds: 3),
-                      behaviors: [
-                        new charts.ChartTitle('Herzfrequenz (BPM)'),
-                      ],
-                    )))),
+                        child: Container(
+                            padding: EdgeInsets.all(
+                                5), //Diagramm erstellen mit spezifischen Achsen- und Farbeinstellungen
+                            child: charts.TimeSeriesChart(
+                              _seriesData,
+                              primaryMeasureAxis: new charts.NumericAxisSpec(
+                                  tickProviderSpec:
+                                      new charts.BasicNumericTickProviderSpec(
+                                          zeroBound: false)),
+                              domainAxis: new charts.DateTimeAxisSpec(
+                                  tickFormatterSpec:
+                                      new charts.AutoDateTimeTickFormatterSpec(
+                                          day: new charts.TimeFormatterSpec(
+                                              format: 'd',
+                                              transitionFormat: 'd.MM'))),
+                              defaultRenderer: new charts.LineRendererConfig(
+                                //includeArea: true,  //Könnte noch hinzugefügt werden um Bereich unter Grafen auszufüllen
+                                stacked: true,
+                              ),
+                              animate: false,
+                              animationDuration: Duration(seconds: 3),
+                              behaviors: [
+                                new charts.ChartTitle('Herzfrequenz (BPM)'),
+                              ],
+                            )))),
             //Ergänzug um Innormationsboxen-> zum auklappen
-            Card(color: Color(0xfff0fcfc),
+            Card(
+                color: Color(0xfff0fcfc),
                 child: ExpansionTile(
                   title: Text(
-                    ("Durchschnittliche Herzfrequenz des letzten Monats: " +
-                        (avrBpm.toStringAsFixed(2)))
-                  ),
+                      ("Durchschnittliche Herzfrequenz des letzten Monats: " +
+                          (avrBpm.toStringAsFixed(2)))),
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(10.0),
                       child: Text(
-                        "Ihr durchschnittliche Herzfrequenz setzt sich aus allen Messwerten des vergangen Monats zusammen."
-                      ),
+                          "Ihr durchschnittliche Herzfrequenz setzt sich aus allen Messwerten des vergangen Monats zusammen."),
+                    ),
+                  ],
+                )),
+            Card(
+                color: Color(0xfff0fcfc),
+                child: ExpansionTile(
+                  title: Text(("Was sagt die Herzfrequenz aus?")),
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                          "Die Herzfrequenz gibt die Anzahl der Herzschläge pro Minute an. Eine Herzfrequenz von 60 BPM bedeutet demnach, dass das Herz in einer Minute 60 mal schlägt. "),
                     ),
                   ],
                 )),
@@ -133,30 +154,13 @@ class _BPMState extends State<BPM> {
                 color: Color(0xfff0fcfc),
                 child: ExpansionTile(
                   title: Text(
-                    ("Was sagt die Herzfrequenz aus?")
-                  ),
+                      ("Eine gesunde Herzfrequenz liegt bei ca. 50 bis 100 BPM.")),
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(10.0),
                       child: Text(
-                        "Die Herzfrequenz gibt die Anzahl der Herzschläge pro Minute an. Eine Herzfrequenz von 60 BPM bedeutet demnach, dass das Herz in einer Minute 60 mal schlägt. "
-                      ),
-                    ),
-                  ],
-                )),
-            Card(
-                color: Color(0xfff0fcfc),
-                child: ExpansionTile(
-                  title: Text(
-                    ("Eine gesunde Herzfrequenz liegt bei ca. 50 bis 100 BPM.")
-                  ),
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        "Wie hoch genau eine gesunde Herzfrequenz ist, hängt von vielen Faktoren ab. Beispielsweise das Alter, Geschlecht und die körperlicge Fitness wirken sich stark auf die Herzfequenz aus."
-                            "So liegt bei einem Neugeborenen die gesunde Herzfrequenz deutlich höher, bei rund 120 BPM, wohingegen ein junger, männlicher Athlet eine Herzfrequenz von rund 55 BPM hat."
-                      ),
+                          "Wie hoch genau eine gesunde Herzfrequenz ist, hängt von vielen Faktoren ab. Beispielsweise das Alter, Geschlecht und die körperliche Fitness wirken sich stark auf die Herzfequenz aus."
+                          "So liegt bei einem Neugeborenen die gesunde Herzfrequenz deutlich höher, bei rund 120 BPM, wohingegen ein junger, männlicher Athlet eine Herzfrequenz von rund 55 BPM hat."),
                     ),
                   ],
                 ))
@@ -164,6 +168,7 @@ class _BPMState extends State<BPM> {
         )));
   }
 }
+
 //Eigene Klasse für Datenpunkte
 class Datapoints {
   DateTime date;
