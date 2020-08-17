@@ -1,16 +1,5 @@
-# herzinsuffizienz
+# Herzinsuffizienz-App
 
-A new Flutter application.
+Diese Applikation ist im Rahmen der Bachelorarbeit "Mobiles Herzinsuffizienzmonitoring - Erstellung eines Applikations-Prototypen für den Einsatz von Digital Wearables" entstanden. Es handelt sich um einen Frontend-Prototypen, der in der lage ist reale Daten aus Google Fit und dem Apple HealthKit abzufragen und zu visualisieren. Damit soll ein kontinuierliches Monitoring von Patienten mit chronischer Herzinsuffizienz ermöglicht werden. Zusätzlich besteht die Möglichkeit die Medikation und den Gesundheitszustand von Patienten zu überwachen.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Um die Applikation zu testen, kann das Repository gekloned und lokal gespeichert werden. Sofern es noch nicht vorhanden ist, muss zusätzlich eine Installation von Flutter vorgenommen werden (Installationslink: https://flutter.dev/docs/get-started/install). Anschließend ist ein Test auf einem Android oder iOS Gerät möglich. Wobei für iOS ein XCode benötigt wird. 
