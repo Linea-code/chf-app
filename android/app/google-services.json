@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:372622564954:android:08196a53352a5810be4263",
+        "mobilesdk_app_id": "1:372622564954:android:db87fb9223e3940bbe4263",
         "android_client_info": {
-          "package_name": "com.example.herzinsuffizienz"
+          "package_name": "de.lineaschmidt.herzinsuffizienz"
         }
       },
       "oauth_client": [
@@ -21,7 +21,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyChMPug6jNDYNYf0XHc52GxfBVhSstVmyw"
+          "current_key": "AIzaSyDcz2xtUz-YyPEHY25JsIkkNw4Uu6NdXyQ"
         }
       ],
       "services": {
@@ -30,6 +30,13 @@
             {
               "client_id": "372622564954-htgnhait6c8f9e13vlcr9831t0hsd0o7.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "372622564954-a4kr0g4rlcaauq4eq10qugogh2rig07b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.herzinsuffizienz"
+              }
             }
           ]
         }
