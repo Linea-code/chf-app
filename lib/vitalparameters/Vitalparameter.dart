@@ -700,7 +700,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                             ),
                     ),
 
-                    // Diese Liste an Parametern kann einfach erweitert werden um alle Parameter des HealthKit-> jenachdem, welche dem user angezeigt werden sollen
+                    // Diese Liste an Parametern kann einfach erweitert werden um alle Parameter des Health-Kit-> jenachdem, welche dem user angezeigt werden sollen
                   ],
                 ),
               ),
