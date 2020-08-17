@@ -14,18 +14,14 @@ class Start extends StatelessWidget {
             style: Theme.of(context).textTheme.headline1,
           ),
         ),
-        body: Column(
+        body: ListView( children: <Widget>[
+        Column(
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(15.0),
               child: Text(
                 //kurzer Willkommenstext
                 "Herzlich Willkommen in Ihrer Herzinsuffizienz-App! \nDiese App wird Sie im Alltag unterstützen mit Ihrer chronischen Herzinsuffizienz umzugehen!\n\nFolgendes kann in Zukunft von der App übernommen werden: ",
-                style: TextStyle(
-                  fontFamily: "Arial",
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                ),
               ),
             ),
 
@@ -36,27 +32,27 @@ class Start extends StatelessWidget {
                 new ListTile(
                   leading: Icon(Icons.check),
                   title: new Text(
-                    "Darstellung und Speicherung von Gesundheitsdaten",
+                    "Darstellung und Speicherung von Gesundheitsdaten", style: Theme.of(context).textTheme.subtitle2,
                   ),
                 ),
                 new ListTile(
                   leading: Icon(Icons.check),
                   title: new Text(
-                    "Auswertung von Gesundheitsdaten gemeinsam mit Ihrem Arzt",
+                    "Auswertung von Gesundheitsdaten gemeinsam mit Ihrem Arzt",style: Theme.of(context).textTheme.subtitle2,
 
                   ),
                 ),
                 new ListTile(
                   leading: Icon(Icons.check),
                   title: new Text(
-                    "Erinnerungen an die Medikationseinnahme",
+                    "Erinnerungen an die Medikationseinnahme",style: Theme.of(context).textTheme.subtitle2,
 
                   ),
                 ),
                 new ListTile(
                   leading: Icon(Icons.check),
                   title: new Text(
-                    "Übermittlung medizinischer Daten an den behandelnden Arzt",
+                    "Übermittlung medizinischer Daten an den behandelnden Arzt",style: Theme.of(context).textTheme.subtitle2,
                   ),
                 )
               ],
@@ -77,6 +73,6 @@ class Start extends StatelessWidget {
               ),
             )
           ],
-        ));
+        )]));
   }
 }

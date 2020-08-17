@@ -334,7 +334,7 @@ class _VitalparameterState extends State<Vitalparameter> {
                                   //leading: Icon(Icons.trending_up),
                                   title: Text('Aktivitätskalorien'),
                                   subtitle: Text("letzte Messung: " +
-                                      (activeEnergy.isEmpty
+                                      ((activeEnergy.isEmpty || activeEnergy.length == 1)
                                           ? " "
                                           : activeEnergy[activeEnergy.length-2]
                                               .round()
