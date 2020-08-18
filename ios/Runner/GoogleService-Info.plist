@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>372622564954-a4kr0g4rlcaauq4eq10qugogh2rig07b.apps.googleusercontent.com</string>
+	<string>372622564954-f0hg9nnousfa7v97opo75u31l57n4hbi.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.372622564954-a4kr0g4rlcaauq4eq10qugogh2rig07b</string>
+	<string>com.googleusercontent.apps.372622564954-f0hg9nnousfa7v97opo75u31l57n4hbi</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBJdtfQ1vqr4h0oTamhId_pWyrdI2gB18g</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.herzinsuffizienz</string>
+	<string>de.lineaschmidt.herzinsuffizienz</string>
 	<key>PROJECT_ID</key>
 	<string>chf-app-be167</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:372622564954:ios:09b50e5bfbf09ca2be4263</string>
+	<string>1:372622564954:ios:20cdb87dc9d5669dbe4263</string>
 	<key>DATABASE_URL</key>
 	<string>https://chf-app-be167.firebaseio.com</string>
 </dict>
