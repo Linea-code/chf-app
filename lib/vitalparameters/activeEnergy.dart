@@ -33,12 +33,11 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
     DateTime endDate = DateTime.now();
 
     Future.delayed(Duration(seconds: 0), () async {
-      _isAuthorized =
-          await Health.requestAuthorization(); //Autorisierungsabfrage
-      if (_isAuthorized) {
+     HealthFactory health =HealthFactory();
+     List<HealthDataType> types = [HealthDataType.ACTIVE_ENERGY_BURNED];
         try {
-          List<HealthDataPoint> data = await Health.getHealthDataFromType(
-              startDate, endDate, HealthDataType.ACTIVE_ENERGY_BURNED);
+          List<HealthDataPoint> data = await health.getHealthDataFromTypes(
+              startDate, endDate, types);
           for (HealthDataPoint point in data) {
             activeEnergy.add(new Datapoints(point.dateFrom, point.value));
             avrEnergy += point.value;
@@ -47,9 +46,6 @@ class _ActiveEnergyState extends State<ActiveEnergy> {
         } catch (exception) {
           print(exception.toString());
         }
-      } else {
-        print("Keine Authorisierung vorliegend");
-      }
       activeEnergy.removeLast();
 
       activeEnergy = activeEnergy

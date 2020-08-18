@@ -32,13 +32,12 @@ class _BodyfatState extends State<Bodyfat> {
         DateTime.now().day); //festlegung des Zeitraums
     DateTime endDate = DateTime.now();
 
-    Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health
-          .requestAuthorization(); //Abfrage der Autorisierung über health kit
-      if (_isAuthorized) {
-        try {
-          List<HealthDataPoint> data = await Health.getHealthDataFromType(
-              startDate, endDate, HealthDataType.BODY_FAT_PERCENTAGE);
+    Future.delayed(Duration(seconds: 0), () async {
+      HealthFactory health =HealthFactory();
+      List<HealthDataType> types = [HealthDataType.BODY_FAT_PERCENTAGE];
+      try {
+        List<HealthDataPoint> data = await health.getHealthDataFromTypes(
+            startDate, endDate, types);
           for (HealthDataPoint point in data) {
             bodyfat.add(new Datapoints(point.dateFrom, point.value));
             avrBodyfat += point.value;
@@ -46,9 +45,6 @@ class _BodyfatState extends State<Bodyfat> {
         } catch (exception) {
           print(exception.toString());
         }
-      } else {
-        print("Keine Authorisierung vorliegend");
-      }
       setState(() {});
       avrBodyfat = avrBodyfat / bodyfat.length; //Bilden eines Durchschnittwerts
 

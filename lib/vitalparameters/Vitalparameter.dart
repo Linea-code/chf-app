@@ -10,7 +10,9 @@ import 'package:herzinsuffizienz/vitalparameters/createSparkline.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:herzinsuffizienz/vitalparameters/steps.dart';
 import 'package:herzinsuffizienz/vitalparameters/weight.dart';
+import 'dart:io' show Platform, stdout;
 
+enum AppState {DATA_NOT_FETCHED, FETCHING_DATA, DATA_READY, NO_DATA}
 //Übersichtsseite zu Vitalparametern --> viele Karten mit einzelnen Diagrammen zu den Vitalparametern
 class Vitalparameter extends StatefulWidget {
   @override
@@ -19,6 +21,7 @@ class Vitalparameter extends StatefulWidget {
 
 class _VitalparameterState extends State<Vitalparameter> {
   final String _title = "Vitalparameter";
+  AppState _state = AppState.DATA_NOT_FETCHED;
   var _healthDataList = List<HealthDataPoint>();
   bool _isAuthorized = false;
   //Einzelne Listen für jeden abgefragten Vitalparametertyp
@@ -47,114 +50,117 @@ class _VitalparameterState extends State<Vitalparameter> {
         DateTime.now().day); //Zeitraum für Abfrage = 1 Monat
     DateTime endDate = DateTime.now();
 
-    Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized =
-          await Health.requestAuthorization(); //Autorisierungsabfrage
-      if (_isAuthorized) {
-        List<HealthDataType> types = [
-          HealthDataType.WEIGHT,
-          HealthDataType.HEIGHT,
-          HealthDataType.STEPS,
-          HealthDataType.BODY_MASS_INDEX,
-          HealthDataType.BODY_FAT_PERCENTAGE,
-          HealthDataType.ACTIVE_ENERGY_BURNED,
-          HealthDataType.HEART_RATE,
-          HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
-          HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
-          HealthDataType.RESTING_HEART_RATE,
-          HealthDataType.BLOOD_GLUCOSE,
-          HealthDataType.BLOOD_OXYGEN,
-          HealthDataType.HEART_RATE_VARIABILITY_SDNN,
-        ];
-        //Speicherung aller Datenpunkte in Liste
-        for (HealthDataType type in types) {
-          try {
-            if (Health.isDataTypeAvailable(type)) {
-              List<HealthDataPoint> healthData =
-                  await Health.getHealthDataFromType(startDate, endDate, type);
-              _healthDataList.addAll(healthData);
-            }
-          } catch (exception) {
-            print(exception.toString());
-          }
-        }
-        setState(() {});
-      } else {
-        print("Keine Authorisierung vorliegend");
-      }
+    HealthFactory health = HealthFactory();
+
+    List<HealthDataType> types = [
+      HealthDataType.WEIGHT,
+      HealthDataType.HEIGHT,
+      HealthDataType.STEPS,
+      HealthDataType.BODY_MASS_INDEX,
+      HealthDataType.BODY_FAT_PERCENTAGE,
+      HealthDataType.ACTIVE_ENERGY_BURNED,
+      HealthDataType.HEART_RATE,
+      HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
+      HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
+      HealthDataType.RESTING_HEART_RATE,
+      HealthDataType.BLOOD_GLUCOSE,
+      HealthDataType.BLOOD_OXYGEN,
+      HealthDataType.HEART_RATE_VARIABILITY_SDNN,
+    ];
+    List<HealthDataType> androidTypes = [
+      HealthDataType.WEIGHT,
+      HealthDataType.HEIGHT,
+      // HealthDataType.BODY_MASS_INDEX,
+      HealthDataType.BODY_FAT_PERCENTAGE,
+      HealthDataType.ACTIVE_ENERGY_BURNED,
+      HealthDataType.HEART_RATE,
+      HealthDataType.BLOOD_PRESSURE_SYSTOLIC,
+      HealthDataType.BLOOD_PRESSURE_DIASTOLIC,
+      //  HealthDataType.RESTING_HEART_RATE,
+      HealthDataType.BLOOD_GLUCOSE,
+      HealthDataType.BLOOD_OXYGEN,
+      // HealthDataType.HEART_RATE_VARIABILITY_SDNN,
+      HealthDataType.STEPS,
+    ];
+
+    List<HealthDataPoint> healthData = await health.getHealthDataFromTypes(startDate, endDate, Platform.isIOS ? types : androidTypes);
+
+    _healthDataList.addAll(healthData);
+    setState(() {
+      _state = _healthDataList.isEmpty ? AppState.NO_DATA : AppState.DATA_READY;
+    });
+
 //Befüllen der einzelnen Listen je Datentyp mit Double-Werten
       for (HealthDataPoint point in _healthDataList) {
-        switch (point.dataType) {
-          case "WEIGHT":
+        switch (point.type) {
+          case HealthDataType.WEIGHT:
             {
               weight.add(point.value);
             }
             break;
-          case "HEIGHT":
+          case HealthDataType.HEIGHT:
             {
               height.add(point.value);
             }
             break;
-          case "STEPS":
+          case HealthDataType.STEPS:
             {
               steps.add(point.value.toDouble());
             }
             break;
-          case "BODY_MASS_INDEX":
+          case HealthDataType.BODY_MASS_INDEX:
             {
               bmi.add(point.value);
             }
             break;
-          case "BODY_FAT_PERCENTAGE":
+          case HealthDataType.BODY_FAT_PERCENTAGE:
             {
               bodyFat.add(point.value);
             }
             break;
-          case "ACTIVE_ENERGY_BURNED":
+          case HealthDataType.ACTIVE_ENERGY_BURNED:
             {
               activeEnergy.add(point.value.toDouble());
             }
             break;
-          case "HEART_RATE":
+          case HealthDataType.HEART_RATE:
             {
               _bpm.add(point.value.toDouble());
             }
             break;
-          case "BLOOD_PRESSURE_SYSTOLIC":
+          case HealthDataType.BLOOD_PRESSURE_SYSTOLIC:
             {
               bpSystolic.add(point.value);
             }
             break;
-          case "BLOOD_PRESSURE_DIASTOLIC":
+          case HealthDataType.BLOOD_PRESSURE_DIASTOLIC:
             {
               bpDiastolic.add(point.value);
             }
             break;
-          case "RESTING_HEART_RATE":
+          case HealthDataType.RESTING_HEART_RATE:
             {
               restingHR.add(point.value.toDouble());
             }
             break;
-          case "BLOOD_GLUCOSE":
+          case HealthDataType.BLOOD_GLUCOSE:
             {
               glucose.add(point.value);
             }
             break;
-          case "BLOOD_OXYGEN":
+          case HealthDataType.BLOOD_OXYGEN:
             {
               oxygen.add(point.value);
             }
             break;
-          case "HEART_RATE_VARIABILITY_SDNN":
+          case HealthDataType.HEART_RATE_VARIABILITY_SDNN:
             {
               hrVariability.add(point.value);
             }
             break;
         }
       }
-    });
-  }
-
+    }
 
   @override
   Widget build(BuildContext context) {

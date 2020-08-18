@@ -26,28 +26,22 @@ class _BPMState extends State<BPM> {
     _seriesData = List<charts.Series<Datapoints, DateTime>>();
     initPlatformState();
   }
-
+  HealthFactory health =HealthFactory();
   Future<void> initPlatformState() async {
     DateTime startDate =
         DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
     DateTime endDate = DateTime.now();
 
-    Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized =
-          await Health.requestAuthorization(); //Autorisierungsabfrage
-      if (_isAuthorized) {
-        try {
-          List<HealthDataPoint> data = await Health.getHealthDataFromType(
-              startDate, endDate, HealthDataType.HEART_RATE);
+      List<HealthDataType> types = [HealthDataType.HEART_RATE];
+      try {
+        List<HealthDataPoint> data = await health.getHealthDataFromTypes(
+            startDate, endDate, types);
           for (HealthDataPoint point in data) {
             bpm.add(new Datapoints(point.dateFrom, point.value));
             avrBpm += point.value;
           }
         } catch (exception) {
-          print(exception.toString());
-        }
-      } else {
-        print("Keine Authorisierung vorliegend");
+        print(exception.toString());
       }
       setState(() {});
       avrBpm = avrBpm / bpm.length;
@@ -61,8 +55,7 @@ class _BPMState extends State<BPM> {
           colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
         ),
       );
-    });
-  }
+    }
 
   @override
   Widget build(BuildContext context) {

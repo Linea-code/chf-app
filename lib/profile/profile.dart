@@ -123,7 +123,7 @@ class _ProfileState extends State<Profile> {
             appBar: AppBar(
               //Kopfzeile mit Titel und Name sowie Vorname (aus CreateProfile)
               title: Text(
-                "Steckbiref ",
+                "Steckbrief ",
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),

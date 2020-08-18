@@ -212,7 +212,7 @@ class _CreateProfileState extends State<CreateProfile> {
   void _weiter() {
     if (formKey.currentState.validate() &&
         (_gender != null) &&
-        (newProfile.birthdate != DateTime.now())) {
+        (newProfile.birthdate != null)) {
       formKey.currentState.save();
       newProfile.saveData();
       Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));

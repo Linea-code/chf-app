@@ -31,13 +31,12 @@ class _StepsState extends State<Steps> {
         DateTime.utc(2020, DateTime.now().month - 1, DateTime.now().day);
     DateTime endDate = DateTime.now();
 
-    Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized =
-          await Health.requestAuthorization(); //Autorisierungsabfrage
-      if (_isAuthorized) {
-        try {
-          List<HealthDataPoint> data = await Health.getHealthDataFromType(
-              startDate, endDate, HealthDataType.STEPS);
+    Future.delayed(Duration(seconds: 0), () async {
+      HealthFactory health =HealthFactory();
+      List<HealthDataType> types = [HealthDataType.STEPS];
+      try {
+        List<HealthDataPoint> data = await health.getHealthDataFromTypes(
+            startDate, endDate, types);
           for (HealthDataPoint point in data) {
             steps.add(new Datapoints(point.dateFrom, point.value.toDouble()));
             avrSteps = avrSteps + point.value.toDouble();
@@ -45,9 +44,6 @@ class _StepsState extends State<Steps> {
         } catch (exception) {
           print(exception.toString());
         }
-      } else {
-        print("Keine Authorisierung vorliegend");
-      }
       steps = steps
           .map((datapoint) => new Datapoints(
               new DateTime.utc(datapoint.getDate().year,

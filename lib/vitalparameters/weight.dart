@@ -31,13 +31,12 @@ class _WeightState extends State<Weight> {
         DateTime.now().day); //Zeitraum der Datenabfrage
     DateTime endDate = DateTime.now();
 
-    Future.delayed(Duration(seconds: 2), () async {
-      _isAuthorized = await Health
-          .requestAuthorization(); //Autorisierungsabfrage über Health kit
-      if (_isAuthorized) {
-        try {
-          List<HealthDataPoint> data = await Health.getHealthDataFromType(
-              startDate, endDate, HealthDataType.WEIGHT);
+    Future.delayed(Duration(seconds: 0), () async {
+      HealthFactory health =HealthFactory();
+      List<HealthDataType> types = [HealthDataType.WEIGHT];
+      try {
+        List<HealthDataPoint> data = await health.getHealthDataFromTypes(
+            startDate, endDate, types);
           for (HealthDataPoint point in data) {
             weight.add(new Datapoints(
                 point.dateFrom, point.value)); //Liste mit Gewichtsdaten füllen
@@ -46,9 +45,6 @@ class _WeightState extends State<Weight> {
         } catch (exception) {
           print(exception.toString());
         }
-      } else {
-        print("Keine Authorisierung vorliegend");
-      }
       setState(() {});
       avrWeight = avrWeight / weight.length; //Durchschnitt bilden
 
